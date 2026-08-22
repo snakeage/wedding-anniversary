@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Приглашение на годовщину
 
-## Getting Started
+Одностраничный сайт на Next.js и TypeScript: WebGL-фон, галерея, карта и RSVP. Деплой — Vercel.
 
-First, run the development server:
+## Локально
 
 ```bash
+cd wedding-anniversary
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Что править
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Все тексты, дата, адрес и подписи к фото — в [`src/content.ts`](src/content.ts).
 
-## Learn More
+Фотографии кладите в `public/gallery/` и обновите пути в `content.gallery`. Лучше JPEG или WebP около 200–400 KB.
 
-To learn more about Next.js, take a look at the following resources:
+## RSVP на почту
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Заведите ключ на [Resend](https://resend.com).
+2. Скопируйте `.env.example` в `.env.local` и заполните:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+RESEND_API_KEY=re_...
+RSVP_TO_EMAIL=you@example.com
+RESEND_FROM_EMAIL=Invitation <onboarding@resend.dev>
+NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app
+```
 
-## Deploy on Vercel
+Пока ключей нет, форма всё равно отвечает «успех», а данные пишутся в лог сервера.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+На Vercel те же переменные: Project → Settings → Environment Variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Деплой
+
+```bash
+npx vercel
+```
+
+Или подключите репозиторий на [vercel.com](https://vercel.com/new): framework Next.js, root directory `wedding-anniversary`, если репозиторий — родительская папка `Invitation_web`.
+
+После деплоя обновите `NEXT_PUBLIC_SITE_URL` на прод-домен — от него зависит превью ссылки в мессенджерах.

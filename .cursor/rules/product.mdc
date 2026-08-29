@@ -14,3 +14,5 @@ One RSVP pipeline for all templates. Do not add a new email/sheet/db integration
 Do not implement the full `docs/templates-catalog.md` list in one go. Next code step after docs: extract the current page into `templates/quiet-luxury`, then a second skin.
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
+
+Before non-trivial code: suggest a feature branch if work is a new skin, `templates/` refactor, RSVP/infra, or could break prod; `main` is ok for content, docs, small fixes. Ask the user unless they said "straight to main".

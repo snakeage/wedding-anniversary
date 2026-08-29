@@ -16,6 +16,26 @@ One GitHub repository, one Vercel project. Push to `main` rebuilds the product f
 
 A new client is new **data** (and later `/slug`), not `npx vercel` for a second app. Custom domains can alias the same project later.
 
+## Git branches
+
+`main` is the live demo (Vercel production). The agent should **say when to branch** before starting risky or large work.
+
+**Use a feature branch** (e.g. `feature/paper-envelope`) when:
+
+- Adding or building a new template skin from the catalog
+- Refactoring into `templates/` or changing routing (`/slug`)
+- Large RSVP, database, or infra changes
+- Risky experiments (WebGL, deploy, env) where prod should stay stable
+- You need a Vercel preview URL to show a draft
+
+**Stay on `main`** when:
+
+- Editing `src/content.ts`, photos, copy, docs
+- Small bugfixes and styling on the current live template
+- You explicitly ask to ship straight to production
+
+Before non-trivial code, the agent should ask: branch or `main`? Default to branch if the live site could break.
+
 ```text
 app (one deploy)
   templates/     visual skins

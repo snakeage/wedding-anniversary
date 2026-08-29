@@ -4,8 +4,11 @@
 
 ## Локально
 
+Нужен **Node 22** (см. `.nvmrc`). На 20.15 npm будет ругаться на `engines`.
+
 ```bash
 cd wedding-anniversary
+nvm use   # если установлен nvm
 npm install
 npm run dev
 ```
@@ -27,7 +30,7 @@ npm run dev
 RESEND_API_KEY=re_...
 RSVP_TO_EMAIL=you@example.com
 RESEND_FROM_EMAIL=Invitation <onboarding@resend.dev>
-NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app
+NEXT_PUBLIC_SITE_URL=https://wedding-anniversary-seven-tau.vercel.app
 ```
 
 Пока ключей нет, форма всё равно отвечает «успех», а данные пишутся в лог сервера.

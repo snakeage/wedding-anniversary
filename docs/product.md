@@ -36,6 +36,10 @@ A new client is new **data** (and later `/slug`), not `npx vercel` for a second 
 
 Before non-trivial code, the agent should ask: branch or `main`? Default to branch if the live site could break.
 
+**Do not** require separate `docs/`, `feature/`, and `refactor/` branches. Prefixes are optional habit (`feature/extract-quiet-luxury`), not a process. Name the branch after the **goal of the task**, not the file type.
+
+If one task mixes docs, refactor, and new code (the usual next step: extract `quiet-luxury` + update schema docs + maybe a second skin), that is **one branch**. Split **commits** inside it if useful; do not split into three PRs by file kind. Cut a second PR only when it is a **second delivery** (extract already useful on `main`, new skin can ship later).
+
 ```text
 app (one deploy)
   templates/     visual skins

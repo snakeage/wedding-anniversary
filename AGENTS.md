@@ -19,4 +19,4 @@ This repo is **one product**: digital event invitations sold as visual templates
 - Deploy is the product. New events should become URLs like `/slug` on the same deployment. Do not create a new Vercel project per design.
 - Template ideas live in [`docs/templates-catalog.md`](docs/templates-catalog.md). Do not implement all catalog rows at once; extract `templates/` only after the catalog is agreed.
 - Product notes: [`docs/product.md`](docs/product.md).
-- **Branches:** `main` = live demo. Before new templates, architecture refactors, or risky changes, suggest a feature branch and ask the user — see [Git branches](./docs/product.md#git-branches) in product.md. Content/docs-only edits can stay on `main`.
+- **Branches:** `main` = live demo. Before new templates, architecture refactors, or risky changes, suggest a feature branch and ask the user — see [Git branches](./docs/product.md#git-branches) in product.md. Content/docs-only edits can stay on `main`. One task = one branch even if it mixes docs, refactor, and new code; do not invent required `docs/` vs `feature/` vs `refactor/` prefixes.

@@ -15,4 +15,4 @@ Do not implement the full `docs/templates-catalog.md` list in one go. Next code 
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
 
-Before non-trivial code: suggest a feature branch if work is a new skin, `templates/` refactor, RSVP/infra, or could break prod; `main` is ok for content, docs, small fixes. Ask the user unless they said "straight to main".
+Before non-trivial code: suggest a feature branch if work is a new skin, `templates/` refactor, RSVP/infra, or could break prod; `main` is ok for content, docs, small fixes. Ask the user unless they said "straight to main". One task = one branch named by goal (`feature/extract-quiet-luxury`); mixed docs+refactor+code in that branch is expected. Do not require separate `docs/` / `feature/` / `refactor/` branches.

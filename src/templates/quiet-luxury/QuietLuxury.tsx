@@ -22,7 +22,7 @@ export function QuietLuxury({ event }: { event: EventContent }) {
         <Gallery event={event} />
         <Details event={event} />
         <VenueMap event={event} />
-        <RsvpForm />
+        <RsvpForm eventSlug={event.slug} />
         <Footer event={event} />
       </main>
     </>

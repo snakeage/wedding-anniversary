@@ -1,13 +1,13 @@
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import { demoEvent } from "@/events";
+import { demoEvent, getEventBySlug } from "@/events";
 import { formatEventDate, formatEventTime } from "@/lib/datetime";
 import { getDatabaseUrl } from "@/lib/db";
 import { isRsvpAdminSecret, RSVP_ADMIN_COOKIE } from "@/lib/rsvp-admin";
 import { listRsvps } from "@/lib/rsvp-store";
 
 type PageProps = {
-  searchParams: Promise<{ secret?: string }>;
+  searchParams: Promise<{ secret?: string; slug?: string }>;
 };
 
 export const dynamic = "force-dynamic";
@@ -27,6 +27,11 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
     notFound();
   }
 
+  const event = params.slug ? getEventBySlug(params.slug) : demoEvent;
+  if (!event) {
+    notFound();
+  }
+
   if (!getDatabaseUrl()) {
     return (
       <main className="mx-auto max-w-3xl px-6 py-16">
@@ -36,18 +41,21 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
     );
   }
 
-  const rows = await listRsvps(demoEvent.slug);
+  const rows = await listRsvps(event.slug);
+  const rememberHref = params.secret
+    ? `/api/rsvp-auth?secret=${encodeURIComponent(params.secret)}&slug=${encodeURIComponent(event.slug)}`
+    : null;
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Организатор</p>
       <h1 className="font-serif mt-3 text-4xl text-ink">Ответы гостей</h1>
       <p className="mt-3 text-ink/65">
-        {demoEvent.couple.one} & {demoEvent.couple.two} · {demoEvent.slug}
+        {event.couple.one} & {event.couple.two} · {event.slug}
       </p>
-      {params.secret ? (
+      {rememberHref ? (
         <p className="mt-4 text-sm text-ink/50">
-          <a className="underline decoration-gold/60 underline-offset-4" href={`/api/rsvp-auth?secret=${encodeURIComponent(params.secret)}`}>
+          <a className="underline decoration-gold/60 underline-offset-4" href={rememberHref}>
             Запомнить доступ (убрать секрет из ссылки)
           </a>
         </p>

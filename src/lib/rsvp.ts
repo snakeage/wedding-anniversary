@@ -5,6 +5,7 @@ export type RsvpPayload = {
   guests: number;
   attending: RsvpAttending;
   comment: string;
+  slug: string;
 };
 
 export type RsvpParseResult =
@@ -24,6 +25,7 @@ export function parseRsvp(body: unknown): RsvpParseResult {
   const name = asString(record.name).trim();
   const comment = asString(record.comment).trim();
   const attending = asString(record.attending);
+  const slug = asString(record.slug).trim();
   const guestsRaw = record.guests;
   const guests =
     typeof guestsRaw === "number" ? guestsRaw : Number.parseInt(asString(guestsRaw), 10);
@@ -44,9 +46,13 @@ export function parseRsvp(body: unknown): RsvpParseResult {
     return { ok: false, error: "Комментарий слишком длинный" };
   }
 
+  if (!slug || slug.length > 80) {
+    return { ok: false, error: "Некорректное приглашение" };
+  }
+
   return {
     ok: true,
-    data: { name, guests, attending, comment },
+    data: { name, guests, attending, comment, slug },
   };
 }
 

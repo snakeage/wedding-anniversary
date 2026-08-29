@@ -13,11 +13,11 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000).
+Откройте [http://localhost:3000](http://localhost:3000) — откроется демо `/anna-dmitry`. Второе событие на том же деплое: [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria).
 
 ## Что править
 
-Все тексты, дата, адрес и подписи к фото — в [`src/events/anna-dmitry.ts`](src/events/anna-dmitry.ts). Скин выбирается полем `templateId`.
+Все тексты, дата, адрес и подписи к фото — в файлах [`src/events/`](src/events/). Гостевая ссылка — `/{slug}` (`anna-dmitry`, `ivan-maria`). Скин выбирается полем `templateId`.
 
 Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
 
@@ -35,7 +35,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ` — не публикуйте ссылку гостям.
+5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ&slug=anna-dmitry` — не публикуйте ссылку гостям.
 
 Resend по-прежнему опционален:
 

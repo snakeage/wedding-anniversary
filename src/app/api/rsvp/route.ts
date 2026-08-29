@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { demoEvent } from "@/events";
+import { getEventBySlug } from "@/events";
 import { getDatabaseUrl } from "@/lib/db";
 import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
 import { insertRsvp } from "@/lib/rsvp-store";
@@ -19,6 +19,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
+  const event = getEventBySlug(parsed.data.slug);
+  if (!event) {
+    return NextResponse.json({ error: "Некорректное приглашение" }, { status: 400 });
+  }
+
   if (!getDatabaseUrl()) {
     console.error("[rsvp] DATABASE_URL is not set");
     return NextResponse.json({ error: "Не удалось сохранить ответ. Попробуйте позже." }, { status: 500 });
@@ -27,7 +32,7 @@ export async function POST(request: Request) {
   const payload = parsed.data;
 
   try {
-    await insertRsvp(demoEvent.slug, payload);
+    await insertRsvp(event.slug, payload);
   } catch (error) {
     console.error("[rsvp] insert failed", error);
     return NextResponse.json({ error: "Не удалось сохранить ответ. Попробуйте позже." }, { status: 500 });
@@ -45,7 +50,7 @@ export async function POST(request: Request) {
   const { error } = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "Invitation <onboarding@resend.dev>",
     to,
-    subject: `RSVP: ${payload.name} — ${attending} · ${demoEvent.couple.one} & ${demoEvent.couple.two}`,
+    subject: `RSVP: ${payload.name} — ${attending} · ${event.couple.one} & ${event.couple.two}`,
     text: formatRsvpEmail(payload),
   });
 

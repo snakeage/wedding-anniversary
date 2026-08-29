@@ -11,7 +11,7 @@ Keep event copy out of components; use the event content module (`src/content.ts
 
 One RSVP pipeline for all templates. Do not add a new email/sheet/db integration per skin.
 
-Do not implement the full `docs/templates-catalog.md` list in one go. Next code step after docs: extract the current page into `templates/quiet-luxury`, then a second skin.
+Do not implement the full `docs/templates-catalog.md` list in one go. The work queue is GitHub Issues: only the open issue labeled `now` ([docs/backlog.md](docs/backlog.md)). After finishing, offer to close it and move `now`. Propose priority changes explicitly if a sales blocker is not the current `now`.
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
 

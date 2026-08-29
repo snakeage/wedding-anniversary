@@ -59,8 +59,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-- **Now:** one live skin (Quiet luxury), content in `src/content.ts`.
-- **Next code:** fold that page into `templates/quiet-luxury`, add a second skin, then a portfolio index.
-- **Not yet:** organizer dashboard, database, Resend as source of truth, twenty implemented pages.
+The live demo is Quiet luxury (`src/content.ts`). What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).

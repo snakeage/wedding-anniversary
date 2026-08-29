@@ -6,7 +6,7 @@ import type { RsvpAttending, RsvpPayload } from "@/lib/rsvp";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function RsvpForm() {
+export function RsvpForm({ eventSlug }: { eventSlug: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [attending, setAttending] = useState<RsvpAttending>("yes");
@@ -22,6 +22,7 @@ export function RsvpForm() {
       guests: Number(form.get("guests") ?? 1),
       attending,
       comment: String(form.get("comment") ?? ""),
+      slug: eventSlug,
     };
 
     try {

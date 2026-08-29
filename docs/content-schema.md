@@ -9,7 +9,7 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 | Field | Type | Used by |
 | --- | --- | --- |
 | `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury` today) |
-| `slug` | string | Stub for a later public path (`anna-dmitry`). Not routed yet |
+| `slug` | string | Public path `/anna-dmitry` |
 | `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
 | `couple.two` | string | same |
 | `kicker` | string | Small label above names (event type) |
@@ -40,7 +40,7 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 6. RSVP — form
 7. Footer — names
 
-The home page picks a skin from `templateId` via [`src/templates/registry.ts`](../src/templates/registry.ts). Quiet luxury lives in [`src/templates/quiet-luxury/`](../src/templates/quiet-luxury/).
+The home page redirects to the demo slug. Public URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Quiet luxury lives in [`src/templates/quiet-luxury/`](../src/templates/quiet-luxury/).
 
 ## RSVP (one form for all skins)
 
@@ -51,9 +51,8 @@ The home page picks a skin from `templateId` via [`src/templates/registry.ts`](.
 | `guests` | integer 1–12 |
 | `comment` | string, max 500 |
 
-POST `/api/rsvp`. Persistence is Neon Postgres (`rsvps`), product-wide, not per template. Resend email is optional notify. Organizer list: `/rsvp-list` behind `RSVP_ADMIN_SECRET`.
+POST `/api/rsvp` with `slug` of the event. Persistence is Neon Postgres (`rsvps`), product-wide, not per template. Resend email is optional notify. Organizer list: `/rsvp-list?slug=` behind `RSVP_ADMIN_SECRET`.
 
 ## Later (not in code yet)
 
-- Public URL `/[slug]` (slug is already on the event)
 - Optional flags: `showCountdown`, `showMap`, etc.

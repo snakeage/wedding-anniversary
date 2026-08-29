@@ -10,6 +10,10 @@ export async function GET(request: Request) {
   }
 
   const redirectUrl = new URL("/rsvp-list", url.origin);
+  const slug = url.searchParams.get("slug")?.trim();
+  if (slug) {
+    redirectUrl.searchParams.set("slug", slug);
+  }
   const response = NextResponse.redirect(redirectUrl);
   response.cookies.set(RSVP_ADMIN_COOKIE, secret, {
     httpOnly: true,

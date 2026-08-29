@@ -14,7 +14,7 @@ We do not hand the client a git repo or a private Vercel project per order.
 
 One GitHub repository, one Vercel project. Push to `main` rebuilds the product for every live event.
 
-A new client is new **data** (and later `/slug`), not `npx vercel` for a second app. Custom domains can alias the same project later.
+A new client is new **data** plus `/slug` on this app, not `npx vercel` for a second app. Custom domains can alias the same project later.
 
 ## Git branches
 
@@ -44,7 +44,7 @@ If one task mixes docs, refactor, and new code (the usual next step: extract `qu
 app (one deploy)
   templates/     visual skins
   events/        names, photos, date  (src/events/)
-  guests → /anna-dmitry  (later)
+  guests → /anna-dmitry
 ```
 
 ## What is shared vs what differs
@@ -59,6 +59,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-The live demo is Quiet luxury (`templateId` on the demo event in `src/events/`). What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
+The live demo is Quiet luxury at `/anna-dmitry` (`/` redirects there). What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).

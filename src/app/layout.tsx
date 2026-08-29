@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { content } from "@/content";
+import { demoEvent } from "@/events";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -16,22 +16,22 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const title = `${content.couple.one} & ${content.couple.two} — годовщина свадьбы`;
+const title = `${demoEvent.couple.one} & ${demoEvent.couple.two} — годовщина свадьбы`;
 
 export const metadata: Metadata = {
   title,
-  description: content.inviteLead,
+  description: demoEvent.inviteLead,
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   openGraph: {
     title,
-    description: content.inviteLead,
+    description: demoEvent.inviteLead,
     locale: "ru_RU",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title,
-    description: content.inviteLead,
+    description: demoEvent.inviteLead,
   },
 };
 

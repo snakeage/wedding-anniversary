@@ -17,9 +17,9 @@ npm run dev
 
 ## Что править
 
-Все тексты, дата, адрес и подписи к фото — в [`src/content.ts`](src/content.ts).
+Все тексты, дата, адрес и подписи к фото — в [`src/events/anna-dmitry.ts`](src/events/anna-dmitry.ts). Скин выбирается полем `templateId`.
 
-Фотографии кладите в `public/gallery/` и обновите пути в `content.gallery`. Лучше JPEG или WebP около 200–400 KB.
+Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
 
 ## RSVP на почту
 

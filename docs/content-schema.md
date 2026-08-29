@@ -1,6 +1,6 @@
 # Content schema
 
-Contract for every template. Source of truth today: [`src/content.ts`](../src/content.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
+Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo event: [`src/events/anna-dmitry.ts`](../src/events/anna-dmitry.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
 
 A skin may **omit rendering** a block (e.g. no countdown). It should not require extra required fields that other skins cannot store, unless this file is updated first.
 
@@ -8,6 +8,8 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 
 | Field | Type | Used by |
 | --- | --- | --- |
+| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury` today) |
+| `slug` | string | Stub for a later public path (`anna-dmitry`). Not routed yet |
 | `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
 | `couple.two` | string | same |
 | `kicker` | string | Small label above names (event type) |
@@ -38,6 +40,8 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 6. RSVP — form
 7. Footer — names
 
+The home page picks a skin from `templateId` via [`src/templates/registry.ts`](../src/templates/registry.ts). Quiet luxury lives in [`src/templates/quiet-luxury/`](../src/templates/quiet-luxury/).
+
 ## RSVP (one form for all skins)
 
 | Field | Type |
@@ -51,6 +55,5 @@ POST `/api/rsvp`. Persistence (log / email / sheet / DB) is product-wide, not pe
 
 ## Later (not in code yet)
 
-- `templateId` — which skin to render
-- `slug` — public path `/anna-dmitry`
+- Public URL `/[slug]` (slug is already on the event)
 - Optional flags: `showCountdown`, `showMap`, etc.

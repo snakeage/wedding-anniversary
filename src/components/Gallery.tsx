@@ -3,26 +3,27 @@
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { content } from "@/content";
+import type { EventContent } from "@/content/types";
 import { GoldRule, Reveal } from "@/components/Reveal";
 
-export function Gallery() {
+export function Gallery({ event }: { event: EventContent }) {
+  const { gallery, inviteLead } = event;
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
     if (active === null) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
-      if (event.key === "ArrowRight") {
+    const onKey = (keyboardEvent: KeyboardEvent) => {
+      if (keyboardEvent.key === "Escape") setActive(null);
+      if (keyboardEvent.key === "ArrowRight") {
         setActive((current) =>
-          current === null ? current : (current + 1) % content.gallery.length,
+          current === null ? current : (current + 1) % gallery.length,
         );
       }
-      if (event.key === "ArrowLeft") {
+      if (keyboardEvent.key === "ArrowLeft") {
         setActive((current) =>
           current === null
             ? current
-            : (current - 1 + content.gallery.length) % content.gallery.length,
+            : (current - 1 + gallery.length) % gallery.length,
         );
       }
     };
@@ -33,7 +34,7 @@ export function Gallery() {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previous;
     };
-  }, [active]);
+  }, [active, gallery.length]);
 
   return (
     <section id="story" className="relative px-6 py-8 sm:py-16">
@@ -42,12 +43,12 @@ export function Gallery() {
         <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Годы, которые мы бережём</h2>
         <GoldRule className="mt-6" />
         <p className="mx-auto mt-6 max-w-lg text-base leading-7 text-ink/65">
-          {content.inviteLead}
+          {inviteLead}
         </p>
       </Reveal>
 
       <div className="mx-auto mt-12 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
-        {content.gallery.map((item, index) => (
+        {gallery.map((item, index) => (
           <Reveal key={item.src} delay={index * 0.06} className="min-w-[78%] snap-center md:min-w-0">
             <button
               type="button"
@@ -89,12 +90,12 @@ export function Gallery() {
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full max-w-4xl"
-              onClick={(event) => event.stopPropagation()}
+              onClick={(clickEvent) => clickEvent.stopPropagation()}
             >
               <div className="relative aspect-4/3 overflow-hidden rounded-sm bg-cream">
                 <Image
-                  src={content.gallery[active].src}
-                  alt={content.gallery[active].alt}
+                  src={gallery[active].src}
+                  alt={gallery[active].alt}
                   fill
                   sizes="90vw"
                   className="object-cover"
@@ -102,7 +103,7 @@ export function Gallery() {
                 />
               </div>
               <figcaption className="mt-4 text-center font-serif text-lg text-cream">
-                {content.gallery[active].caption}
+                {gallery[active].caption}
               </figcaption>
               <button
                 type="button"

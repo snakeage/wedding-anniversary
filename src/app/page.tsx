@@ -1,29 +1,7 @@
-import Background from "@/components/Background";
-import { Countdown } from "@/components/Countdown";
-import { Details } from "@/components/Details";
-import { Footer } from "@/components/Footer";
-import { Gallery } from "@/components/Gallery";
-import { GrainOverlay } from "@/components/GrainOverlay";
-import { Hero } from "@/components/Hero";
-import { RsvpForm } from "@/components/RsvpForm";
-import { SiteHeader } from "@/components/SiteHeader";
-import { VenueMap } from "@/components/VenueMap";
+import { demoEvent } from "@/events";
+import { resolveTemplate } from "@/templates/registry";
 
 export default function Home() {
-  return (
-    <>
-      <Background />
-      <GrainOverlay />
-      <SiteHeader />
-      <main className="relative z-10">
-        <Hero />
-        <Countdown />
-        <Gallery />
-        <Details />
-        <VenueMap />
-        <RsvpForm />
-        <Footer />
-      </main>
-    </>
-  );
+  const Template = resolveTemplate(demoEvent.templateId);
+  return <Template event={demoEvent} />;
 }

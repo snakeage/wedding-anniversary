@@ -1,9 +1,9 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { content } from "@/content";
+import { demoEvent } from "@/events";
 
-export const alt = `${content.couple.one} и ${content.couple.two} — приглашение на годовщину`;
+export const alt = `${demoEvent.couple.one} и ${demoEvent.couple.two} — приглашение на годовщину`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default async function OpenGraphImage() {
             color: "#6b2d3c",
           }}
         >
-          {content.kicker}
+          {demoEvent.kicker}
         </div>
         <div
           style={{
@@ -51,7 +51,7 @@ export default async function OpenGraphImage() {
             lineHeight: 1,
           }}
         >
-          {content.couple.one}
+          {demoEvent.couple.one}
         </div>
         <div
           style={{
@@ -71,7 +71,7 @@ export default async function OpenGraphImage() {
             lineHeight: 1,
           }}
         >
-          {content.couple.two}
+          {demoEvent.couple.two}
         </div>
         <div
           style={{
@@ -80,7 +80,7 @@ export default async function OpenGraphImage() {
             color: "#2c2420cc",
           }}
         >
-          {content.tagline}
+          {demoEvent.tagline}
         </div>
       </div>
     ),

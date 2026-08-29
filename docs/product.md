@@ -30,7 +30,7 @@ A new client is new **data** (and later `/slug`), not `npx vercel` for a second 
 
 **Stay on `main`** when:
 
-- Editing `src/content.ts`, photos, copy, docs
+- Editing event data in `src/events/`, photos, copy, docs
 - Small bugfixes and styling on the current live template
 - You explicitly ask to ship straight to production
 
@@ -43,7 +43,7 @@ If one task mixes docs, refactor, and new code (the usual next step: extract `qu
 ```text
 app (one deploy)
   templates/     visual skins
-  events/        names, photos, date  (today: src/content.ts)
+  events/        names, photos, date  (src/events/)
   guests → /anna-dmitry  (later)
 ```
 
@@ -59,6 +59,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-The live demo is Quiet luxury (`src/content.ts`). What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
+The live demo is Quiet luxury (`templateId` on the demo event in `src/events/`). What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).

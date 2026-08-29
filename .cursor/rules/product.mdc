@@ -7,7 +7,7 @@ alwaysApply: true
 
 One Next.js app and one Vercel project. Templates are skins. A sale is content (names, date, photos) plus a template id — never a copied repo or a new Vercel app per client.
 
-Keep event copy out of components; use the event content module (`src/content.ts` today). Shared blocks: hero, countdown, gallery, details, map, RSVP. Skins may hide or restyle blocks; do not fork the content schema without updating `docs/content-schema.md`.
+Keep event copy out of components; pass event data from `src/events/` (schema in `src/content/types.ts`). Shared blocks: hero, countdown, gallery, details, map, RSVP. Skins may hide or restyle blocks; do not fork the content schema without updating `docs/content-schema.md`.
 
 One RSVP pipeline for all templates. Do not add a new email/sheet/db integration per skin.
 

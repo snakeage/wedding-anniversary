@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { content } from "@/content";
+import { demoEvent } from "@/events";
 import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
 
 export async function POST(request: Request) {
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   const { error } = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "Invitation <onboarding@resend.dev>",
     to,
-    subject: `RSVP: ${payload.name} — ${attending} · ${content.couple.one} & ${content.couple.two}`,
+    subject: `RSVP: ${payload.name} — ${attending} · ${demoEvent.couple.one} & ${demoEvent.couple.two}`,
     text: formatRsvpEmail(payload),
   });
 

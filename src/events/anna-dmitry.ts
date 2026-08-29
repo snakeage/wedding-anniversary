@@ -1,4 +1,8 @@
-export const content = {
+import type { EventContent } from "@/content/types";
+
+export const annaDmitry: EventContent = {
+  templateId: "quiet-luxury",
+  slug: "anna-dmitry",
   couple: {
     one: "Анна",
     two: "Дмитрий",
@@ -54,7 +58,4 @@ export const content = {
       caption: "2026 — празднуем с вами",
     },
   ],
-} as const;
-
-export type Content = typeof content;
-export type GalleryItem = (typeof content.gallery)[number];
+};

@@ -1,26 +1,26 @@
-import { content } from "@/content";
+import type { EventContent } from "@/content/types";
 import { formatEventDate, formatEventTime } from "@/lib/datetime";
 import { GoldRule, Reveal } from "@/components/Reveal";
 
-const items = [
-  {
-    label: "Когда",
-    value: `${formatEventDate(content.event.iso)} · ${formatEventTime(content.event.iso)}`,
-    note: content.event.gathering,
-  },
-  {
-    label: "Где",
-    value: content.venue.name,
-    note: content.venue.address,
-  },
-  {
-    label: "Дресс-код",
-    value: content.event.dressCode,
-    note: "Главное — быть собой. Оттенки лишь подсказка.",
-  },
-] as const;
+export function Details({ event }: { event: EventContent }) {
+  const items = [
+    {
+      label: "Когда",
+      value: `${formatEventDate(event.event.iso)} · ${formatEventTime(event.event.iso)}`,
+      note: event.event.gathering,
+    },
+    {
+      label: "Где",
+      value: event.venue.name,
+      note: event.venue.address,
+    },
+    {
+      label: "Дресс-код",
+      value: event.event.dressCode,
+      note: "Главное — быть собой. Оттенки лишь подсказка.",
+    },
+  ] as const;
 
-export function Details() {
   return (
     <section id="details" className="relative px-6 py-24 sm:py-32">
       <Reveal className="mx-auto max-w-3xl text-center">
@@ -28,7 +28,7 @@ export function Details() {
         <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Дата, место, настроение</h2>
         <GoldRule className="mt-6" />
         <p className="mx-auto mt-6 max-w-lg text-base leading-7 text-ink/65">
-          {content.inviteBody}
+          {event.inviteBody}
         </p>
       </Reveal>
 

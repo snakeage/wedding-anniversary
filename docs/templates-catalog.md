@@ -1,6 +1,6 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **#1 is live** in production as the current landing.
+Ideas only. Do not implement this list in one pass. **#1 is live**: the demo event’s `templateId` is `quiet-luxury`, rendered from `templates/quiet-luxury` — not a one-off page that *is* the skin.
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 
@@ -27,4 +27,4 @@ Each row is a **skin**: different composition, motion, and audience — not a re
 | 19 | `sacred-minimal` | Sacred minimal | Church / temple adjacent | Quiet vertical rhythm, candle motif, no party clutter, long reading column | Idea |
 | 20 | `afterparty-ticket` | Afterparty ticket | Second event, club invite | Stub/tear layout, barcode joke, time-first hero, RSVP as “claim ticket” | Idea |
 
-When implementing, add `templateId` matching the **Id** column and keep fields from the schema. Next code step is extracting #1 into `templates/quiet-luxury`, then pick **one** other row — not the whole table.
+When implementing, add `templateId` matching the **Id** column and keep fields from the schema. Next catalog skin is **one** other row — not the whole table.

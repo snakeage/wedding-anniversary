@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { content } from "@/content";
+import type { EventContent } from "@/content/types";
 import { getCountdown } from "@/lib/datetime";
 import { GoldRule, Reveal } from "@/components/Reveal";
 
@@ -12,15 +12,16 @@ const labels = {
   seconds: "секунд",
 } as const;
 
-export function Countdown() {
-  const [parts, setParts] = useState(() => getCountdown(content.event.iso));
+export function Countdown({ event }: { event: EventContent }) {
+  const iso = event.event.iso;
+  const [parts, setParts] = useState(() => getCountdown(iso));
 
   useEffect(() => {
-    const tick = () => setParts(getCountdown(content.event.iso));
+    const tick = () => setParts(getCountdown(iso));
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [iso]);
 
   return (
     <section id="countdown" className="relative px-6 py-24 sm:py-32">

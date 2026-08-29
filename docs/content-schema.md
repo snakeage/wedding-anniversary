@@ -51,7 +51,7 @@ The home page picks a skin from `templateId` via [`src/templates/registry.ts`](.
 | `guests` | integer 1–12 |
 | `comment` | string, max 500 |
 
-POST `/api/rsvp`. Persistence (log / email / sheet / DB) is product-wide, not per template.
+POST `/api/rsvp`. Persistence is Neon Postgres (`rsvps`), product-wide, not per template. Resend email is optional notify. Organizer list: `/rsvp-list` behind `RSVP_ADMIN_SECRET`.
 
 ## Later (not in code yet)
 

@@ -21,21 +21,34 @@ npm run dev
 
 Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
 
-## RSVP на почту
+## RSVP
 
-1. Заведите ключ на [Resend](https://resend.com).
-2. Скопируйте `.env.example` в `.env.local` и заполните:
+Ответы гостей хранятся в **Neon Postgres** (база в том же проекте Vercel, не отдельный сервер). Письмо через Resend — по желанию, не источник правды.
+
+1. В [Vercel](https://vercel.com) у проекта `wedding-anniversary`: Storage → Create Database → **Neon Postgres**, или из репо:
+
+   ```bash
+   npx vercel integration add neon --name wedding-rsvp --scope snake-age
+   ```
+
+   При первом подключении Vercel попросит принять условия Neon в браузере, затем команду нужно повторить.
+2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
+3. Создайте таблицу: `npm run db:migrate`.
+4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
+5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ` — не публикуйте ссылку гостям.
+
+Resend по-прежнему опционален:
 
 ```
 RESEND_API_KEY=re_...
 RSVP_TO_EMAIL=you@example.com
 RESEND_FROM_EMAIL=Invitation <onboarding@resend.dev>
 NEXT_PUBLIC_SITE_URL=https://wedding-anniversary-seven-tau.vercel.app
+DATABASE_URL=postgres://...
+RSVP_ADMIN_SECRET=long-random-string
 ```
 
-Пока ключей нет, форма всё равно отвечает «успех», а данные пишутся в лог сервера.
-
-На Vercel те же переменные: Project → Settings → Environment Variables.
+Без `DATABASE_URL` форма покажет ошибку, а не ложный успех.
 
 ## Деплой
 

@@ -1,7 +1,9 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { demoEvent } from "@/events";
+import { getDatabaseUrl } from "@/lib/db";
 import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
+import { insertRsvp } from "@/lib/rsvp-store";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -17,13 +19,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
+  if (!getDatabaseUrl()) {
+    console.error("[rsvp] DATABASE_URL is not set");
+    return NextResponse.json({ error: "Не удалось сохранить ответ. Попробуйте позже." }, { status: 500 });
+  }
+
   const payload = parsed.data;
+
+  try {
+    await insertRsvp(demoEvent.slug, payload);
+  } catch (error) {
+    console.error("[rsvp] insert failed", error);
+    return NextResponse.json({ error: "Не удалось сохранить ответ. Попробуйте позже." }, { status: 500 });
+  }
+
   const to = process.env.RSVP_TO_EMAIL;
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey || !to) {
-    console.info("[rsvp] email skipped — add RESEND_API_KEY and RSVP_TO_EMAIL", payload);
-    return NextResponse.json({ ok: true, delivered: false });
+    return NextResponse.json({ ok: true, stored: true, delivered: false });
   }
 
   const attending = payload.attending === "yes" ? "Придёт" : "Не сможет";
@@ -37,8 +51,8 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error("[rsvp] resend error", error);
-    return NextResponse.json({ error: "Не удалось отправить ответ" }, { status: 502 });
+    return NextResponse.json({ ok: true, stored: true, delivered: false });
   }
 
-  return NextResponse.json({ ok: true, delivered: true });
+  return NextResponse.json({ ok: true, stored: true, delivered: true });
 }

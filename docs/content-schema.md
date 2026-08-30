@@ -8,7 +8,7 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 
 | Field | Type | Used by |
 | --- | --- | --- |
-| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury` today) |
+| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`) |
 | `slug` | string | Public path `/anna-dmitry` |
 | `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
 | `couple.two` | string | same |
@@ -40,7 +40,7 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 6. RSVP — form
 7. Footer — names
 
-The home page redirects to the demo slug. Public URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Quiet luxury lives in [`src/templates/quiet-luxury/`](../src/templates/quiet-luxury/).
+The home page redirects to the demo slug. Public URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury and Paper envelope. A template may hide a block (Paper envelope has no countdown).
 
 ## RSVP (one form for all skins)
 

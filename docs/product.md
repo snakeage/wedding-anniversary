@@ -59,6 +59,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-The live demo is Quiet luxury at `/anna-dmitry` (`/` redirects there). Paper envelope is on `/ivan-maria`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
+`/` is the sales catalog. Live demos: Quiet luxury at `/anna-dmitry`, Paper envelope at `/ivan-maria`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).

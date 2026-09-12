@@ -40,7 +40,7 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 6. RSVP — form
 7. Footer — names
 
-The home page redirects to the demo slug. Public URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury and Paper envelope. A template may hide a block (Paper envelope has no countdown).
+`/` is the template catalog. Public guest URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury and Paper envelope. A template may hide a block (Paper envelope has no countdown).
 
 ## RSVP (one form for all skins)
 

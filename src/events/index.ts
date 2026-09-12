@@ -4,7 +4,7 @@ import { ivanMaria } from "@/events/ivan-maria";
 
 export const events: EventContent[] = [annaDmitry, ivanMaria];
 
-/** Live demo guests should land on after `/`. */
+/** Fallback event when RSVP admin omits `slug`. */
 export const demoEvent = annaDmitry;
 
 export function getDemoEvent() {

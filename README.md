@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) — демо Quiet luxury `/anna-dmitry`. Второй скин (конверт): [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria).
+Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury [http://localhost:3000/anna-dmitry](http://localhost:3000/anna-dmitry), Paper envelope [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria).
 
 ## Что править
 

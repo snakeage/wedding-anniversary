@@ -2,7 +2,7 @@
 
 import { useLenis } from "lenis/react";
 import { useReducedMotion } from "motion/react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import type { EventContent } from "@/content/types";
 import { EnvelopeArt } from "@/templates/paper-envelope/EnvelopeArt";
 
@@ -15,38 +15,43 @@ export function EnvelopeGate({
 }) {
   const reduce = useReducedMotion();
   const lenis = useLenis();
-  const [open, setOpen] = useState(false);
+  const [phase, setPhase] = useState<"closed" | "opening" | "open">("closed");
   const initials = `${event.couple.one.charAt(0)}${event.couple.two.charAt(0)}`;
 
-  useEffect(() => {
-    if (reduce) setOpen(true);
+  const handleOpen = useCallback(() => {
+    if (reduce) {
+      setPhase("open");
+      return;
+    }
+    setPhase("opening");
+    window.setTimeout(() => setPhase("open"), 1900);
   }, [reduce]);
 
   useEffect(() => {
-    if (!open) return;
-
     const refresh = () => {
       lenis?.resize();
-      window.dispatchEvent(new Event("resize"));
     };
-
     refresh();
     const frame = window.requestAnimationFrame(refresh);
-    const timeout = window.setTimeout(refresh, 160);
+    const delays = [160, 500, 1200].map((ms) => window.setTimeout(refresh, ms));
+    const root = document.querySelector(".paper-envelope");
+    const observer = root ? new ResizeObserver(refresh) : null;
+    if (root) observer?.observe(root);
     return () => {
       window.cancelAnimationFrame(frame);
-      window.clearTimeout(timeout);
+      delays.forEach((id) => window.clearTimeout(id));
+      observer?.disconnect();
     };
-  }, [open, lenis]);
+  }, [phase, lenis]);
 
-  if (open) {
+  if (phase === "open") {
     return children;
   }
 
   return (
     <div className="envelope-shell">
       <div className="envelope-stage">
-        <EnvelopeArt initials={initials} />
+        <EnvelopeArt initials={initials} opening={phase === "opening"} />
         <div className="envelope-copy">
           <p className="text-[10px] tracking-[0.32em] text-burgundy/80 uppercase">
             {event.kicker}
@@ -57,7 +62,12 @@ export function EnvelopeGate({
             {event.couple.two}
           </p>
           <p className="mt-3 text-sm leading-6 text-ink/65">{event.tagline}</p>
-          <button type="button" className="btn-gold mt-6" onClick={() => setOpen(true)}>
+          <button
+            type="button"
+            className="btn-gold mt-6"
+            onClick={handleOpen}
+            disabled={phase === "opening"}
+          >
             Открыть приглашение
           </button>
         </div>

@@ -1,0 +1,46 @@
+.envelope-photo {
+  position: relative;
+  width: min(92vw, 28rem);
+  aspect-ratio: 1186 / 919;
+  margin: 0 auto;
+}
+
+@media (max-height: 760px) {
+  .envelope-photo {
+    width: min(72vw, 22rem);
+  }
+}
+
+.envelope-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.envelope-frame-closed {
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.envelope-frame-opening {
+  opacity: 0;
+  transition: opacity 0.65s ease 0.05s;
+}
+
+.envelope-photo.is-opening .envelope-frame-closed {
+  opacity: 0;
+}
+
+.envelope-photo.is-opening .envelope-frame-opening {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-frame {
+    transition: none !important;
+  }
+}

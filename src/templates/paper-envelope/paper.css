@@ -30,10 +30,17 @@
   position: relative;
   z-index: 10;
   display: flex;
-  min-height: 100dvh;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
   padding: 1.5rem;
+}
+
+@supports (justify-content: safe center) {
+  .envelope-shell {
+    justify-content: safe center;
+  }
 }
 
 .envelope-stage {
@@ -48,7 +55,7 @@
 }
 
 .envelope-copy {
-  margin-top: -1.25rem;
+  margin-top: 0.35rem;
   display: flex;
   flex-direction: column;
   align-items: center;

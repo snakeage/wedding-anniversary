@@ -1,13 +1,13 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **#1 is live**: the demo event’s `templateId` is `quiet-luxury`, rendered from `templates/quiet-luxury` — not a one-off page that *is* the skin.
+Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/anna-dmitry`, `paper-envelope` on `/ivan-maria`.
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 
 | # | Id | Name | For | What makes it different | Status |
 | --- | --- | --- | --- | --- | --- |
 | 1 | `quiet-luxury` | Quiet luxury | Anniversary, adult wedding | Cream, burgundy, gold; WebGL silk + grain; editorial serif; full-page scroll | Live |
-| 2 | `paper-envelope` | Paper envelope | Classic wedding | First screen is a seal/envelope; page “opens” into a card; paper texture, little motion | Idea |
+| 2 | `paper-envelope` | Paper envelope | Classic wedding | First screen is a seal/envelope; page “opens” into a card; paper texture, little motion | Live |
 | 3 | `dark-editorial` | Dark editorial | Evening gala, fashion-forward | Near-black canvas, ivory type, film stills, slow ken-burns, no cute ornaments | Idea |
 | 4 | `garden-daylight` | Garden daylight | Outdoor ceremony | Airy greens, sun-wash photos, botanical line art, light sans + soft serif | Idea |
 | 5 | `minimal-swiss` | Minimal Swiss | City hall, design crowd | Grid, one accent color, huge type, almost no decoration, sharp rules | Idea |

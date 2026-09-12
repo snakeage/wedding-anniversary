@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${inter.variable} antialiased`}
     >
       <body className="min-h-full bg-cream font-sans text-ink">
         <SmoothScroll>{children}</SmoothScroll>

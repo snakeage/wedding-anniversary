@@ -1,11 +1,13 @@
 import type { ComponentType } from "react";
 import type { EventContent, TemplateId } from "@/content/types";
+import { PaperEnvelope } from "@/templates/paper-envelope/PaperEnvelope";
 import { QuietLuxury } from "@/templates/quiet-luxury/QuietLuxury";
 
 type TemplateComponent = ComponentType<{ event: EventContent }>;
 
 export const templates: Record<TemplateId, TemplateComponent> = {
   "quiet-luxury": QuietLuxury,
+  "paper-envelope": PaperEnvelope,
 };
 
 export function resolveTemplate(templateId: TemplateId): TemplateComponent {

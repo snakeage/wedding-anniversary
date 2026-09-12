@@ -1,7 +1,7 @@
 import type { EventContent } from "@/content/types";
 
 export const ivanMaria: EventContent = {
-  templateId: "quiet-luxury",
+  templateId: "paper-envelope",
   slug: "ivan-maria",
   couple: {
     one: "Иван",

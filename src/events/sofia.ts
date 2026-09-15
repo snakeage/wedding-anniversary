@@ -1,16 +1,15 @@
 import type { EventContent } from "@/content/types";
 
-export const annaDmitry: EventContent = {
+export const sofia: EventContent = {
   templateId: "quiet-luxury",
-  slug: "anna-dmitry",
+  slug: "sofia",
   couple: {
-    one: "Анна",
-    two: "Дмитрий",
+    one: "София",
   },
-  kicker: "Годовщина свадьбы",
-  tagline: "Приглашаем разделить с нами этот вечер",
+  kicker: "День рождения",
+  tagline: "Приглашаю разделить со мной этот вечер",
   inviteLead:
-    "В этот вечер мы хотим быть рядом с теми, кто шёл с нами все эти годы — тихо, светло и по-настоящему.",
+    "В этот вечер хочу быть рядом с теми, кто делает жизнь теплее — тихо, светло и по-настоящему.",
   inviteBody:
     "Без громких речей и строгого регламента: ужин, разговоры, музыка и немного золота в воздухе. Приходите такими, какие вы есть.",
   event: {
@@ -30,32 +29,34 @@ export const annaDmitry: EventContent = {
     {
       src: "/gallery/gallery-01-champagne.jpg",
       alt: "Бокалы шампанского при свечах",
-      caption: "2012 — день, с которого всё началось",
+      caption: "За столом, без спешки",
     },
     {
       src: "/gallery/gallery-02-roses.jpg",
       alt: "Кремовые и бордовые розы",
-      caption: "2015 — дом, который мы собрали вместе",
+      caption: "Цветы к вечеру",
     },
     {
       src: "/gallery/gallery-03-envelope.jpg",
       alt: "Конверт с сургучной печатью",
-      caption: "2018 — письма, поездки и маленькие ритуалы",
+      caption: "Письмо вместо открытки",
     },
     {
       src: "/gallery/gallery-04-table.jpg",
-      alt: "Накрытый стол на двоих",
-      caption: "2021 — ужины, которые стали традицией",
+      alt: "Накрытый стол",
+      caption: "Ужин для своих",
     },
     {
       src: "/gallery/gallery-05-rings.jpg",
-      alt: "Обручальные кольца на шёлке",
-      caption: "2024 — всё ещё выбираем друг друга",
+      alt: "Золото на шёлке",
+      caption: "Немного блеска",
     },
     {
       src: "/gallery/gallery-06-hall.jpg",
       alt: "Вечерний зал ресторана",
-      caption: "2026 — празднуем с вами",
+      caption: "Празднуем вместе",
     },
   ],
+  galleryKicker: "Вечер",
+  galleryHeading: "Кадры к празднику",
 };

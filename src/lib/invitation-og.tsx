@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import type { EventContent } from "@/content/types";
+import { partnerName } from "@/lib/names";
 
 export const invitationOgSize = { width: 1200, height: 630 };
 
@@ -80,6 +81,7 @@ export async function productOgImage() {
 
 export async function invitationOgImage(event: EventContent) {
   const font = await cormorantFont();
+  const partner = partnerName(event);
 
   return new ImageResponse(
     (
@@ -122,26 +124,30 @@ export async function invitationOgImage(event: EventContent) {
         >
           {event.couple.one}
         </div>
-        <div
-          style={{
-            marginTop: 8,
-            fontSize: 32,
-            fontFamily: "Cormorant",
-            fontStyle: "italic",
-            color: "#c4a574",
-          }}
-        >
-          и
-        </div>
-        <div
-          style={{
-            fontSize: 84,
-            fontFamily: "Cormorant",
-            lineHeight: 1,
-          }}
-        >
-          {event.couple.two}
-        </div>
+        {partner ? (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div
+              style={{
+                marginTop: 8,
+                fontSize: 32,
+                fontFamily: "Cormorant",
+                fontStyle: "italic",
+                color: "#c4a574",
+              }}
+            >
+              и
+            </div>
+            <div
+              style={{
+                fontSize: 84,
+                fontFamily: "Cormorant",
+                lineHeight: 1,
+              }}
+            >
+              {partner}
+            </div>
+          </div>
+        ) : null}
         <div
           style={{
             marginTop: 36,

@@ -13,7 +13,7 @@ export type EventContent = {
   slug: string;
   couple: {
     one: string;
-    two: string;
+    two?: string;
   };
   kicker: string;
   tagline: string;
@@ -33,4 +33,6 @@ export type EventContent = {
     notes: string;
   };
   gallery: GalleryItem[];
+  galleryKicker?: string;
+  galleryHeading?: string;
 };

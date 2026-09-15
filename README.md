@@ -1,6 +1,6 @@
-# Приглашение на годовщину
+# Цифровые приглашения
 
-Одностраничный сайт на Next.js и TypeScript: WebGL-фон, галерея, карта и RSVP. Деплой — Vercel.
+Одностраничные приглашения на Next.js и TypeScript: каталог скинов, WebGL-фон, галерея, карта и RSVP. Деплой — Vercel.
 
 ## Локально
 
@@ -13,11 +13,11 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury [http://localhost:3000/anna-dmitry](http://localhost:3000/anna-dmitry), Paper envelope [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria).
+Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria).
 
 ## Что править
 
-Все тексты, дата, адрес и подписи к фото — в файлах [`src/events/`](src/events/). Гостевая ссылка — `/{slug}` (`anna-dmitry`, `ivan-maria`). Скин выбирается полем `templateId`.
+Все тексты, дата, адрес и подписи к фото — в файлах [`src/events/`](src/events/). Гостевая ссылка — `/{slug}` (`sofia`, `ivan-maria`). Скин выбирается полем `templateId`.
 
 Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
 
@@ -35,7 +35,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ&slug=anna-dmitry` — не публикуйте ссылку гостям.
+5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ&slug=sofia` — не публикуйте ссылку гостям.
 
 Resend по-прежнему опционален:
 

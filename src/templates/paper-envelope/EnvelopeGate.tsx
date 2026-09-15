@@ -4,6 +4,7 @@ import { useLenis } from "lenis/react";
 import { useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import type { EventContent } from "@/content/types";
+import { eventInitials, partnerName } from "@/lib/names";
 import { EnvelopeArt } from "@/templates/paper-envelope/EnvelopeArt";
 
 export function EnvelopeGate({
@@ -16,7 +17,8 @@ export function EnvelopeGate({
   const reduce = useReducedMotion();
   const lenis = useLenis();
   const [phase, setPhase] = useState<"closed" | "opening" | "open">("closed");
-  const initials = `${event.couple.one.charAt(0)}${event.couple.two.charAt(0)}`;
+  const initials = eventInitials(event);
+  const partner = partnerName(event);
 
   const handleOpen = useCallback(() => {
     if (reduce) {
@@ -58,8 +60,12 @@ export function EnvelopeGate({
           </p>
           <p className="font-serif mt-3 text-3xl leading-tight text-ink sm:text-4xl">
             {event.couple.one}
-            <span className="mt-1 block font-serif text-xl italic text-gold">и</span>
-            {event.couple.two}
+            {partner ? (
+              <>
+                <span className="mt-1 block font-serif text-xl italic text-gold">и</span>
+                {partner}
+              </>
+            ) : null}
           </p>
           <p className="mt-3 text-sm leading-6 text-ink/65">{event.tagline}</p>
           <button

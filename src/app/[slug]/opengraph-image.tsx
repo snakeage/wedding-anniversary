@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getEventBySlug } from "@/events";
+import { getEventBySlug, getSlugRedirect } from "@/events";
 import { invitationOgImage, invitationOgSize } from "@/lib/invitation-og";
 
 export const size = invitationOgSize;
@@ -12,7 +12,7 @@ export default async function EventOpenGraphImage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = getEventBySlug(getSlugRedirect(slug) ?? slug);
   if (!event) {
     notFound();
   }

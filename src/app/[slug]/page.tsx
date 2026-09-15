@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { createElement } from "react";
-import { notFound } from "next/navigation";
-import { getEventBySlug, getEventSlugs } from "@/events";
+import { notFound, redirect } from "next/navigation";
+import { getEventBySlug, getEventSlugs, getRedirectSlugs, getSlugRedirect } from "@/events";
+import { eventNames } from "@/lib/names";
 import { resolveTemplate } from "@/templates/registry";
 
 type PageProps = {
@@ -9,17 +10,21 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return getEventSlugs().map((slug) => ({ slug }));
+  return [...getEventSlugs(), ...getRedirectSlugs()].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const dest = getSlugRedirect(slug);
+  if (dest) {
+    redirect(`/${dest}`);
+  }
   const event = getEventBySlug(slug);
   if (!event) {
     return { title: "Приглашение" };
   }
 
-  const title = `${event.couple.one} & ${event.couple.two} — ${event.kicker}`;
+  const title = `${eventNames(event)} — ${event.kicker}`;
   return {
     title,
     description: event.inviteLead,
@@ -39,6 +44,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function EventPage({ params }: PageProps) {
   const { slug } = await params;
+  const dest = getSlugRedirect(slug);
+  if (dest) {
+    redirect(`/${dest}`);
+  }
   const event = getEventBySlug(slug);
   if (!event) {
     notFound();

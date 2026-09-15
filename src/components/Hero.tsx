@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import type { EventContent } from "@/content/types";
 import { formatEventDate } from "@/lib/datetime";
+import { partnerName } from "@/lib/names";
 import { GoldRule } from "@/components/Reveal";
 
 export function Hero({ event }: { event: EventContent }) {
@@ -10,6 +11,7 @@ export function Hero({ event }: { event: EventContent }) {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 480], [0, reduce ? 0 : 72]);
   const opacity = useTransform(scrollY, [0, 380], [1, 0.15]);
+  const partner = partnerName(event);
 
   return (
     <section
@@ -36,10 +38,14 @@ export function Hero({ event }: { event: EventContent }) {
             className="font-serif mt-7 text-[clamp(3.2rem,12vw,7.5rem)] leading-[0.92] text-ink"
           >
             <span className="block">{event.couple.one}</span>
-            <span className="mt-2 block font-serif text-[clamp(1.4rem,4vw,2.2rem)] font-normal italic text-gold">
-              и
-            </span>
-            <span className="block">{event.couple.two}</span>
+            {partner ? (
+              <>
+                <span className="mt-2 block font-serif text-[clamp(1.4rem,4vw,2.2rem)] font-normal italic text-gold">
+                  и
+                </span>
+                <span className="block">{partner}</span>
+              </>
+            ) : null}
           </motion.h1>
 
           <motion.p

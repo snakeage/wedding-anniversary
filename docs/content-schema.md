@@ -1,17 +1,17 @@
 # Content schema
 
-Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo event: [`src/events/anna-dmitry.ts`](../src/events/anna-dmitry.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
+Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
 
-A skin may **omit rendering** a block (e.g. no countdown). It should not require extra required fields that other skins cannot store, unless this file is updated first.
+A skin may restyle or reorder blocks. **Countdown is required** on every invitation (from `event.iso`). It should not require extra required fields that other skins cannot store, unless this file is updated first.
 
 ## Event content
 
 | Field | Type | Used by |
 | --- | --- | --- |
 | `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`) |
-| `slug` | string | Public path `/anna-dmitry` |
+| `slug` | string | Public path `/sofia` |
 | `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
-| `couple.two` | string | same |
+| `couple.two` | string, optional | Second name for a couple; omit for a birthday |
 | `kicker` | string | Small label above names (event type) |
 | `tagline` | string | Hero subtitle |
 | `inviteLead` | string | Short lead (gallery intro) |
@@ -29,18 +29,20 @@ A skin may **omit rendering** a block (e.g. no countdown). It should not require
 | `gallery[].src` | path | Image under `public/` |
 | `gallery[].alt` | string | Accessibility |
 | `gallery[].caption` | string | Year / story line |
+| `galleryKicker` | string, optional | Gallery eyebrow; default «Наша история» |
+| `galleryHeading` | string, optional | Gallery title; default couple-story heading |
 
 ## Page blocks (same set)
 
 1. Hero — names, kicker, tagline, date, CTA to RSVP
-2. Countdown — from `event.iso`
+2. Countdown — from `event.iso` (**required** on every skin)
 3. Gallery / story — `gallery`
 4. Details — date, venue, dress code, `inviteBody`
 5. Map — embed + navigator from lat/lng
 6. RSVP — form
 7. Footer — names
 
-`/` is the template catalog. Public guest URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury and Paper envelope. A template may hide a block (Paper envelope has no countdown).
+`/` is the template catalog. Public guest URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury and Paper envelope. Countdown is required on every skin; other blocks may be restyled or reordered.
 
 ## RSVP (one form for all skins)
 

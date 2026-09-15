@@ -1,11 +1,23 @@
 import type { EventContent } from "@/content/types";
-import { annaDmitry } from "@/events/anna-dmitry";
 import { ivanMaria } from "@/events/ivan-maria";
+import { sofia } from "@/events/sofia";
 
-export const events: EventContent[] = [annaDmitry, ivanMaria];
+export const events: EventContent[] = [sofia, ivanMaria];
 
 /** Fallback event when RSVP admin omits `slug`. */
-export const demoEvent = annaDmitry;
+export const demoEvent = sofia;
+
+const slugRedirects: Record<string, string> = {
+  "anna-dmitry": "sofia",
+};
+
+export function getSlugRedirect(slug: string): string | undefined {
+  return slugRedirects[slug];
+}
+
+export function getRedirectSlugs() {
+  return Object.keys(slugRedirects);
+}
 
 export function getDemoEvent() {
   return demoEvent;

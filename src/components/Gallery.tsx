@@ -39,8 +39,12 @@ export function Gallery({ event }: { event: EventContent }) {
   return (
     <section id="story" className="relative px-6 py-8 sm:py-16">
       <Reveal className="mx-auto max-w-3xl text-center">
-        <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Наша история</p>
-        <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Годы, которые мы бережём</h2>
+        <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">
+          {event.galleryKicker ?? "Наша история"}
+        </p>
+        <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">
+          {event.galleryHeading ?? "Годы, которые мы бережём"}
+        </h2>
         <GoldRule className="mt-6" />
         <p className="mx-auto mt-6 max-w-lg text-base leading-7 text-ink/65">
           {inviteLead}

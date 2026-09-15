@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { demoEvent, getEventBySlug } from "@/events";
 import { formatEventDate, formatEventTime } from "@/lib/datetime";
 import { getDatabaseUrl } from "@/lib/db";
+import { eventNames } from "@/lib/names";
 import { isRsvpAdminSecret, RSVP_ADMIN_COOKIE } from "@/lib/rsvp-admin";
 import { listRsvps } from "@/lib/rsvp-store";
 
@@ -51,7 +52,7 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
       <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Организатор</p>
       <h1 className="font-serif mt-3 text-4xl text-ink">Ответы гостей</h1>
       <p className="mt-3 text-ink/65">
-        {event.couple.one} & {event.couple.two} · {event.slug}
+        {eventNames(event)} · {event.slug}
       </p>
       {rememberHref ? (
         <p className="mt-4 text-sm text-ink/50">

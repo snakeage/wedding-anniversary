@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { getEventBySlug } from "@/events";
 import { getDatabaseUrl } from "@/lib/db";
+import { eventNames } from "@/lib/names";
 import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
 import { insertRsvp } from "@/lib/rsvp-store";
 
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
   const { error } = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "Invitation <onboarding@resend.dev>",
     to,
-    subject: `RSVP: ${payload.name} — ${attending} · ${event.couple.one} & ${event.couple.two}`,
+    subject: `RSVP: ${payload.name} — ${attending} · ${eventNames(event)}`,
     text: formatRsvpEmail(payload),
   });
 

@@ -44,7 +44,7 @@ If one task mixes docs, refactor, and new code (the usual next step: extract `qu
 app (one deploy)
   templates/     visual skins
   events/        names, photos, date  (src/events/)
-  guests → /anna-dmitry
+  guests → /sofia, /ivan-maria
 ```
 
 ## What is shared vs what differs
@@ -59,6 +59,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-`/` is the sales catalog. Live demos: Quiet luxury at `/anna-dmitry`, Paper envelope at `/ivan-maria`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
+`/` is the sales catalog. Live demos: Quiet luxury (adult birthday) at `/sofia`, Paper envelope (wedding) at `/ivan-maria`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).

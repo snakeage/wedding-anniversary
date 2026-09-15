@@ -35,9 +35,9 @@ export const liveSkins: LiveSkin[] = [
   liveSkin({
     id: "quiet-luxury",
     name: "Quiet luxury",
-    audience: "Годовщина, взрослая свадьба",
+    audience: "День рождения",
     difference: "Крем, бордо, золото; WebGL-шёлк и зерно; editorial-скролл",
-    demoSlug: "anna-dmitry",
+    demoSlug: "sofia",
   }),
   liveSkin({
     id: "paper-envelope",

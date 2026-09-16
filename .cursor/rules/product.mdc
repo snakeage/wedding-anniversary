@@ -13,7 +13,9 @@ Keep event copy out of components; pass event data from `src/events/` (schema in
 
 One RSVP pipeline for all templates. Do not add a new email/sheet/db integration per skin.
 
-Do not implement the full `docs/templates-catalog.md` list in one go. The work queue is GitHub Issues: only the open issue labeled `now` ([docs/backlog.md](docs/backlog.md)). After finishing, offer to close it and move `now`. Propose priority changes explicitly if a sales blocker is not the current `now`.
+Do not implement the full `docs/templates-catalog.md` list in one go. The work queue is **GitHub Issues** ([docs/backlog.md](docs/backlog.md)): only the open issue labeled `now`. After finishing, offer to close it and move `now`. Propose priority changes explicitly if a sales blocker is not the current `now`.
+
+**Before any new work item:** do not create a GitHub issue, add labels, or start coding a new task until the user **explicitly agrees** to put it in the backlog (and with which priority). Propose the issue title/body/labels first; wait for yes. “Implement the plan” on an already-agreed `now` issue is fine — inventing or opening the next issue without consent is not.
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
 

@@ -14,7 +14,7 @@ export function TelegramLogin({ botUsername }: { botUsername: string }) {
     script.async = true;
     script.setAttribute("data-telegram-login", botUsername);
     script.setAttribute("data-size", "large");
-    script.setAttribute("data-radius", "8");
+    script.setAttribute("data-radius", "0");
     script.setAttribute("data-auth-url", `${window.location.origin}/api/auth/telegram`);
     host.appendChild(script);
     return () => {
@@ -22,5 +22,5 @@ export function TelegramLogin({ botUsername }: { botUsername: string }) {
     };
   }, [botUsername]);
 
-  return <div ref={hostRef} className="flex justify-center py-2" />;
+  return <div ref={hostRef} className="flex justify-center overflow-hidden py-2" />;
 }

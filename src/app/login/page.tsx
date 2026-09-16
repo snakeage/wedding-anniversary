@@ -42,9 +42,22 @@ export default async function LoginPage({ searchParams }: PageProps) {
       ) : null}
 
       {botUsername ? (
-        <div className="panel mt-8 px-6 py-8">
-          <TelegramLogin botUsername={botUsername} />
-        </div>
+        <>
+          <a
+            className="btn-gold mt-8 w-full"
+            href={`https://t.me/${botUsername}?start=cabinet`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Открыть бота
+          </a>
+          <p className="mt-3 text-sm text-ink/50">
+            В Telegram придёт кнопка «Открыть кабинет». Login Widget ниже — запасной путь, если он у вас открывается.
+          </p>
+          <div className="panel mt-8 px-6 py-8">
+            <TelegramLogin botUsername={botUsername} />
+          </div>
+        </>
       ) : (
         <p className="panel mt-8 px-6 py-8 text-sm text-ink/65">
           Telegram-вход ещё не настроен. Нужны TELEGRAM_BOT_TOKEN и имя бота в env.

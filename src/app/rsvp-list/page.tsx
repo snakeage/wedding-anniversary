@@ -59,18 +59,21 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
       <p className="mt-3 text-ink/65">
         {eventNames(event)} · {event.slug}
       </p>
-      <p className="mt-4 text-sm text-ink/50">
+      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/50">
         <a className="underline decoration-gold/60 underline-offset-4" href={csvHref}>
           Скачать CSV
         </a>
-      </p>
-      {rememberHref ? (
-        <p className="mt-4 text-sm text-ink/50">
+        {rememberHref ? (
           <a className="underline decoration-gold/60 underline-offset-4" href={rememberHref}>
             Запомнить доступ (убрать секрет из ссылки)
           </a>
-        </p>
-      ) : null}
+        ) : null}
+        <form action="/api/rsvp-logout" method="post">
+          <button type="submit" className="underline decoration-gold/60 underline-offset-4">
+            Выйти
+          </button>
+        </form>
+      </div>
 
       {rows.length === 0 ? (
         <p className="panel mt-10 px-6 py-8 text-ink/65">Пока нет ответов.</p>

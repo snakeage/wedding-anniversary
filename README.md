@@ -58,4 +58,4 @@ npx vercel
 
 Или подключите репозиторий на [vercel.com](https://vercel.com/new): framework Next.js, root directory `wedding-anniversary`, если репозиторий — родительская папка `Invitation_web`.
 
-После деплоя обновите `NEXT_PUBLIC_SITE_URL` на прод-домен — от него зависит превью ссылки в мессенджерах.
+После деплоя обновите `NEXT_PUBLIC_SITE_URL` на прод-домен — от него зависит превью ссылки в мессенджерах. Визиты гостей: в проекте Vercel откройте **Analytics** (на проде; в `next dev` счётчик молчит).

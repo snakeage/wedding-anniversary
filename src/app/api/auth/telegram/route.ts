@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDatabaseUrl } from "@/lib/db";
-import {
-  getOrganizerSessionSecret,
-  ORGANIZER_COOKIE,
-  organizerCookieSetOptions,
-  signOrganizerId,
-} from "@/lib/organizer-session";
-import { upsertOrganizer } from "@/lib/organizer-store";
+import { finishOrganizerLogin } from "@/lib/finish-organizer-login";
 import { telegramAuthFromSearch, verifyTelegramLogin } from "@/lib/telegram-auth";
 
 export async function GET(request: Request) {
@@ -16,7 +9,7 @@ export async function GET(request: Request) {
 
   const botToken = process.env.TELEGRAM_BOT_TOKEN?.trim() ?? "";
   const data = telegramAuthFromSearch(url.searchParams);
-  if (!botToken || !verifyTelegramLogin(data, botToken) || !getDatabaseUrl()) {
+  if (!botToken || !verifyTelegramLogin(data, botToken)) {
     return NextResponse.redirect(fail, 303);
   }
 
@@ -25,28 +18,9 @@ export async function GET(request: Request) {
     return NextResponse.redirect(fail, 303);
   }
 
-  let organizer;
-  try {
-    organizer = await upsertOrganizer({
-      telegramId,
-      firstName: data.first_name?.trim() || "Организатор",
-      username: data.username?.trim() || undefined,
-    });
-  } catch (error) {
-    console.error("[telegram] upsert failed", error);
-    return NextResponse.redirect(fail, 303);
-  }
-
-  const secret = getOrganizerSessionSecret();
-  if (!secret) {
-    return NextResponse.redirect(fail, 303);
-  }
-
-  const response = NextResponse.redirect(new URL("/cabinet", url.origin), 303);
-  response.cookies.set(
-    ORGANIZER_COOKIE,
-    signOrganizerId(organizer.id, secret),
-    organizerCookieSetOptions(url.protocol === "https:"),
-  );
-  return response;
+  return finishOrganizerLogin(url, {
+    telegramId,
+    firstName: data.first_name?.trim() || "Организатор",
+    username: data.username?.trim() || undefined,
+  });
 }

@@ -35,7 +35,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Кабинет: `/login` через Telegram (запасной пароль — `RSVP_ADMIN_SECRET`, видит все RSVP). Создайте бота в [@BotFather](https://t.me/BotFather), задайте `TELEGRAM_BOT_TOKEN` и `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME`. В боте укажите домен сайта (`/setdomain`, пока `*.vercel.app`). После `npm run db:migrate` появятся таблицы `organizers` и `events`.
+5. Кабинет: `/login` — кнопка «Открыть бота» (сообщение в чате) и Login Widget. Запасной пароль — `RSVP_ADMIN_SECRET` (видит все RSVP). Создайте бота в [@BotFather](https://t.me/BotFather), задайте `TELEGRAM_BOT_TOKEN`, `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` и `TELEGRAM_WEBHOOK_SECRET` (случайная строка: буквы, цифры, `_` `-`). После деплоя: `npm run telegram:webhook` — регистрирует `https://…/api/telegram/webhook`. Для виджета в боте укажите домен (`Login Widget` / `/setdomain`, пока `*.vercel.app`). После `npm run db:migrate` появятся таблицы `organizers` и `events`.
 
 Resend по-прежнему опционален:
 
@@ -48,6 +48,7 @@ DATABASE_URL=postgres://...
 RSVP_ADMIN_SECRET=long-random-string
 TELEGRAM_BOT_TOKEN=
 NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=
+TELEGRAM_WEBHOOK_SECRET=
 ```
 
 Без `DATABASE_URL` форма покажет ошибку, а не ложный успех.

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { createElement } from "react";
 import { notFound, redirect } from "next/navigation";
-import { getEventBySlug, getEventSlugs, getRedirectSlugs, getSlugRedirect } from "@/events";
+import { getEventSlugs, getRedirectSlugs, getSlugRedirect } from "@/events";
 import { eventNames } from "@/lib/names";
+import { resolveEvent } from "@/lib/resolve-event";
 import { resolveTemplate } from "@/templates/registry";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return [...getEventSlugs(), ...getRedirectSlugs()].map((slug) => ({ slug }));
@@ -19,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (dest) {
     redirect(`/${dest}`);
   }
-  const event = getEventBySlug(slug);
+  const event = await resolveEvent(slug);
   if (!event) {
     return { title: "Приглашение" };
   }
@@ -48,7 +51,7 @@ export default async function EventPage({ params }: PageProps) {
   if (dest) {
     redirect(`/${dest}`);
   }
-  const event = getEventBySlug(slug);
+  const event = await resolveEvent(slug);
   if (!event) {
     notFound();
   }

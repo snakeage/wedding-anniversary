@@ -52,6 +52,12 @@ export default function Home() {
           ))}
         </ul>
       </section>
+
+      <p className="mt-16 text-sm text-ink/45">
+        <Link href="/login" className="underline decoration-gold/60 underline-offset-4">
+          Вход для организаторов
+        </Link>
+      </p>
     </main>
   );
 }

@@ -10,3 +10,21 @@ CREATE TABLE IF NOT EXISTS rsvps (
 
 CREATE INDEX IF NOT EXISTS rsvps_event_slug_created_at_idx
   ON rsvps (event_slug, created_at DESC);
+
+CREATE TABLE IF NOT EXISTS organizers (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  telegram_id bigint NOT NULL UNIQUE,
+  first_name text NOT NULL DEFAULT '',
+  username text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS events (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organizer_id uuid NOT NULL REFERENCES organizers (id) ON DELETE CASCADE,
+  slug text NOT NULL UNIQUE,
+  content jsonb NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS events_organizer_id_idx ON events (organizer_id);

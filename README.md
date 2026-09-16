@@ -35,7 +35,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Список ответов: `/rsvp-list?secret=ВАШ_СЕКРЕТ&slug=sofia` — не публикуйте ссылку гостям. На той же странице — «Скачать CSV».
+5. Список ответов: откройте `/login` (пароль — `RSVP_ADMIN_SECRET`), затем скачайте CSV. Не публикуйте пароль и секретные ссылки гостям.
 
 Resend по-прежнему опционален:
 

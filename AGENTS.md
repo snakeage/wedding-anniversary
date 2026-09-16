@@ -13,7 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 This repo is **one product**: digital event invitations sold as visual templates, not 20 separate Next.js apps or Vercel projects.
 
 - One Next.js app, one Vercel project, many skins. A client order is **content** (names, date, photos, copy) plus a **template id**, not a git fork.
-- Do not copy the whole repository per client. Do not hardcode event names, dates, or venues inside layout/components; read from event data ([`src/events/`](src/events/), types in [`src/content/types.ts`](src/content/types.ts)).
+- Do not copy the whole repository per client. Do not hardcode event names, dates, or venues inside layout/components; read from event data ([`src/events/`](src/events/) for demos, Neon `events` for cabinet-created invites; types in [`src/content/types.ts`](src/content/types.ts)). Resolve a guest slug with [`resolveEvent`](src/lib/resolve-event.ts) (DB first, then git).
 - Shared page blocks: hero, countdown, gallery/story, details, map, RSVP. **Countdown is required on every skin** (must render [`Countdown`](src/components/Countdown.tsx) from `event.iso`; look/placement may change). Other blocks may be restyled or reordered. Do not invent an incompatible content schema without updating [`docs/content-schema.md`](docs/content-schema.md).
 - One RSVP form and API for all templates. Persist RSVP in one store for every skin when that work is `now`; do not add a new email/sheet/db per template.
 - Deploy is the product. New events should become URLs like `/slug` on the same deployment. Do not create a new Vercel project per design.

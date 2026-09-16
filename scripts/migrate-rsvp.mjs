@@ -44,4 +44,4 @@ const sql = neon(url);
 for (const statement of statements) {
   await sql.query(statement);
 }
-console.log("rsvps table is ready.");
+console.log("Database schema is ready.");

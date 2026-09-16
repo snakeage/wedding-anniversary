@@ -17,7 +17,7 @@ npm run dev
 
 ## Что править
 
-Все тексты, дата, адрес и подписи к фото — в файлах [`src/events/`](src/events/). Гостевая ссылка — `/{slug}` (`sofia`, `ivan-maria`). Скин выбирается полем `templateId`.
+Все тексты демо — в [`src/events/`](src/events/). Свои события организатор создаёт в `/cabinet` (Neon). Гостевая ссылка — `/{slug}`.
 
 Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
 
@@ -35,7 +35,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Список ответов: откройте `/login` (пароль — `RSVP_ADMIN_SECRET`), затем скачайте CSV. Не публикуйте пароль и секретные ссылки гостям.
+5. Кабинет: `/login` через Telegram (запасной пароль — `RSVP_ADMIN_SECRET`, видит все RSVP). Создайте бота в [@BotFather](https://t.me/BotFather), задайте `TELEGRAM_BOT_TOKEN` и `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME`. В боте укажите домен сайта (`/setdomain`, пока `*.vercel.app`). После `npm run db:migrate` появятся таблицы `organizers` и `events`.
 
 Resend по-прежнему опционален:
 
@@ -46,6 +46,8 @@ RESEND_FROM_EMAIL=Invitation <onboarding@resend.dev>
 NEXT_PUBLIC_SITE_URL=https://wedding-anniversary-seven-tau.vercel.app
 DATABASE_URL=postgres://...
 RSVP_ADMIN_SECRET=long-random-string
+TELEGRAM_BOT_TOKEN=
+NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=
 ```
 
 Без `DATABASE_URL` форма покажет ошибку, а не ложный успех.

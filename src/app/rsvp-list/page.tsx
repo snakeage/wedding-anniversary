@@ -43,6 +43,11 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
   }
 
   const rows = await listRsvps(event.slug);
+  const csvQuery = new URLSearchParams({ slug: event.slug });
+  if (params.secret) {
+    csvQuery.set("secret", params.secret);
+  }
+  const csvHref = `/api/rsvp-csv?${csvQuery.toString()}`;
   const rememberHref = params.secret
     ? `/api/rsvp-auth?secret=${encodeURIComponent(params.secret)}&slug=${encodeURIComponent(event.slug)}`
     : null;
@@ -53,6 +58,11 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
       <h1 className="font-serif mt-3 text-4xl text-ink">Ответы гостей</h1>
       <p className="mt-3 text-ink/65">
         {eventNames(event)} · {event.slug}
+      </p>
+      <p className="mt-4 text-sm text-ink/50">
+        <a className="underline decoration-gold/60 underline-offset-4" href={csvHref}>
+          Скачать CSV
+        </a>
       </p>
       {rememberHref ? (
         <p className="mt-4 text-sm text-ink/50">

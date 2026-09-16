@@ -3,6 +3,7 @@ import { TEMPLATE_IDS, type EventContent, type TemplateId } from "@/content/type
 import { getCurrentOrganizer } from "@/lib/current-organizer";
 import { isValidSlug, parseEventContent, reservedSlugs } from "@/lib/event-content";
 import { insertEvent } from "@/lib/event-store";
+import { parseYandexMapPoint } from "@/lib/yandex-maps";
 
 function asString(form: FormData, key: string) {
   return String(form.get(key) ?? "").trim();
@@ -17,6 +18,8 @@ function eventFromForm(form: FormData): EventContent | undefined {
   const gallerySrc = asString(form, "gallerySrc");
   const galleryAlt = asString(form, "galleryAlt");
   const galleryCaption = asString(form, "galleryCaption");
+  const point = parseYandexMapPoint(asString(form, "map"));
+  if (!point) return undefined;
 
   return parseEventContent({
     templateId,
@@ -35,8 +38,8 @@ function eventFromForm(form: FormData): EventContent | undefined {
     venue: {
       name: asString(form, "venueName"),
       address: asString(form, "venueAddress"),
-      lat: Number(asString(form, "lat") || "55.75"),
-      lng: Number(asString(form, "lng") || "37.62"),
+      lat: point.lat,
+      lng: point.lng,
       notes: asString(form, "venueNotes"),
     },
     gallery:
@@ -68,6 +71,9 @@ export async function POST(request: Request) {
   }
   if (!(TEMPLATE_IDS as readonly string[]).includes(asString(form, "templateId"))) {
     return fail("template");
+  }
+  if (!parseYandexMapPoint(asString(form, "map"))) {
+    return fail("map");
   }
 
   const content = eventFromForm(form);

@@ -81,6 +81,12 @@ export default async function CabinetPage({ searchParams }: PageProps) {
               </div>
               <p className="mt-1 text-sm text-ink/70">/{item.slug}</p>
               <p className="mt-3 flex flex-wrap gap-4 text-sm text-ink/50">
+                <Link
+                  className="underline decoration-gold/60 underline-offset-4"
+                  href={`/cabinet/${encodeURIComponent(item.slug)}/edit`}
+                >
+                  Изменить
+                </Link>
                 <Link className="underline decoration-gold/60 underline-offset-4" href={`/${item.slug}`}>
                   {item.status === "active" ? "Открыть как гость" : "Предпросмотр (черновик)"}
                 </Link>

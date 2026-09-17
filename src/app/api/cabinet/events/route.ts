@@ -1,54 +1,10 @@
 import { NextResponse } from "next/server";
-import { TEMPLATE_IDS, type EventContent, type TemplateId } from "@/content/types";
+import type { TemplateId } from "@/content/types";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
-import { isValidSlug, parseEventContent, reservedSlugs } from "@/lib/event-content";
+import { isValidSlug, reservedSlugs } from "@/lib/event-content";
+import { asFormString, eventFromForm } from "@/lib/event-form";
 import { insertEvent } from "@/lib/event-store";
 import { parseYandexMapPoint } from "@/lib/yandex-maps";
-
-function asString(form: FormData, key: string) {
-  return String(form.get(key) ?? "").trim();
-}
-
-function eventFromForm(form: FormData): EventContent | undefined {
-  const slug = asString(form, "slug").toLowerCase();
-  const templateId = asString(form, "templateId");
-  const isoRaw = asString(form, "iso");
-  const iso = isoRaw.length === 16 ? `${isoRaw}:00+03:00` : isoRaw;
-  const two = asString(form, "two");
-  const gallerySrc = asString(form, "gallerySrc");
-  const galleryAlt = asString(form, "galleryAlt");
-  const galleryCaption = asString(form, "galleryCaption");
-  const point = parseYandexMapPoint(asString(form, "map"));
-  if (!point) return undefined;
-
-  return parseEventContent({
-    templateId,
-    slug,
-    couple: two ? { one: asString(form, "one"), two } : { one: asString(form, "one") },
-    kicker: asString(form, "kicker"),
-    tagline: asString(form, "tagline"),
-    inviteLead: asString(form, "inviteLead"),
-    inviteBody: asString(form, "inviteBody"),
-    event: {
-      iso,
-      gathering: asString(form, "gathering"),
-      dressCode: asString(form, "dressCode"),
-    },
-    venue: {
-      name: asString(form, "venueName"),
-      address: asString(form, "venueAddress"),
-      lat: point.lat,
-      lng: point.lng,
-      notes: asString(form, "venueNotes"),
-    },
-    gallery:
-      gallerySrc && galleryAlt && galleryCaption
-        ? [{ src: gallerySrc, alt: galleryAlt, caption: galleryCaption }]
-        : [],
-    galleryKicker: asString(form, "galleryKicker") || undefined,
-    galleryHeading: asString(form, "galleryHeading") || undefined,
-  });
-}
 
 export async function POST(request: Request) {
   const url = new URL(request.url);
@@ -64,14 +20,11 @@ export async function POST(request: Request) {
   }
 
   const form = await request.formData();
-  const slug = asString(form, "slug").toLowerCase();
+  const slug = asFormString(form, "slug").toLowerCase();
   if (!isValidSlug(slug) || reservedSlugs().has(slug)) {
     return fail("slug");
   }
-  if (!(TEMPLATE_IDS as readonly string[]).includes(asString(form, "templateId"))) {
-    return fail("template");
-  }
-  if (!parseYandexMapPoint(asString(form, "map"))) {
+  if (!parseYandexMapPoint(asFormString(form, "map"))) {
     return fail("map");
   }
 

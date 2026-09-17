@@ -37,21 +37,44 @@ if (!botToken || !secret || !site) {
   process.exit(1);
 }
 
-const webhookUrl = `${site}/api/telegram/webhook`;
-const response = await fetch(`https://api.telegram.org/bot${botToken}/setWebhook`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    url: webhookUrl,
-    secret_token: secret,
-    allowed_updates: ["message"],
-  }),
-});
+const api = `https://api.telegram.org/bot${botToken}`;
 
-const body = await response.json();
-if (!response.ok || !body.ok) {
-  console.error("setWebhook failed", body);
-  process.exit(1);
+async function telegram(method, payload) {
+  const response = await fetch(`${api}/${method}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const body = await response.json();
+  if (!response.ok || !body.ok) {
+    console.error(`${method} failed`, body);
+    process.exit(1);
+  }
 }
 
+const webhookUrl = `${site}/api/telegram/webhook`;
+await telegram("setWebhook", {
+  url: webhookUrl,
+  secret_token: secret,
+  allowed_updates: ["message", "callback_query"],
+});
 console.log("Webhook set:", webhookUrl);
+
+await telegram("setMyCommands", {
+  commands: [{ command: "start", description: "Открыть кабинет" }],
+});
+console.log("Bot command /start registered");
+
+await telegram("setMyShortDescription", {
+  short_description: "Кабинет цифровых приглашений: создать страницу, оплатить по СБП, открыть гостям.",
+});
+await telegram("setMyDescription", {
+  description: [
+    "Бот кабинета цифровых приглашений.",
+    "",
+    "Нажмите /start — придёт кнопка «Открыть кабинет» (действует 10 минут).",
+    "Чек об оплате пришлите сюда после кнопки «Отправить чек в бот» в кабинете: фото или PDF.",
+    "Комментарий в банковском переводе оставляйте пустым.",
+  ].join("\n"),
+});
+console.log("Bot profile texts set (avatar still via BotFather /setuserpic)");

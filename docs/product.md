@@ -18,27 +18,22 @@ A new client is new **data** plus `/slug` on this app, not `npx vercel` for a se
 
 ## Git branches
 
-`main` is the live demo (Vercel production). The agent should **say when to branch** before starting risky or large work.
+`main` is Vercel production. It is protected (`lint and build` required): **never push commits to `main`**. Always branch from a fresh `origin/main` and open a PR. Squash-merge and delete the branch.
 
-**Use a feature branch** (e.g. `feature/paper-envelope`) when:
+**Prefix = why this PR exists**, not which files it touches. Name the rest in kebab-case after the goal (`feature/photo-upload`). Issue number is optional (`feature/44-photo-upload`); do not invent an issue just to put a number in the name.
 
-- Adding or building a new template skin from the catalog
-- Refactoring into `templates/` or changing routing (`/slug`)
-- Large RSVP, database, or infra changes
-- Risky experiments (WebGL, deploy, env) where prod should stay stable
-- You need a Vercel preview URL to show a draft
+| Prefix | When |
+| --- | --- |
+| `feature/` | New behavior guests or organizers can see (cabinet, skin, upload) |
+| `fix/` | Something is broken |
+| `docs/` | Instructions/schema only — production behavior unchanged |
+| `chore/` | Scripts, env, CI, dependencies with no guest-facing feature |
 
-**Stay on `main`** when:
+Do **not** use `refactor/` (refactor-for-refactor is not a slice; if it ships inside #44 it stays `feature/…`). Do not use `hotfix/` or folder prefixes (`src/`, `api/`).
 
-- Editing event data in `src/events/`, photos, copy, docs
-- Small bugfixes and styling on the current live template
-- You explicitly ask to ship straight to production
+One `now` issue = one branch = one PR. Mixed docs + code in that slice stays on the **feature** (or **fix**) branch — not a second `docs/` PR. Split a second PR only for a **second delivery**.
 
-Before non-trivial code, the agent should ask: branch or `main`? Default to branch if the live site could break.
-
-**Do not** require separate `docs/`, `feature/`, and `refactor/` branches. Prefixes are optional habit (`feature/extract-quiet-luxury`), not a process. Name the branch after the **goal of the task**, not the file type.
-
-If one task mixes docs, refactor, and new code (the usual next step: extract `quiet-luxury` + update schema docs + maybe a second skin), that is **one branch**. Split **commits** inside it if useful; do not split into three PRs by file kind. Cut a second PR only when it is a **second delivery** (extract already useful on `main`, new skin can ship later).
+Say the branch name before starting (`docs/how-to`, not “just main”).
 
 ```text
 app (one deploy)

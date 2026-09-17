@@ -19,4 +19,4 @@ Do not implement the full `docs/templates-catalog.md` list in one go. The work q
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
 
-Before non-trivial code: suggest a feature branch if work is a new skin, `templates/` refactor, RSVP/infra, or could break prod; `main` is ok for content, docs, small fixes. Ask the user unless they said "straight to main". One task = one branch named by goal (`feature/extract-quiet-luxury`); mixed docs+refactor+code in that branch is expected. Do not require separate `docs/` / `feature/` / `refactor/` branches.
+`main` is protected. Always branch from `origin/main` and open a PR. Prefix = why the PR exists: `feature/` (new behavior), `fix/` (broken), `docs/` (docs only), `chore/` (scripts/CI/env). Do not use `refactor/` or push to `main`. One `now` task = one branch; mixed docs+code stays there — not a second docs PR. Say the branch name before starting. Details: `docs/product.md` § Git branches.

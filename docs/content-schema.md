@@ -17,7 +17,6 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 | `inviteLead` | string | Short lead (gallery intro) |
 | `inviteBody` | string | Longer note (details) |
 | `event.iso` | ISO datetime | Countdown, formatted date/time |
-| `event.timeLabel` | string | Display time if needed besides `iso` |
 | `event.gathering` | string | Doors / arrival note |
 | `event.dressCode` | string | Dress code |
 | `venue.name` | string | Details + map heading |
@@ -50,7 +49,7 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 | --- | --- |
 | `name` | string, 2–80 chars |
 | `attending` | `"yes"` \| `"no"` |
-| `guests` | integer 1–12 |
+| `guests` | integer 1–12 if attending, 0 if not |
 | `comment` | string, max 500 |
 
 POST `/api/rsvp` with `slug` of the event. Persistence is Neon Postgres (`rsvps`), product-wide, not per template. Resend email is optional notify. Organizer list: `/rsvp-list?slug=` behind `RSVP_ADMIN_SECRET`.

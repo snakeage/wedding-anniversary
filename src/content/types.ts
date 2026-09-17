@@ -21,7 +21,6 @@ export type EventContent = {
   inviteBody: string;
   event: {
     iso: string;
-    timeLabel: string;
     gathering: string;
     dressCode: string;
   };

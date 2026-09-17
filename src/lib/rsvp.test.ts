@@ -50,10 +50,18 @@ test("parseRsvp rejects an invalid attending value", () => {
   }
 });
 
-test("parseRsvp rejects guests outside 1–12", () => {
+test("parseRsvp rejects guests outside 1–12 when attending", () => {
   assert.equal(parseRsvp({ ...valid, guests: 0 }).ok, false);
   assert.equal(parseRsvp({ ...valid, guests: 13 }).ok, false);
   assert.equal(parseRsvp({ ...valid, guests: 1.5 }).ok, false);
+});
+
+test("parseRsvp stores zero guests when declining", () => {
+  const result = parseRsvp({ ...valid, attending: "no", guests: 4 });
+  assert.equal(result.ok, true);
+  if (result.ok) {
+    assert.equal(result.data.guests, 0);
+  }
 });
 
 test("parseRsvp rejects a comment over 500 characters", () => {

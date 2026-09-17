@@ -31,7 +31,6 @@ function eventFromForm(form: FormData): EventContent | undefined {
     inviteBody: asString(form, "inviteBody"),
     event: {
       iso,
-      timeLabel: asString(form, "timeLabel"),
       gathering: asString(form, "gathering"),
       dressCode: asString(form, "dressCode"),
     },

@@ -71,6 +71,12 @@ export default async function CabinetPage() {
           ))}
         </ul>
       )}
+
+      <p className="mt-16 text-sm text-ink/45">
+        <Link className="underline decoration-gold/60 underline-offset-4" href="/terms">
+          Условия сервиса
+        </Link>
+      </p>
     </main>
   );
 }

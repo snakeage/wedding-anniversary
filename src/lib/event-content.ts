@@ -2,7 +2,7 @@ import { TEMPLATE_IDS, type EventContent, type GalleryItem, type TemplateId } fr
 import { getEventSlugs, getRedirectSlugs } from "@/events";
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const RESERVED_PATHS = ["login", "cabinet", "rsvp-list", "api", "icon"];
+const RESERVED_PATHS = ["login", "cabinet", "rsvp-list", "api", "icon", "terms"];
 
 export function reservedSlugs() {
   return new Set([...RESERVED_PATHS, ...getEventSlugs(), ...getRedirectSlugs()]);

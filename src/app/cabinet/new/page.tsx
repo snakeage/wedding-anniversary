@@ -158,6 +158,13 @@ export default async function NewEventPage({ searchParams }: PageProps) {
         <button type="submit" className="btn-gold w-full">
           Создать
         </button>
+        <p className="text-center text-xs leading-5 text-ink/45">
+          Создавая приглашение, вы принимаете{" "}
+          <Link className="underline decoration-gold/60 underline-offset-4" href="/terms">
+            условия сервиса
+          </Link>
+          . Страница и сбор ответов доступны до даты события и ещё 10 дней после неё.
+        </p>
       </form>
     </main>
   );

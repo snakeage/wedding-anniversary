@@ -53,9 +53,12 @@ export default function Home() {
         </ul>
       </section>
 
-      <p className="mt-16 text-sm text-ink/45">
+      <p className="mt-16 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/45">
         <Link href="/login" className="underline decoration-gold/60 underline-offset-4">
           Вход для организаторов
+        </Link>
+        <Link href="/terms" className="underline decoration-gold/60 underline-offset-4">
+          Условия сервиса
         </Link>
       </p>
     </main>

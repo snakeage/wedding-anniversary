@@ -43,4 +43,5 @@ test("isValidSlug and reserved demo slugs", () => {
   assert.ok(reservedSlugs().has("sofia"));
   assert.ok(reservedSlugs().has("login"));
   assert.ok(reservedSlugs().has("cabinet"));
+  assert.ok(reservedSlugs().has("terms"));
 });

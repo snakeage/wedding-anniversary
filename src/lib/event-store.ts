@@ -89,3 +89,65 @@ export async function markEventPendingApproval(organizerId: string, slug: string
   `;
   return rows.length > 0;
 }
+
+export type EventWithOrganizer = StoredEvent & {
+  organizerTelegramId: string;
+  organizerFirstName: string;
+  organizerUsername: string | null;
+};
+
+export async function getEventWithOrganizer(slug: string): Promise<EventWithOrganizer | undefined> {
+  const sql = getSql();
+  const rows = await sql`
+    SELECT
+      e.id,
+      e.organizer_id,
+      e.slug,
+      e.content,
+      e.status,
+      e.paid_at,
+      o.telegram_id,
+      o.first_name,
+      o.username
+    FROM events e
+    JOIN organizers o ON o.id = e.organizer_id
+    WHERE e.slug = ${slug}
+    LIMIT 1
+  `;
+  const row = rows[0] as Record<string, unknown> | undefined;
+  if (!row) return undefined;
+  const event = mapRow(row);
+  if (!event) return undefined;
+  return {
+    ...event,
+    organizerTelegramId: String(row.telegram_id),
+    organizerFirstName: String(row.first_name ?? ""),
+    organizerUsername: row.username ? String(row.username) : null,
+  };
+}
+
+export async function activateEventBySlug(slug: string) {
+  const sql = getSql();
+  const rows = await sql`
+    UPDATE events
+    SET status = 'active',
+        paid_at = now()
+    WHERE slug = ${slug}
+      AND status IN ('draft', 'pending_approval')
+    RETURNING id
+  `;
+  return rows.length > 0;
+}
+
+export async function rejectEventBySlug(slug: string) {
+  const sql = getSql();
+  const rows = await sql`
+    UPDATE events
+    SET status = 'draft',
+        paid_at = NULL
+    WHERE slug = ${slug}
+      AND status IN ('draft', 'pending_approval')
+    RETURNING id
+  `;
+  return rows.length > 0;
+}

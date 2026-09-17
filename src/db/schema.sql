@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS organizers (
   telegram_id bigint NOT NULL UNIQUE,
   first_name text NOT NULL DEFAULT '',
   username text,
+  pending_payment_slug text,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
@@ -36,3 +37,4 @@ ALTER TABLE events ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'draft'
 ALTER TABLE events ADD COLUMN IF NOT EXISTS paid_at timestamptz;
 ALTER TABLE events DROP CONSTRAINT IF EXISTS events_status_check;
 ALTER TABLE events ADD CONSTRAINT events_status_check CHECK (status IN ('draft', 'pending_approval', 'active'));
+ALTER TABLE organizers ADD COLUMN IF NOT EXISTS pending_payment_slug text;

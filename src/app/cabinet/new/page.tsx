@@ -89,13 +89,19 @@ export default async function NewEventPage({ searchParams }: PageProps) {
         <Field label="Второе имя" hint="Для свадьбы. Для дня рождения оставьте пустым.">
           <input name="two" placeholder="Дмитрий" className="field mt-2" />
         </Field>
-        <Field label="Тип события" hint="Короткая подпись над именами: «День рождения», «Свадьба».">
-          <input required name="kicker" defaultValue="Праздник" className="field mt-2" />
+        <Field
+          label="Тип события"
+          hint="Над именами. Quiet luxury — «День рождения», Paper envelope — «Свадьба»."
+        >
+          <input required name="kicker" placeholder="День рождения" className="field mt-2" />
         </Field>
         <Field label="Короткий слоган" hint="Одна строка под заголовком.">
           <input name="tagline" placeholder="Приходите такими, какие вы есть" className="field mt-2" />
         </Field>
-        <Field label="Приглашение — лид" hint="Первый абзац: зачем вы собираете людей.">
+        <Field
+          label="Слова к истории / фото"
+          hint="Текст над галереей. Если фото нет, этот блок на странице не появится."
+        >
           <textarea
             name="inviteLead"
             rows={3}
@@ -103,7 +109,7 @@ export default async function NewEventPage({ searchParams }: PageProps) {
             className="field mt-2"
           />
         </Field>
-        <Field label="Приглашение — текст" hint="Второй абзац: что будет на площадке.">
+        <Field label="О вечере и атмосфере" hint="Текст в блоке «Дата, место, настроение».">
           <textarea
             name="inviteBody"
             rows={4}
@@ -111,13 +117,16 @@ export default async function NewEventPage({ searchParams }: PageProps) {
             className="field mt-2"
           />
         </Field>
-        <Field label="Дата и время" hint="Московское время. По нему идёт обратный отсчёт.">
+        <Field
+          label="Дата и время начала"
+          hint="Официальный старт события, московское время. По нему идёт обратный отсчёт."
+        >
           <input required type="datetime-local" name="iso" className="field mt-2" />
         </Field>
-        <Field label="Время на карточке" hint="Как показать часы в блоке деталей, например 16:00.">
-          <input name="timeLabel" placeholder="16:00" className="field mt-2" />
-        </Field>
-        <Field label="Сбор гостей" hint="Когда ждать у входа.">
+        <Field
+          label="Сбор гостей (необязательно)"
+          hint="Если ждёте гостей раньше начала программы (welcome-коктейль). Например: С 15:30."
+        >
           <input name="gathering" placeholder="С 15:30" className="field mt-2" />
         </Field>
         <Field label="Дресс-код" hint="Коротко: Smart casual, чёрный галстук, как удобно.">
@@ -145,7 +154,7 @@ export default async function NewEventPage({ searchParams }: PageProps) {
         </Field>
         <Field
           label="Фото (необязательно)"
-          hint="Пока без загрузки файлов: путь к картинке из сайта, например /gallery/gallery-01-champagne.jpg. Пусто — галерея пустая."
+          hint="Пока без загрузки файлов: путь к картинке с сайта, например /gallery/gallery-01-champagne.jpg. Пусто — блок фото на странице не появится."
         >
           <input name="gallerySrc" placeholder="/gallery/gallery-01-champagne.jpg" className="field mt-2" />
         </Field>

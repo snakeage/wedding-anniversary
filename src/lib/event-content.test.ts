@@ -12,7 +12,6 @@ const valid = {
   inviteBody: "Ужин",
   event: {
     iso: "2026-10-17T16:00:00+03:00",
-    timeLabel: "16:00",
     gathering: "С 15:30",
     dressCode: "Smart",
   },

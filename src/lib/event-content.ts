@@ -74,7 +74,6 @@ export function parseEventContent(body: unknown): EventContent | undefined {
     inviteBody: asString(record.inviteBody),
     event: {
       iso,
-      timeLabel: asString(event.timeLabel),
       gathering: asString(event.gathering),
       dressCode: asString(event.dressCode),
     },

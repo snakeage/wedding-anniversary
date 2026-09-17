@@ -15,7 +15,6 @@ export const ivanMaria: EventContent = {
     "Без строгого регламента: ужин, разговоры и тёплый вечер. Приходите такими, какие вы есть.",
   event: {
     iso: "2026-11-21T15:00:00+03:00",
-    timeLabel: "15:00",
     gathering: "Сбор гостей с 14:30",
     dressCode: "Smart casual",
   },

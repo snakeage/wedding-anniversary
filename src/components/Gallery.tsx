@@ -36,6 +36,8 @@ export function Gallery({ event }: { event: EventContent }) {
     };
   }, [active, gallery.length]);
 
+  if (gallery.length === 0) return null;
+
   return (
     <section id="story" className="relative px-6 py-8 sm:py-16">
       <Reveal className="mx-auto max-w-3xl text-center">

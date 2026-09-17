@@ -99,7 +99,7 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
             <li key={row.id} className="panel px-5 py-5">
               <p className="font-serif text-xl text-ink">{row.name}</p>
               <p className="mt-1 text-sm text-ink/70">
-                {row.attending === "yes" ? "Придёт" : "Не сможет"} · гостей: {row.guests}
+                {row.attending === "yes" ? `Придёт · гостей: ${row.guests}` : "Не сможет"}
               </p>
               {row.comment ? <p className="mt-2 text-sm text-ink/60">{row.comment}</p> : null}
               <p className="mt-3 text-[10px] tracking-[0.2em] text-ink/40 uppercase">

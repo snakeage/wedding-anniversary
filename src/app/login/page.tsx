@@ -65,7 +65,7 @@ export default async function LoginPage({ searchParams }: PageProps) {
       )}
 
       <details className="mt-8">
-        <summary className="cursor-pointer text-sm text-ink/50">Запасной вход по паролю</summary>
+        <summary className="cursor-pointer text-sm text-ink/50">Вход для администратора по паролю</summary>
         {passwordError ? (
           <p className="panel mt-4 px-5 py-4 text-sm text-burgundy">Неверный пароль. Попробуйте ещё раз.</p>
         ) : null}

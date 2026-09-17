@@ -84,12 +84,16 @@ export default async function CabinetPage({ searchParams }: PageProps) {
                 <Link className="underline decoration-gold/60 underline-offset-4" href={`/${item.slug}`}>
                   {item.status === "active" ? "Открыть как гость" : "Предпросмотр (черновик)"}
                 </Link>
-                <Link
-                  className="underline decoration-gold/60 underline-offset-4"
-                  href={`/rsvp-list?slug=${encodeURIComponent(item.slug)}`}
-                >
-                  Ответы гостей
-                </Link>
+                {item.status === "active" ? (
+                  <Link
+                    className="underline decoration-gold/60 underline-offset-4"
+                    href={`/rsvp-list?slug=${encodeURIComponent(item.slug)}`}
+                  >
+                    Ответы гостей
+                  </Link>
+                ) : (
+                  <span>Сбор ответов закрыт до публикации</span>
+                )}
               </p>
               <CabinetPayPanel
                 slug={item.slug}

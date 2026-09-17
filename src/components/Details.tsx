@@ -14,12 +14,17 @@ export function Details({ event }: { event: EventContent }) {
       value: event.venue.name,
       note: event.venue.address,
     },
-    {
+  ];
+  if (event.event.dressCode) {
+    items.push({
       label: "Дресс-код",
       value: event.event.dressCode,
-      note: "Главное — быть собой. Оттенки лишь подсказка.",
-    },
-  ] as const;
+      note: "",
+    });
+  }
+
+  const gridClass =
+    items.length === 3 ? "md:grid-cols-3" : items.length === 2 ? "md:grid-cols-2" : "md:grid-cols-1";
 
   return (
     <section id="details" className="relative px-6 py-24 sm:py-32">
@@ -32,13 +37,13 @@ export function Details({ event }: { event: EventContent }) {
         </p>
       </Reveal>
 
-      <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
+      <div className={`mx-auto mt-12 grid max-w-5xl gap-4 ${gridClass}`}>
         {items.map((item, index) => (
           <Reveal key={item.label} delay={index * 0.08}>
             <article className="panel h-full px-6 py-8 text-center">
               <p className="text-[10px] tracking-[0.32em] text-gold uppercase">{item.label}</p>
               <p className="font-serif mt-4 text-2xl leading-snug text-ink">{item.value}</p>
-              <p className="mt-3 text-sm leading-6 text-ink/55">{item.note}</p>
+              {item.note ? <p className="mt-3 text-sm leading-6 text-ink/55">{item.note}</p> : null}
             </article>
           </Reveal>
         ))}

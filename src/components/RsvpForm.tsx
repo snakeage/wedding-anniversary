@@ -19,7 +19,7 @@ export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: 
     const form = new FormData(event.currentTarget);
     const payload: RsvpPayload = {
       name: String(form.get("name") ?? ""),
-      guests: Number(form.get("guests") ?? 1),
+      guests: attending === "no" ? 0 : Number(form.get("guests") ?? 1),
       attending,
       comment: String(form.get("comment") ?? ""),
       slug: eventSlug,
@@ -68,7 +68,8 @@ export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: 
         <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Будете с нами?</h2>
         <GoldRule className="mt-6" />
         <p className="mt-5 text-ink/65">
-          Нам важно знать, на сколько приборов накрывать стол. Ответ придёт нам на почту.
+          Нам важно знать, на сколько приборов накрывать стол. Организаторы сразу увидят ваш
+          ответ в списке гостей.
         </p>
       </Reveal>
 
@@ -115,20 +116,24 @@ export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: 
               </div>
             </fieldset>
 
-            <label className="block text-left">
-              <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">
-                Количество гостей
-              </span>
-              <input
-                required
-                name="guests"
-                type="number"
-                min={1}
-                max={12}
-                defaultValue={1}
-                className="field mt-2"
-              />
-            </label>
+            {attending === "yes" ? (
+              <label className="block text-left">
+                <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">
+                  Количество гостей
+                </span>
+                <input
+                  required
+                  name="guests"
+                  type="number"
+                  min={1}
+                  max={12}
+                  defaultValue={1}
+                  className="field mt-2"
+                />
+              </label>
+            ) : (
+              <input type="hidden" name="guests" value="0" />
+            )}
 
             <label className="block text-left">
               <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">

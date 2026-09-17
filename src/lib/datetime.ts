@@ -44,3 +44,14 @@ export function getCountdown(iso: string, now = Date.now()): CountdownParts {
     expired: false,
   };
 }
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+export type EventPhase = "upcoming" | "happening" | "ended";
+
+export function eventPhase(iso: string, now = Date.now()): EventPhase {
+  const elapsed = now - new Date(iso).getTime();
+  if (elapsed < 0) return "upcoming";
+  if (elapsed < DAY_MS) return "happening";
+  return "ended";
+}

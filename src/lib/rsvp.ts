@@ -27,8 +27,6 @@ export function parseRsvp(body: unknown): RsvpParseResult {
   const attending = asString(record.attending);
   const slug = asString(record.slug).trim();
   const guestsRaw = record.guests;
-  const guests =
-    typeof guestsRaw === "number" ? guestsRaw : Number.parseInt(asString(guestsRaw), 10);
 
   if (name.length < 2 || name.length > 80) {
     return { ok: false, error: "Укажите имя — от 2 до 80 символов" };
@@ -38,7 +36,14 @@ export function parseRsvp(body: unknown): RsvpParseResult {
     return { ok: false, error: "Выберите, сможете ли вы прийти" };
   }
 
-  if (!Number.isInteger(guests) || guests < 1 || guests > 12) {
+  const guests =
+    attending === "no"
+      ? 0
+      : typeof guestsRaw === "number"
+        ? guestsRaw
+        : Number.parseInt(asString(guestsRaw), 10);
+
+  if (attending === "yes" && (!Number.isInteger(guests) || guests < 1 || guests > 12)) {
     return { ok: false, error: "Количество гостей — от 1 до 12" };
   }
 

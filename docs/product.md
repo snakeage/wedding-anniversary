@@ -61,4 +61,4 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 `/` is the sales catalog. Live demos: Quiet luxury (adult birthday) at `/sofia`, Paper envelope (wedding) at `/ivan-maria`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
-See [content-schema.md](./content-schema.md) and [templates-catalog.md](./templates-catalog.md).
+How to use the live product (organizer + admin): [how-to.md](./how-to.md). Schema: [content-schema.md](./content-schema.md). Skins: [templates-catalog.md](./templates-catalog.md).

@@ -2,6 +2,8 @@
 
 Одностраничные приглашения на Next.js и TypeScript: каталог скинов, WebGL-фон, галерея, карта и RSVP. Деплой — Vercel.
 
+Как пользоваться на живом сайте (организатор и админ) — [`docs/how-to.md`](docs/how-to.md). Ниже — запуск кода.
+
 ## Локально
 
 Нужен **Node 22** (см. `.nvmrc`). На 20.15 npm будет ругаться на `engines`.
@@ -37,7 +39,7 @@ npm run dev
 2. Подтяните переменные локально: `npx vercel env pull .env.local --scope snake-age`.
 3. Создайте таблицу: `npm run db:migrate`.
 4. Задайте `RSVP_ADMIN_SECRET` (случайная строка) в `.env.local` и в Vercel env (Production + Preview).
-5. Кабинет: `/login` — кнопка «Открыть бота» (сообщение в чате) и Login Widget. Запасной пароль — `RSVP_ADMIN_SECRET` (видит все RSVP). Создайте бота в [@BotFather](https://t.me/BotFather), задайте `TELEGRAM_BOT_TOKEN`, `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` и `TELEGRAM_WEBHOOK_SECRET` (случайная строка: буквы, цифры, `_` `-`). После деплоя: `npm run telegram:webhook` — регистрирует `https://…/api/telegram/webhook`. Для виджета в боте укажите домен (`Login Widget` / `/setdomain`, пока `*.vercel.app`). После `npm run db:migrate` появятся таблицы `organizers` и `events`.
+5. Кабинет: `/login` — кнопка «Открыть бота» (сообщение в чате) и Login Widget. Запасной пароль — `RSVP_ADMIN_SECRET` (видит все RSVP). Создайте бота в [@BotFather](https://t.me/BotFather), задайте `TELEGRAM_BOT_TOKEN`, `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` и `TELEGRAM_WEBHOOK_SECRET` (случайная строка: буквы, цифры, `_` `-`). После деплоя: `npm run telegram:webhook` — webhook (включая кнопки подтверждения чека), команда `/start`, тексты «О боте». Аватар и Domain для виджета — в BotFather, см. [`docs/how-to.md`](docs/how-to.md). После `npm run db:migrate` появятся таблицы `organizers` и `events`.
 
 Resend по-прежнему опционален:
 

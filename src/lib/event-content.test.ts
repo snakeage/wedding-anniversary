@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { isValidSlug, parseEventContent, reservedSlugs } from "./event-content.ts";
+import { isGallerySrc, isValidSlug, parseEventContent, reservedSlugs } from "./event-content.ts";
 
 const valid = {
   templateId: "quiet-luxury",
@@ -43,4 +43,14 @@ test("isValidSlug and reserved demo slugs", () => {
   assert.ok(reservedSlugs().has("login"));
   assert.ok(reservedSlugs().has("cabinet"));
   assert.ok(reservedSlugs().has("terms"));
+});
+
+test("isGallerySrc allows public paths and Vercel Blob URLs", () => {
+  assert.equal(isGallerySrc("/gallery/gallery-01-champagne.jpg"), true);
+  assert.equal(
+    isGallerySrc("https://abc.public.blob.vercel-storage.com/events/photo.jpg"),
+    true,
+  );
+  assert.equal(isGallerySrc("https://evil.example/x.jpg"), false);
+  assert.equal(isGallerySrc("//cdn.example/x.jpg"), false);
 });

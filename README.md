@@ -19,7 +19,9 @@ npm run dev
 
 Все тексты демо — в [`src/events/`](src/events/). Свои события организатор создаёт в `/cabinet` (Neon). Гостевая ссылка — `/{slug}`.
 
-Фотографии кладите в `public/gallery/` и обновите пути в `gallery` у события. Лучше JPEG или WebP около 200–400 KB.
+Фото для демо — в `public/gallery/`. Организатор в кабинете загружает JPEG/PNG/WebP (Vercel Blob), не путь из репозитория.
+
+`BLOB_READ_WRITE_TOKEN` — в `.env.local` и в Vercel (Production и Preview). Без токена событие без фото создать можно; с файлом форма покажет ошибку загрузки.
 
 ## RSVP
 

@@ -25,7 +25,7 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 | `venue.lng` | number | Map pin / navigator |
 | `venue.notes` | string | Parking, late arrival |
 | `gallery[]` | list | Story photos |
-| `gallery[].src` | path | Image under `public/` |
+| `gallery[].src` | path or Blob URL | `/public` path or `https://*.blob.vercel-storage.com/...` |
 | `gallery[].alt` | string | Accessibility |
 | `gallery[].caption` | string | Year / story line |
 | `galleryKicker` | string, optional | Gallery eyebrow; default «Наша история» |

@@ -77,6 +77,19 @@ export async function insertEvent(organizerId: string, content: EventContent) {
   `;
 }
 
+export async function updateEvent(organizerId: string, slug: string, content: EventContent) {
+  const sql = getSql();
+  const payload = { ...content, slug };
+  const rows = await sql`
+    UPDATE events
+    SET content = ${JSON.parse(JSON.stringify(payload))}
+    WHERE organizer_id = ${organizerId}
+      AND slug = ${slug}
+    RETURNING id
+  `;
+  return rows.length > 0;
+}
+
 export async function markEventPendingApproval(organizerId: string, slug: string) {
   const sql = getSql();
   const rows = await sql`

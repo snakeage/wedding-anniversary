@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { CabinetPayPanel } from "@/components/CabinetPayPanel";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
 import { listEventsByOrganizer } from "@/lib/event-store";
 import { eventNames } from "@/lib/names";
 import { getDatabaseUrl } from "@/lib/db";
+import { getSbpDetails } from "@/lib/sbp";
+
+type PageProps = {
+  searchParams: Promise<{ error?: string }>;
+};
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +18,7 @@ export const metadata = {
   title: "Кабинет",
 };
 
-export default async function CabinetPage() {
+export default async function CabinetPage({ searchParams }: PageProps) {
   const organizer = await getCurrentOrganizer();
   if (!organizer) {
     redirect("/login");
@@ -27,7 +33,10 @@ export default async function CabinetPage() {
     );
   }
 
+  const { error } = await searchParams;
   const events = await listEventsByOrganizer(organizer.id);
+  const sbp = getSbpDetails();
+  const botUsername = process.env.NEXT_PUBLIC_TELEGRAM_BOT_USERNAME?.trim() ?? "";
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
@@ -47,6 +56,12 @@ export default async function CabinetPage() {
           </button>
         </form>
       </div>
+
+      {error === "receipt" ? (
+        <p className="panel mt-6 px-5 py-4 text-sm text-burgundy">
+          Не получилось отметить чек. Обновите страницу и попробуйте ещё раз.
+        </p>
+      ) : null}
 
       {events.length === 0 ? (
         <p className="panel mt-10 px-6 py-8 text-ink/65">Пока нет событий. Создайте первое приглашение.</p>
@@ -76,6 +91,12 @@ export default async function CabinetPage() {
                   Ответы гостей
                 </Link>
               </p>
+              <CabinetPayPanel
+                slug={item.slug}
+                status={item.status}
+                sbp={sbp}
+                botUsername={botUsername}
+              />
             </li>
           ))}
         </ul>

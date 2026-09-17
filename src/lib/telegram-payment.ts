@@ -2,9 +2,24 @@ import { EVENT_PRICE_RUB } from "@/lib/sbp";
 
 const PAY_START_RE = /^\/start(?:@\S+)?\s+pay_([a-z0-9]+(?:-[a-z0-9]+)*)$/i;
 const PAY_CALLBACK_RE = /^pay_(ok|no):([a-z0-9]+(?:-[a-z0-9]+)*)$/;
+const COMMAND_RE = /^\/([a-z]+)(?:@\S+)?(?:\s|$)/i;
+
+export type EventListItem = {
+  slug: string;
+  status: "draft" | "pending_approval" | "active";
+  title: string;
+};
+
+export type MenuAction = "events" | "help";
 
 export function parsePayStart(text: string): string | undefined {
   const match = text.trim().match(PAY_START_RE);
+  return match?.[1]?.toLowerCase();
+}
+
+export function parseBotCommand(text: string): string | undefined {
+  if (parsePayStart(text)) return undefined;
+  const match = text.trim().match(COMMAND_RE);
   return match?.[1]?.toLowerCase();
 }
 
@@ -14,8 +29,19 @@ export function parsePayCallback(data: string): { action: "ok" | "no"; slug: str
   return { action: match[1] === "ok" ? "ok" : "no", slug: match[2].toLowerCase() };
 }
 
+export function parseMenuCallback(data: string): MenuAction | undefined {
+  if (data === "menu_events" || data === "menu_help") {
+    return data === "menu_events" ? "events" : "help";
+  }
+  return undefined;
+}
+
 export function payCallbackData(action: "ok" | "no", slug: string) {
   return `pay_${action}:${slug}`;
+}
+
+export function menuCallbackData(action: MenuAction) {
+  return `menu_${action}`;
 }
 
 export function isAdminChat(chatId: number, adminChatId: string) {
@@ -29,8 +55,69 @@ export function siteEventUrl(siteUrl: string, slug: string) {
   return `${base}/${slug}`;
 }
 
+export function welcomeMessageText() {
+  return [
+    "Кабинет цифровых приглашений.",
+    "",
+    "Откройте кабинет, чтобы создать страницу. Чек об оплате пришлите сюда фотографией или PDF — после кнопки «Отправить чек в бот» в кабинете.",
+  ].join("\n");
+}
+
+export function helpMessageText(supportContact?: string) {
+  const lines = [
+    "Как пользоваться ботом:",
+    "",
+    "/start — главное меню и вход в кабинет",
+    "/events — ваши приглашения и статусы",
+    "/cancel — отменить ожидание чека",
+    "/help — это сообщение",
+    "",
+    "Черновик виден только вам. После оплаты по СБП пришлите чек сюда. Комментарий в банковском переводе оставляйте пустым.",
+  ];
+  if (supportContact) {
+    lines.push("", `Поддержка: @${supportContact.replace(/^@/, "")}`);
+  }
+  return lines.join("\n");
+}
+
+export function unknownTextReply() {
+  return "Не понял сообщение. Напишите /help — список команд. Чек — фото или PDF после кнопки «Отправить чек в бот» в кабинете.";
+}
+
+export function formatEventsListText(events: EventListItem[], siteUrl: string) {
+  if (events.length === 0) {
+    return "Пока нет приглашений. Откройте кабинет и создайте первое.";
+  }
+  const lines = ["Ваши приглашения:", ""];
+  for (const event of events) {
+    const status =
+      event.status === "active"
+        ? "Опубликовано"
+        : event.status === "pending_approval"
+          ? "На проверке"
+          : "Черновик";
+    lines.push(`${status} · ${event.title} · /${event.slug}`);
+    if (event.status === "active") {
+      lines.push(siteEventUrl(siteUrl, event.slug));
+    }
+  }
+  return lines.join("\n");
+}
+
+export function noEventsAccountText() {
+  return "Сначала откройте кабинет через /start — тогда здесь появятся ваши приглашения.";
+}
+
+export function receiptCancelledText(slug: string) {
+  return `Ожидание чека для /${slug} отменено. Чтобы отправить квитанцию снова, нажмите «Отправить чек в бот» в кабинете.`;
+}
+
+export function nothingToCancelText() {
+  return "Сейчас бот не ждёт чек. Чтобы прислать квитанцию, нажмите «Отправить чек в бот» в кабинете.";
+}
+
 export function askForReceiptText(slug: string) {
-  return `Вы оформляете активацию события /${slug}. Пришлите сюда фото чека или PDF-файл квитанции из банка.`;
+  return `Вы оформляете активацию события /${slug}. Пришлите сюда фото чека или PDF-файл квитанции из банка. Чтобы отменить — /cancel.`;
 }
 
 export function noPendingSlugText() {

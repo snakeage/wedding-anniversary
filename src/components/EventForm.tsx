@@ -241,7 +241,7 @@ export function EventForm({
         </button>
         <p className="text-center text-xs leading-5 text-ink/45">
           {mode === "edit" ? "Сохраняя приглашение, вы принимаете " : "Создавая приглашение, вы принимаете "}
-          <Link className="underline decoration-gold/60 underline-offset-4" href="/terms">
+          <Link className="text-burgundy/80 transition-colors hover:text-burgundy" href="/terms">
             условия сервиса
           </Link>
           . Страница и сбор ответов доступны до даты события и ещё 10 дней после неё.

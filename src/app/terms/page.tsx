@@ -1,20 +1,21 @@
-import Link from "next/link";
+import { ServiceNav } from "@/components/ServiceNav";
+import { getCurrentOrganizer } from "@/lib/current-organizer";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   robots: { index: false, follow: false },
   title: "Условия сервиса",
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const organizer = await getCurrentOrganizer();
+
   return (
     <main className="mx-auto max-w-2xl px-6 py-16">
+      <ServiceNav loggedIn={Boolean(organizer)} />
       <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Сервис</p>
       <h1 className="font-serif mt-3 text-4xl text-ink">Условия сервиса</h1>
-      <p className="mt-3 text-sm text-ink/50">
-        <Link className="underline decoration-gold/60 underline-offset-4" href="/">
-          На каталог
-        </Link>
-      </p>
 
       <div className="mt-10 space-y-8 text-base leading-7 text-ink/75">
         <section>

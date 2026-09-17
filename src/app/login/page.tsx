@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { ServiceFooter, ServiceNav } from "@/components/ServiceNav";
 import { TelegramLogin } from "@/components/TelegramLogin";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
 import { isRsvpAdminSecret, RSVP_ADMIN_COOKIE } from "@/lib/rsvp-admin";
@@ -31,6 +32,7 @@ export default async function LoginPage({ searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-md px-6 py-16">
+      <ServiceNav loggedIn={false} />
       <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Организатор</p>
       <h1 className="font-serif mt-3 text-4xl text-ink">Вход</h1>
       <p className="mt-3 text-ink/65">Войдите через Telegram — без SMS и без пароля в ссылке.</p>
@@ -85,6 +87,7 @@ export default async function LoginPage({ searchParams }: PageProps) {
           </button>
         </form>
       </details>
+      <ServiceFooter />
     </main>
   );
 }

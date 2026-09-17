@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
-import Link from "next/link";
+import { ServiceFooter, ServiceNav } from "@/components/ServiceNav";
 import { formatEventDate, formatEventTime } from "@/lib/datetime";
 import { getDatabaseUrl } from "@/lib/db";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
@@ -47,8 +47,10 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
   if (!getDatabaseUrl()) {
     return (
       <main className="mx-auto max-w-3xl px-6 py-16">
+        <ServiceNav loggedIn={Boolean(organizer)} />
         <h1 className="font-serif text-4xl text-ink">Ответы гостей</h1>
         <p className="mt-4 text-ink/70">DATABASE_URL не задан — список недоступен.</p>
+        <ServiceFooter />
       </main>
     );
   }
@@ -65,27 +67,29 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
+      <ServiceNav loggedIn={Boolean(organizer)} />
       <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Организатор</p>
       <h1 className="font-serif mt-3 text-4xl text-ink">Ответы гостей</h1>
       <p className="mt-3 text-ink/65">
         {eventNames(event)} · {event.slug}
       </p>
-      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/50">
-        {organizer ? (
-          <Link className="underline decoration-gold/60 underline-offset-4" href="/cabinet">
-            Кабинет
-          </Link>
-        ) : null}
-        <a className="underline decoration-gold/60 underline-offset-4" href={csvHref}>
+      <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a className="btn-gold" href={csvHref}>
           Скачать CSV
         </a>
         {rememberHref ? (
-          <a className="underline decoration-gold/60 underline-offset-4" href={rememberHref}>
-            Запомнить доступ (убрать секрет из ссылки)
+          <a
+            className="text-[10px] tracking-[0.28em] text-ink/40 uppercase transition-colors hover:text-burgundy/75"
+            href={rememberHref}
+          >
+            Запомнить доступ
           </a>
         ) : null}
         <form action={organizer ? "/api/organizer-logout" : "/api/rsvp-logout"} method="post">
-          <button type="submit" className="underline decoration-gold/60 underline-offset-4">
+          <button
+            type="submit"
+            className="text-[10px] tracking-[0.28em] text-ink/40 uppercase transition-colors hover:text-burgundy/75"
+          >
             Выйти
           </button>
         </form>
@@ -109,6 +113,7 @@ export default async function RsvpListPage({ searchParams }: PageProps) {
           ))}
         </ul>
       )}
+      <ServiceFooter />
     </main>
   );
 }

@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { liveSkins, soonSkins } from "@/catalog";
+import { ServiceFooter, ServiceNav } from "@/components/ServiceNav";
+import { getCurrentOrganizer } from "@/lib/current-organizer";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const organizer = await getCurrentOrganizer();
+
   return (
     <main className="relative mx-auto min-h-dvh max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
+      <ServiceNav loggedIn={Boolean(organizer)} />
       <p className="text-[10px] tracking-[0.32em] text-burgundy uppercase">
         Каталог
       </p>
@@ -52,15 +59,7 @@ export default function Home() {
           ))}
         </ul>
       </section>
-
-      <p className="mt-16 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/45">
-        <Link href="/login" className="underline decoration-gold/60 underline-offset-4">
-          Вход для организаторов
-        </Link>
-        <Link href="/terms" className="underline decoration-gold/60 underline-offset-4">
-          Условия сервиса
-        </Link>
-      </p>
+      <ServiceFooter />
     </main>
   );
 }

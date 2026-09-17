@@ -2,6 +2,7 @@ import { Countdown } from "@/components/Countdown";
 import { Details } from "@/components/Details";
 import { Footer } from "@/components/Footer";
 import { Gallery } from "@/components/Gallery";
+import { GuestReplyLink } from "@/components/SiteHeader";
 import { RsvpForm } from "@/components/RsvpForm";
 import { VenueMap } from "@/components/VenueMap";
 import type { EventContent } from "@/content/types";
@@ -16,9 +17,7 @@ function Letterhead({ event }: { event: EventContent }) {
       <p className="font-serif text-lg text-ink/80 sm:text-xl">
         {eventNames(event)}
       </p>
-      <a href="#rsvp" className="text-[10px] tracking-[0.28em] text-burgundy uppercase">
-        RSVP
-      </a>
+      <GuestReplyLink />
     </header>
   );
 }

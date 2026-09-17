@@ -50,7 +50,7 @@ export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: 
     return (
       <section id="rsvp" className="relative px-6 py-24 sm:py-32">
         <Reveal className="mx-auto max-w-xl text-center">
-          <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">RSVP</p>
+          <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Ответ</p>
           <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Будете с нами?</h2>
           <GoldRule className="mt-6" />
           <p className="panel mt-8 px-6 py-8 text-ink/65">
@@ -64,7 +64,7 @@ export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: 
   return (
     <section id="rsvp" className="relative px-6 py-24 sm:py-32">
       <Reveal className="mx-auto max-w-xl text-center">
-        <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">RSVP</p>
+        <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">Ответ</p>
         <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Будете с нами?</h2>
         <GoldRule className="mt-6" />
         <p className="mt-5 text-ink/65">

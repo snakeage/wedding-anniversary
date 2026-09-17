@@ -77,7 +77,7 @@ export function CabinetPayPanel({ slug, status, sbp, botUsername }: Props) {
       </p>
       <p className="text-ink/55">
         Оплачивая, вы соглашаетесь с{" "}
-        <Link className="underline decoration-gold/60 underline-offset-4" href="/terms">
+        <Link className="text-burgundy/80 transition-colors hover:text-burgundy" href="/terms">
           условиями сервиса
         </Link>
         .
@@ -92,7 +92,10 @@ export function CabinetPayPanel({ slug, status, sbp, botUsername }: Props) {
         )}
         <form action="/api/cabinet/receipt" method="post">
           <input type="hidden" name="slug" value={slug} />
-          <button type="submit" className="underline decoration-gold/60 underline-offset-4">
+          <button
+            type="submit"
+            className="text-[10px] tracking-[0.28em] text-ink/40 uppercase transition-colors hover:text-burgundy/75"
+          >
             Я отправил(а) чек
           </button>
         </form>

@@ -61,9 +61,14 @@ await telegram("setWebhook", {
 console.log("Webhook set:", webhookUrl);
 
 await telegram("setMyCommands", {
-  commands: [{ command: "start", description: "Открыть кабинет" }],
+  commands: [
+    { command: "start", description: "Главное меню и вход в кабинет" },
+    { command: "events", description: "Мои приглашения и статусы" },
+    { command: "cancel", description: "Отменить отправку чека" },
+    { command: "help", description: "Как пользоваться и поддержка" },
+  ],
 });
-console.log("Bot command /start registered");
+console.log("Bot commands registered: /start /events /cancel /help");
 
 await telegram("setMyShortDescription", {
   short_description: "Кабинет цифровых приглашений: создать страницу, оплатить по СБП, открыть гостям.",
@@ -72,7 +77,11 @@ await telegram("setMyDescription", {
   description: [
     "Бот кабинета цифровых приглашений.",
     "",
-    "Нажмите /start — придёт кнопка «Открыть кабинет» (действует 10 минут).",
+    "/start — главное меню и кнопка «Открыть кабинет» (действует 10 минут).",
+    "/events — ваши приглашения и статусы (черновик, на проверке, опубликовано).",
+    "/cancel — отменить ожидание чека.",
+    "/help — как пользоваться.",
+    "",
     "Чек об оплате пришлите сюда после кнопки «Отправить чек в бот» в кабинете: фото или PDF.",
     "Комментарий в банковском переводе оставляйте пустым.",
   ].join("\n"),

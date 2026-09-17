@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import {
   activateEventBySlug,
   getEventWithOrganizer,
+  listEventsByOrganizer,
   markEventPendingApproval,
   rejectEventBySlug,
 } from "@/lib/event-store";
@@ -11,6 +12,8 @@ import {
   setOrganizerPendingSlug,
   upsertOrganizer,
 } from "@/lib/organizer-store";
+import { eventNames } from "@/lib/names";
+import { getSbpDetails } from "@/lib/sbp";
 import { signBotLogin, webhookSecretMatches } from "@/lib/telegram-auth";
 import {
   answerTelegramCallback,
@@ -28,12 +31,22 @@ import {
   clientActivatedText,
   clientReceiptAckText,
   clientRejectedText,
+  formatEventsListText,
+  helpMessageText,
   isAdminChat,
+  menuCallbackData,
+  noEventsAccountText,
   noPendingSlugText,
+  nothingToCancelText,
+  parseBotCommand,
+  parseMenuCallback,
   parsePayCallback,
   parsePayStart,
   payCallbackData,
+  receiptCancelledText,
   unknownPayEventText,
+  unknownTextReply,
+  welcomeMessageText,
 } from "@/lib/telegram-payment";
 
 function asRecord(value: unknown): Record<string, unknown> | null {
@@ -110,8 +123,21 @@ export async function POST(request: Request) {
     return new NextResponse(null, { status: 204 });
   }
 
-  if (text.startsWith("/start")) {
+  const command = text ? parseBotCommand(text) : undefined;
+  if (command === "start") {
     await handleLoginStart(botToken, request, { chatId, telegramId, firstName, username });
+    return new NextResponse(null, { status: 204 });
+  }
+  if (command === "events") {
+    await handleEvents(botToken, chatId, telegramId);
+    return new NextResponse(null, { status: 204 });
+  }
+  if (command === "cancel") {
+    await handleCancel(botToken, chatId, telegramId);
+    return new NextResponse(null, { status: 204 });
+  }
+  if (command === "help") {
+    await handleHelp(botToken, chatId);
     return new NextResponse(null, { status: 204 });
   }
 
@@ -130,6 +156,11 @@ export async function POST(request: Request) {
       photoId,
       documentId: isReceiptDoc ? documentId : undefined,
     });
+    return new NextResponse(null, { status: 204 });
+  }
+
+  if (text) {
+    await sendTelegramMessage(botToken, chatId, unknownTextReply());
   }
 
   return new NextResponse(null, { status: 204 });
@@ -147,11 +178,70 @@ async function handleLoginStart(
   );
   const complete = new URL("/api/auth/telegram/complete", origin);
   complete.searchParams.set("token", token);
-  await sendTelegramMessage(botToken, input.chatId, "Нажмите кнопку, чтобы открыть кабинет. Ссылка действует 10 минут.", {
+  await sendTelegramMessage(botToken, input.chatId, welcomeMessageText(), {
     reply_markup: {
-      inline_keyboard: [[{ text: "Открыть кабинет", url: complete.toString() }]],
+      inline_keyboard: [
+        [{ text: "Открыть кабинет", url: complete.toString() }],
+        [
+          { text: "Мои события", callback_data: menuCallbackData("events") },
+          { text: "Помощь", callback_data: menuCallbackData("help") },
+        ],
+      ],
     },
   });
+}
+
+async function handleEvents(botToken: string, chatId: number, telegramId: number) {
+  if (!getDatabaseUrl()) {
+    await sendTelegramMessage(botToken, chatId, noEventsAccountText());
+    return;
+  }
+  try {
+    const organizer = await getOrganizerByTelegramId(telegramId);
+    if (!organizer) {
+      await sendTelegramMessage(botToken, chatId, noEventsAccountText());
+      return;
+    }
+    const events = await listEventsByOrganizer(organizer.id);
+    const site = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "";
+    await sendTelegramMessage(
+      botToken,
+      chatId,
+      formatEventsListText(
+        events.map((event) => ({
+          slug: event.slug,
+          status: event.status,
+          title: eventNames(event.content),
+        })),
+        site,
+      ),
+    );
+  } catch (error) {
+    console.error("[telegram] events failed", error);
+  }
+}
+
+async function handleCancel(botToken: string, chatId: number, telegramId: number) {
+  if (!getDatabaseUrl()) {
+    await sendTelegramMessage(botToken, chatId, nothingToCancelText());
+    return;
+  }
+  try {
+    const organizer = await getOrganizerByTelegramId(telegramId);
+    const slug = organizer?.pendingPaymentSlug;
+    if (!organizer || !slug) {
+      await sendTelegramMessage(botToken, chatId, nothingToCancelText());
+      return;
+    }
+    await setOrganizerPendingSlug(telegramId, null);
+    await sendTelegramMessage(botToken, chatId, receiptCancelledText(slug));
+  } catch (error) {
+    console.error("[telegram] cancel failed", error);
+  }
+}
+
+async function handleHelp(botToken: string, chatId: number) {
+  await sendTelegramMessage(botToken, chatId, helpMessageText(getSbpDetails()?.contact));
 }
 
 async function handlePayStart(
@@ -246,10 +336,28 @@ async function handleCallback(botToken: string, callback: Record<string, unknown
   const fromId = asId(from?.id);
   const data = typeof callback.data === "string" ? callback.data : "";
   const parsed = parsePayCallback(data);
+  const menu = parseMenuCallback(data);
   const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID?.trim() ?? "";
+  const message = asRecord(callback.message);
+  const chat = asRecord(message?.chat);
+  const chatId = asId(chat?.id);
 
-  if (!callbackId || fromId === undefined || !parsed) {
+  if (!callbackId || fromId === undefined) {
     if (callbackId) await answerTelegramCallback(botToken, callbackId);
+    return;
+  }
+
+  if (menu) {
+    if (chatId !== undefined) {
+      if (menu === "events") await handleEvents(botToken, chatId, fromId);
+      else await handleHelp(botToken, chatId);
+    }
+    await answerTelegramCallback(botToken, callbackId);
+    return;
+  }
+
+  if (!parsed) {
+    await answerTelegramCallback(botToken, callbackId);
     return;
   }
 
@@ -263,9 +371,6 @@ async function handleCallback(botToken: string, callback: Record<string, unknown
     return;
   }
 
-  const message = asRecord(callback.message);
-  const chat = asRecord(message?.chat);
-  const chatId = asId(chat?.id);
   const messageId = asId(message?.message_id);
   const previous = typeof message?.caption === "string" ? message.caption : adminReceiptCaption({ slug: parsed.slug, firstName: "Организатор" });
 

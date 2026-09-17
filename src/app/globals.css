@@ -134,6 +134,40 @@ body {
   }
 }
 
+.draft-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  padding: 0.7rem 1rem;
+  background: color-mix(in srgb, var(--ink) 82%, var(--burgundy));
+  color: var(--cream);
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.draft-watermark {
+  pointer-events: none;
+  position: fixed;
+  inset: -20%;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 4rem 2rem;
+  transform: rotate(-18deg);
+  opacity: 0.14;
+  color: var(--burgundy);
+  font-family: var(--font-cormorant), ui-serif, serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
 @keyframes cue {
   0%,
   100% {

@@ -54,11 +54,20 @@ export default async function CabinetPage() {
         <ul className="mt-10 space-y-3">
           {events.map((item) => (
             <li key={item.id} className="panel px-5 py-5">
-              <p className="font-serif text-xl text-ink">{eventNames(item.content)}</p>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <p className="font-serif text-xl text-ink">{eventNames(item.content)}</p>
+                <span className="text-[10px] tracking-[0.22em] text-ink/45 uppercase">
+                  {item.status === "active"
+                    ? "Опубликовано"
+                    : item.status === "pending_approval"
+                      ? "На проверке"
+                      : "Черновик"}
+                </span>
+              </div>
               <p className="mt-1 text-sm text-ink/70">/{item.slug}</p>
               <p className="mt-3 flex flex-wrap gap-4 text-sm text-ink/50">
                 <Link className="underline decoration-gold/60 underline-offset-4" href={`/${item.slug}`}>
-                  Открыть как гость
+                  {item.status === "active" ? "Открыть как гость" : "Предпросмотр (черновик)"}
                 </Link>
                 <Link
                   className="underline decoration-gold/60 underline-offset-4"

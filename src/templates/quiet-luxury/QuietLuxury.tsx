@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { VenueMap } from "@/components/VenueMap";
 import type { EventContent } from "@/content/types";
 
-export function QuietLuxury({ event }: { event: EventContent }) {
+export function QuietLuxury({ event, preview }: { event: EventContent; preview?: boolean }) {
   return (
     <>
       <Background />
@@ -22,7 +22,7 @@ export function QuietLuxury({ event }: { event: EventContent }) {
         <Gallery event={event} />
         <Details event={event} />
         <VenueMap event={event} />
-        <RsvpForm eventSlug={event.slug} />
+        <RsvpForm eventSlug={event.slug} preview={preview} />
         <Footer event={event} />
       </main>
     </>

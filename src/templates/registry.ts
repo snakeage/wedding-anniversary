@@ -3,7 +3,7 @@ import type { EventContent, TemplateId } from "@/content/types";
 import { PaperEnvelope } from "@/templates/paper-envelope/PaperEnvelope";
 import { QuietLuxury } from "@/templates/quiet-luxury/QuietLuxury";
 
-type TemplateComponent = ComponentType<{ event: EventContent }>;
+type TemplateComponent = ComponentType<{ event: EventContent; preview?: boolean }>;
 
 export const templates: Record<TemplateId, TemplateComponent> = {
   "quiet-luxury": QuietLuxury,

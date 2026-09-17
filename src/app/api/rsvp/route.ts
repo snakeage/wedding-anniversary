@@ -4,7 +4,7 @@ import { getDatabaseUrl } from "@/lib/db";
 import { eventNames } from "@/lib/names";
 import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
 import { insertRsvp } from "@/lib/rsvp-store";
-import { resolveEvent } from "@/lib/resolve-event";
+import { resolveEventWithAccess } from "@/lib/resolve-event";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -20,10 +20,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const event = await resolveEvent(parsed.data.slug);
-  if (!event) {
+  const access = await resolveEventWithAccess(parsed.data.slug);
+  if (access.mode === "not_found") {
     return NextResponse.json({ error: "Некорректное приглашение" }, { status: 400 });
   }
+  if (access.mode !== "active") {
+    return NextResponse.json({ error: "Сбор ответов ещё не открыт." }, { status: 403 });
+  }
+  const event = access.event;
 
   if (!getDatabaseUrl()) {
     console.error("[rsvp] DATABASE_URL is not set");

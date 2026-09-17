@@ -18,7 +18,17 @@ A new client is new **data** plus `/slug` on this app, not `npx vercel` for a se
 
 ## Git branches
 
-`main` is Vercel production. It is protected (`lint and build` required): **never push commits to `main`**. Always branch from a fresh `origin/main` and open a PR. Squash-merge and delete the branch.
+`main` is Vercel production. It is protected (`lint and build` required): **never push commits to `main`**. Always branch from a fresh `origin/main` and open a PR.
+
+**When the user says merge / вливай / мердж** (after CI is green):
+
+```bash
+gh pr merge <n> --squash --delete-branch
+git checkout main && git pull
+git branch -d <branch>   # if the local branch still exists
+```
+
+Always use `--delete-branch` — squash alone leaves the remote branch. Do not merge without deleting the branch unless the user says to keep it.
 
 **Prefix = why this PR exists**, not which files it touches. Name the rest in kebab-case after the goal (`feature/photo-upload`). Issue number is optional (`feature/44-photo-upload`); do not invent an issue just to put a number in the name.
 

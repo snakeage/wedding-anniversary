@@ -6,7 +6,7 @@ import type { RsvpAttending, RsvpPayload } from "@/lib/rsvp";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function RsvpForm({ eventSlug }: { eventSlug: string }) {
+export function RsvpForm({ eventSlug, preview }: { eventSlug: string; preview?: boolean }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [attending, setAttending] = useState<RsvpAttending>("yes");
@@ -44,6 +44,21 @@ export function RsvpForm({ eventSlug }: { eventSlug: string }) {
       setStatus("error");
       setMessage("Сеть недоступна. Проверьте соединение и отправьте снова.");
     }
+  }
+
+  if (preview) {
+    return (
+      <section id="rsvp" className="relative px-6 py-24 sm:py-32">
+        <Reveal className="mx-auto max-w-xl text-center">
+          <p className="text-xs tracking-[0.36em] text-burgundy/75 uppercase">RSVP</p>
+          <h2 className="font-serif mt-4 text-4xl text-ink sm:text-5xl">Будете с нами?</h2>
+          <GoldRule className="mt-6" />
+          <p className="panel mt-8 px-6 py-8 text-ink/65">
+            Сбор ответов гостей отключен до публикации приглашения.
+          </p>
+        </Reveal>
+      </section>
+    );
   }
 
   return (

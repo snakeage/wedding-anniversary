@@ -53,7 +53,7 @@ function PaperHero({ event }: { event: EventContent }) {
   );
 }
 
-export function PaperEnvelope({ event }: { event: EventContent }) {
+export function PaperEnvelope({ event, preview }: { event: EventContent; preview?: boolean }) {
   return (
     <div className="paper-envelope">
       <div className="paper-texture" aria-hidden />
@@ -66,7 +66,7 @@ export function PaperEnvelope({ event }: { event: EventContent }) {
             <Gallery event={event} />
             <Details event={event} />
             <VenueMap event={event} />
-            <RsvpForm eventSlug={event.slug} />
+            <RsvpForm eventSlug={event.slug} preview={preview} />
             <Footer event={event} />
           </main>
         </div>

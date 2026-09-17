@@ -24,7 +24,15 @@ CREATE TABLE IF NOT EXISTS events (
   organizer_id uuid NOT NULL REFERENCES organizers (id) ON DELETE CASCADE,
   slug text NOT NULL UNIQUE,
   content jsonb NOT NULL,
-  created_at timestamptz NOT NULL DEFAULT now()
+  status text NOT NULL DEFAULT 'draft',
+  paid_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT events_status_check CHECK (status IN ('draft', 'pending_approval', 'active'))
 );
 
 CREATE INDEX IF NOT EXISTS events_organizer_id_idx ON events (organizer_id);
+
+ALTER TABLE events ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'draft';
+ALTER TABLE events ADD COLUMN IF NOT EXISTS paid_at timestamptz;
+ALTER TABLE events DROP CONSTRAINT IF EXISTS events_status_check;
+ALTER TABLE events ADD CONSTRAINT events_status_check CHECK (status IN ('draft', 'pending_approval', 'active'));

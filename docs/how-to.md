@@ -92,7 +92,7 @@
 Картинку и домен виджета API не ставит — это вручную в [@BotFather](https://t.me/BotFather):
 
 1. `/mybots` → `@invitation_cabinet_bot`
-2. **Edit Bot → Edit Botpic** — квадратная картинка (логотип, не фото события)
+2. **Edit Bot → Edit Botpic** — файл [`public/brand/bot-avatar.png`](../public/brand/bot-avatar.png) (бордо + золотой конверт). Не фото события.
 3. **Bot Settings → Domain** (`/setdomain`) — **только хост, без `https://` и без `/`:**
    `wedding-anniversary-seven-tau.vercel.app`
 4. По желанию: **Edit Name**. Username не меняй.

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import type { EventContent } from "@/content/types";
-import { eventPhase, getCountdown } from "@/lib/datetime";
+import { eventPhase, getCountdown, type EventPhase } from "@/lib/datetime";
 import { GoldRule, Reveal } from "@/components/Reveal";
 
 const labels = {
@@ -12,20 +12,37 @@ const labels = {
   seconds: "секунд",
 } as const;
 
+const SERVER_SNAPSHOT = "upcoming|0|0|0|0";
+
+function subscribe(onStoreChange: () => void) {
+  const id = window.setInterval(onStoreChange, 1000);
+  return () => window.clearInterval(id);
+}
+
+function getClientSnapshot(iso: string) {
+  const parts = getCountdown(iso);
+  return `${eventPhase(iso)}|${parts.days}|${parts.hours}|${parts.minutes}|${parts.seconds}`;
+}
+
+function parseSnapshot(snapshot: string) {
+  const [phase, days, hours, minutes, seconds] = snapshot.split("|");
+  return {
+    phase: phase as EventPhase,
+    days: Number(days),
+    hours: Number(hours),
+    minutes: Number(minutes),
+    seconds: Number(seconds),
+  };
+}
+
 export function Countdown({ event }: { event: EventContent }) {
   const iso = event.event.iso;
-  const [parts, setParts] = useState(() => getCountdown(iso));
-  const [phase, setPhase] = useState(() => eventPhase(iso));
-
-  useEffect(() => {
-    const tick = () => {
-      setParts(getCountdown(iso));
-      setPhase(eventPhase(iso));
-    };
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, [iso]);
+  const snapshot = useSyncExternalStore(
+    subscribe,
+    () => getClientSnapshot(iso),
+    () => SERVER_SNAPSHOT,
+  );
+  const { phase, days, hours, minutes, seconds } = parseSnapshot(snapshot);
 
   return (
     <section id="countdown" className="relative px-6 py-24 sm:py-32">
@@ -40,10 +57,10 @@ export function Countdown({ event }: { event: EventContent }) {
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
             {(
               [
-                ["days", parts.days],
-                ["hours", parts.hours],
-                ["minutes", parts.minutes],
-                ["seconds", parts.seconds],
+                ["days", days],
+                ["hours", hours],
+                ["minutes", minutes],
+                ["seconds", seconds],
               ] as const
             ).map(([key, value]) => (
               <div

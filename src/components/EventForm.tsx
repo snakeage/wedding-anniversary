@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { TEMPLATE_IDS, type TemplateId } from "@/content/types";
+import { GalleryFields } from "@/components/GalleryFields";
+import { TEMPLATE_IDS, type GalleryItem, type TemplateId } from "@/content/types";
 
 const templateLabels: Record<TemplateId, string> = {
   "quiet-luxury": "Quiet luxury",
@@ -34,9 +35,7 @@ export type EventFormValues = {
   venueAddress: string;
   map: string;
   venueNotes: string;
-  gallerySrc: string;
-  galleryAlt: string;
-  galleryCaption: string;
+  gallery: GalleryItem[];
 };
 
 function Field({
@@ -204,38 +203,7 @@ export function EventForm({
             defaultValue={values?.venueNotes}
           />
         </Field>
-        <Field
-          label="Фото (необязательно)"
-          hint={
-            values?.gallerySrc
-              ? "Новый файл заменит текущее. JPEG, PNG или WebP, до 4 МБ. Можно не выбирать файл — останется текущее фото."
-              : "JPEG, PNG или WebP, до 4 МБ. Можно не прикладывать — блок фото на странице не появится."
-          }
-        >
-          {values?.gallerySrc ? <input type="hidden" name="gallerySrc" value={values.gallerySrc} /> : null}
-          <input
-            name="galleryFile"
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            className="field mt-2"
-          />
-        </Field>
-        <Field label="Alt фото" hint="Для скринридеров. Нужен, если указали фото.">
-          <input
-            name="galleryAlt"
-            placeholder="Бокалы шампанского"
-            className="field mt-2"
-            defaultValue={values?.galleryAlt}
-          />
-        </Field>
-        <Field label="Подпись фото" hint="Текст под снимком. Нужна, если указали фото.">
-          <input
-            name="galleryCaption"
-            placeholder="Встречаемся здесь"
-            className="field mt-2"
-            defaultValue={values?.galleryCaption}
-          />
-        </Field>
+        <GalleryFields initial={values?.gallery} />
         <button type="submit" className="btn-gold w-full">
           {mode === "edit" ? "Сохранить" : "Создать"}
         </button>

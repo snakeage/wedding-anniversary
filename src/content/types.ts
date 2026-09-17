@@ -2,6 +2,8 @@ export const TEMPLATE_IDS = ["quiet-luxury", "paper-envelope"] as const;
 
 export type TemplateId = (typeof TEMPLATE_IDS)[number];
 
+export const GALLERY_MAX = 6;
+
 export type GalleryItem = {
   src: string;
   alt: string;

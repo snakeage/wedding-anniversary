@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { TemplateId } from "@/content/types";
+import { galleryFileFromForm, uploadGalleryFile } from "@/lib/blob-upload";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
 import { isValidSlug, reservedSlugs } from "@/lib/event-content";
 import { asFormString, eventFromForm } from "@/lib/event-form";
@@ -28,7 +29,13 @@ export async function POST(request: Request) {
     return fail("map");
   }
 
-  const content = eventFromForm(form);
+  const uploaded = await uploadGalleryFile(galleryFileFromForm(form), asFormString(form, "gallerySrc"));
+  if (!uploaded.ok) return fail(uploaded.error);
+  if (uploaded.src && (!asFormString(form, "galleryAlt") || !asFormString(form, "galleryCaption"))) {
+    return fail("photo");
+  }
+
+  const content = eventFromForm(form, { gallerySrc: uploaded.src });
   if (!content) {
     return fail("content");
   }

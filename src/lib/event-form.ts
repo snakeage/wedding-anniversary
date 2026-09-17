@@ -15,13 +15,16 @@ export function mapUrlFromPoint(lat: number, lng: number) {
   return `https://yandex.ru/maps/?ll=${lng},${lat}`;
 }
 
-export function eventFromForm(form: FormData, options?: { slug?: string }): EventContent | undefined {
+export function eventFromForm(
+  form: FormData,
+  options?: { slug?: string; gallerySrc?: string },
+): EventContent | undefined {
   const slug = (options?.slug ?? asFormString(form, "slug")).toLowerCase();
   const templateId = asFormString(form, "templateId");
   const isoRaw = asFormString(form, "iso");
   const iso = isoRaw.length === 16 ? `${isoRaw}:00+03:00` : isoRaw;
   const two = asFormString(form, "two");
-  const gallerySrc = asFormString(form, "gallerySrc");
+  const gallerySrc = options?.gallerySrc ?? asFormString(form, "gallerySrc");
   const galleryAlt = asFormString(form, "galleryAlt");
   const galleryCaption = asFormString(form, "galleryCaption");
   const point = parseYandexMapPoint(asFormString(form, "map"));

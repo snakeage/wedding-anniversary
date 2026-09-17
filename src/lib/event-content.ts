@@ -16,6 +16,19 @@ function asString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+export function isGallerySrc(src: string) {
+  if (src.startsWith("/") && !src.startsWith("//")) return src.length > 1;
+  try {
+    const url = new URL(src);
+    if (url.protocol !== "https:") return false;
+    return (
+      url.hostname === "blob.vercel-storage.com" || url.hostname.endsWith(".blob.vercel-storage.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
 function asNumber(value: unknown) {
   return typeof value === "number" ? value : Number(value);
 }
@@ -29,7 +42,7 @@ function parseGallery(value: unknown): GalleryItem[] {
     const src = asString(record.src);
     const alt = asString(record.alt);
     const caption = asString(record.caption);
-    if (!src.startsWith("/") || !alt || !caption) continue;
+    if (!isGallerySrc(src) || !alt || !caption) continue;
     items.push({ src, alt, caption });
   }
   return items;

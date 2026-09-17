@@ -13,6 +13,9 @@ export const EVENT_FORM_ERRORS: Record<string, string> = {
   content: "Проверьте имена, дату и площадку.",
   map: "Не получилось прочитать точку. Вставьте ссылку из Яндекс.Карт или координаты.",
   save: "Не получилось сохранить. Попробуйте ещё раз.",
+  photo: "Если есть фото — заполните alt и подпись.",
+  photo_size: "Фото — JPEG, PNG или WebP, до 4 МБ.",
+  blob: "Не получилось загрузить фото. Попробуйте ещё раз.",
 };
 
 export type EventFormValues = {
@@ -75,7 +78,7 @@ export function EventForm({
         </p>
       ) : null}
 
-      <form action={action} method="post" className="panel mt-8 space-y-5 px-6 py-8">
+      <form action={action} method="post" encType="multipart/form-data" className="panel mt-8 space-y-5 px-6 py-8">
         <Field
           label="Адрес ссылки"
           hint={
@@ -203,13 +206,18 @@ export function EventForm({
         </Field>
         <Field
           label="Фото (необязательно)"
-          hint="Пока без загрузки файлов: путь к картинке с сайта, например /gallery/gallery-01-champagne.jpg. Пусто — блок фото на странице не появится."
+          hint={
+            values?.gallerySrc
+              ? "Новый файл заменит текущее. JPEG, PNG или WebP, до 4 МБ. Можно не выбирать файл — останется текущее фото."
+              : "JPEG, PNG или WebP, до 4 МБ. Можно не прикладывать — блок фото на странице не появится."
+          }
         >
+          {values?.gallerySrc ? <input type="hidden" name="gallerySrc" value={values.gallerySrc} /> : null}
           <input
-            name="gallerySrc"
-            placeholder="/gallery/gallery-01-champagne.jpg"
+            name="galleryFile"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
             className="field mt-2"
-            defaultValue={values?.gallerySrc}
           />
         </Field>
         <Field label="Alt фото" hint="Для скринридеров. Нужен, если указали фото.">

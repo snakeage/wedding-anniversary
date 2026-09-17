@@ -92,10 +92,11 @@
 Картинку и домен виджета API не ставит — это вручную в [@BotFather](https://t.me/BotFather):
 
 1. `/mybots` → `@invitation_cabinet_bot`
-2. **Edit Bot → Edit Botpic** — файл [`public/brand/bot-avatar.png`](../public/brand/bot-avatar.png) (бордо + золотой конверт). Не фото события.
-3. **Bot Settings → Domain** (`/setdomain`) — **только хост, без `https://` и без `/`:**
+2. **Edit Bot → Edit Botpic** — файл [`public/brand/bot-avatar.png`](../public/brand/bot-avatar.png) (квадрат, кружок в чатах). Шли **как фото**, не как файл.
+3. **Edit Bot → Edit Description Picture** — файл [`public/brand/bot-welcome.png`](../public/brand/bot-welcome.png) (**640×360**, блок «Что умеет этот бот?» до Start). Тоже как фото.
+4. **Bot Settings → Domain** (`/setdomain`) — **только хост, без `https://` и без `/`:**
    `wedding-anniversary-seven-tau.vercel.app`
-4. По желанию: **Edit Name**. Username не меняй.
+5. По желанию: **Edit Name**. Username не меняй.
 
 Сайт в браузере всё равно открывается как `https://…`. `https://` нужен в других местах, не в BotFather:
 

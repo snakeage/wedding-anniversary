@@ -67,7 +67,7 @@ export function EnvelopeGate({
               </>
             ) : null}
           </p>
-          <p className="mt-3 text-sm leading-6 text-ink/65">{event.tagline}</p>
+          <p className="mt-3 max-w-sm px-2 text-sm leading-6 text-ink/65">{event.tagline}</p>
           <button
             type="button"
             className="btn-gold mt-6"

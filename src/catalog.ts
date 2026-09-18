@@ -50,7 +50,7 @@ export const liveSkins: LiveSkin[] = [
     id: "dark-editorial",
     name: "Dark editorial",
     audience: "Вечерний гала, fashion",
-    difference: "Почти чёрный холст, слоновая кость, кадры-стиллы и медленный ken-burns; без орнаментов",
+    difference: "Почти чёрный холст, слоновая кость, кадры-стиллы и медленный ken-burns; декор — кадр и типографика",
     demoSlug: "kira",
   }),
   liveSkin({

@@ -8,11 +8,11 @@ export const ivanMaria: EventContent = {
     two: "Мария",
   },
   kicker: "Свадьба",
-  tagline: "Будем рады видеть вас в этот день",
+  tagline: "Ждём вас в этот день — письмо и стол для своих",
   inviteLead:
     "В этот день нам важно быть рядом с теми, кто шёл с нами все эти годы.",
   inviteBody:
-    "Без строгого регламента: ужин, разговоры и тёплый вечер. Приходите такими, какие вы есть.",
+    "Тёплый вечер: ужин, разговоры и тост за то, что мы выбираем друг друга. Приходите такими, какие вы есть.",
   event: {
     iso: "2026-11-21T15:00:00+03:00",
     gathering: "Сбор гостей с 14:30",
@@ -27,34 +27,31 @@ export const ivanMaria: EventContent = {
   },
   gallery: [
     {
-      src: "/gallery/gallery-01-champagne.jpg",
-      alt: "Бокалы шампанского при свечах",
-      caption: "Начало нашей истории",
+      src: "/gallery/paper-envelope/pe-01-envelope.jpg",
+      alt: "Кремовый конверт с бордовой сургучной печатью",
+      caption: "Письмо вместо открытки",
     },
     {
-      src: "/gallery/gallery-02-roses.jpg",
-      alt: "Кремовые и бордовые розы",
-      caption: "Дом, который собираем вместе",
-    },
-    {
-      src: "/gallery/gallery-03-envelope.jpg",
-      alt: "Конверт с сургучной печатью",
-      caption: "Письма и поездки",
-    },
-    {
-      src: "/gallery/gallery-04-table.jpg",
-      alt: "Накрытый стол на двоих",
-      caption: "Ужины как традиция",
-    },
-    {
-      src: "/gallery/gallery-05-rings.jpg",
+      src: "/gallery/paper-envelope/pe-02-rings.jpg",
       alt: "Обручальные кольца на шёлке",
       caption: "Выбираем друг друга",
     },
     {
-      src: "/gallery/gallery-06-hall.jpg",
-      alt: "Вечерний зал ресторана",
+      src: "/gallery/paper-envelope/pe-03-table.jpg",
+      alt: "Стол на двоих со свечами и розами",
+      caption: "Ужины как традиция",
+    },
+    {
+      src: "/gallery/paper-envelope/pe-04-bouquet.jpg",
+      alt: "Букет кремовых и розовых роз на стуле",
+      caption: "Дом, который собираем вместе",
+    },
+    {
+      src: "/gallery/paper-envelope/pe-05-hall.jpg",
+      alt: "Небольшой свадебный зал с круглым столом",
       caption: "Празднуем с вами",
     },
   ],
+  galleryKicker: "Письмо",
+  galleryHeading: "Наша история",
 };

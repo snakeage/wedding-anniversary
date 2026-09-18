@@ -5,9 +5,15 @@
   margin: 0 auto;
 }
 
+@media (max-width: 767px) {
+  .envelope-photo {
+    width: min(78vw, 22rem);
+  }
+}
+
 @media (max-height: 760px) {
   .envelope-photo {
-    width: min(72vw, 22rem);
+    width: min(64vw, 20rem);
   }
 }
 

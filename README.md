@@ -21,7 +21,7 @@ npm run dev
 
 Все тексты демо — в [`src/events/`](src/events/). Свои события организатор создаёт в `/cabinet` (Neon). Гостевая ссылка — `/{slug}`.
 
-Фото для демо — в `public/gallery/` (у Garden daylight — `public/gallery/garden/`). Форма создания подставляет эти кадры как стартовые: организатор может оставить их, заменить часть своими JPEG/PNG/WebP (Vercel Blob) или убрать блок.
+Фото для демо — в `public/gallery/` по папкам скинов (`quiet-luxury/`, `paper-envelope/`, `dark-editorial/`, `garden/`). Форма создания подставляет эти кадры как стартовые: организатор может оставить их, заменить часть своими JPEG/PNG/WebP (Vercel Blob) или убрать блок.
 
 `BLOB_READ_WRITE_TOKEN` — в `.env.local` и в Vercel (Production и Preview). Без токена событие без фото создать можно; с файлом форма покажет ошибку загрузки.
 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <path id="pm-top" d="M34 112 A 68 67 2 0 1 166 108" fill="none"/>
+    <path id="pm-bot" d="M164 122 A 66 66 -2 0 1 36 120" fill="none"/>
+    <filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.05" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.35" xChannelSelector="R"/>
+    </filter>
+  </defs>
+  <g filter="url(#ink)" fill="none" stroke="#8c2f2a">
+    <ellipse cx="101.5" cy="99" rx="91" ry="87" stroke-width="2.35"/>
+    <ellipse cx="99" cy="101.5" rx="73" ry="71.5" stroke-width="1.45"/>
+    <path d="M58 102h84" stroke-width="1.15" stroke-linecap="round"/>
+  </g>
+  <text font-family="Times New Roman, Times, serif" font-size="12.5" letter-spacing="3.4" fill="#8c2f2a" filter="url(#ink)">
+    <textPath href="#pm-top" startOffset="4%">&#1052;&#1054;&#1057;&#1050;&#1042;&#1040; &#183; &#1055;&#1054;&#1063;&#1058;&#1040;</textPath>
+  </text>
+  <text font-family="Times New Roman, Times, serif" font-size="11" letter-spacing="2.8" fill="#8c2f2a" filter="url(#ink)">
+    <textPath href="#pm-bot" startOffset="14%">21 &#183; XI &#183; 26</textPath>
+  </text>
+</svg>

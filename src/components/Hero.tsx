@@ -52,7 +52,7 @@ export function Hero({ event }: { event: EventContent }) {
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.55 }}
-            className="mx-auto mt-8 max-w-md font-serif text-xl text-ink/75 italic sm:text-2xl"
+            className="mx-auto mt-8 max-w-sm px-2 font-serif text-lg text-ink/75 italic leading-relaxed sm:max-w-md sm:text-2xl"
           >
             {event.tagline}
           </motion.p>

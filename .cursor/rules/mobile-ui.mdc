@@ -1,0 +1,16 @@
+---
+description: Always verify guest invitation UI on mobile viewports for text/ornament overlays.
+alwaysApply: true
+---
+
+# Mobile invitation UI
+
+Guests open invitations on phones. After any change to layout, skins, ornaments, photos, or hero copy, check **every affected guest URL** at **390×844** and **375×667**.
+
+Look for:
+
+- Decor, etchings, silk, grain, ken-burns, seals, or photos sitting on names, tagline, date, or the RSVP CTA
+- Low contrast text on a busy background
+- Cropped buttons or type that runs into the screen edge
+
+A desktop screenshot is not verification. If an overlay shows up, fix it in the same slice.

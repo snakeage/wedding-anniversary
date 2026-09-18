@@ -28,8 +28,8 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 | `gallery[].src` | path or Blob URL | `/public` path or `https://*.blob.vercel-storage.com/...` |
 | `gallery[].alt` | string | Accessibility |
 | `gallery[].caption` | string | Year / story line |
-| `galleryKicker` | string, optional | Gallery eyebrow; default «Наша история» |
-| `galleryHeading` | string, optional | Gallery title; default couple-story heading |
+| `galleryKicker` | string, optional | Gallery eyebrow from the cabinet; default per skin |
+| `galleryHeading` | string, optional | Gallery title from the cabinet; default per skin |
 
 ## Page blocks (same set)
 

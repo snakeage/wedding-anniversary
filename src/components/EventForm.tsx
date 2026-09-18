@@ -1,7 +1,10 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import { GalleryFields } from "@/components/GalleryFields";
 import { TEMPLATE_IDS, type GalleryItem, type TemplateId } from "@/content/types";
+import { templateStarters } from "@/lib/template-starters";
 
 const templateLabels: Record<TemplateId, string> = {
   "quiet-luxury": "Quiet luxury",
@@ -38,6 +41,8 @@ export type EventFormValues = {
   map: string;
   venueNotes: string;
   gallery: GalleryItem[];
+  galleryKicker: string;
+  galleryHeading: string;
 };
 
 function Field({
@@ -69,7 +74,37 @@ export function EventForm({
   error?: string;
   values?: Partial<EventFormValues>;
 }) {
-  const templateId = values?.templateId ?? TEMPLATE_IDS[0];
+  const initialTemplate = values?.templateId ?? TEMPLATE_IDS[0];
+  const createStarter = templateStarters(initialTemplate);
+  const [templateId, setTemplateId] = useState<TemplateId>(initialTemplate);
+  const [fileDirty, setFileDirty] = useState(false);
+  const [galleryKey, setGalleryKey] = useState(mode === "edit" ? "saved" : initialTemplate);
+  const [kicker, setKicker] = useState(values?.kicker ?? createStarter.kicker);
+  const [tagline, setTagline] = useState(values?.tagline ?? createStarter.tagline);
+  const [inviteLead, setInviteLead] = useState(values?.inviteLead ?? createStarter.inviteLead);
+  const [inviteBody, setInviteBody] = useState(values?.inviteBody ?? createStarter.inviteBody);
+  const [galleryKicker, setGalleryKicker] = useState(
+    values?.galleryKicker ?? createStarter.galleryKicker,
+  );
+  const [galleryHeading, setGalleryHeading] = useState(
+    values?.galleryHeading ?? createStarter.galleryHeading,
+  );
+
+  const starter = templateStarters(templateId);
+  const galleryInitial = mode === "edit" ? values?.gallery : starter.gallery;
+
+  function applyTemplate(next: TemplateId) {
+    setTemplateId(next);
+    if (mode === "edit" || fileDirty) return;
+    const nextStarter = templateStarters(next);
+    setKicker(nextStarter.kicker);
+    setTagline(nextStarter.tagline);
+    setInviteLead(nextStarter.inviteLead);
+    setInviteBody(nextStarter.inviteBody);
+    setGalleryKicker(nextStarter.galleryKicker);
+    setGalleryHeading(nextStarter.galleryHeading);
+    setGalleryKey(next);
+  }
 
   return (
     <>
@@ -80,6 +115,9 @@ export function EventForm({
       ) : null}
 
       <form action={action} method="post" encType="multipart/form-data" className="panel mt-8 space-y-5 px-6 py-8">
+        <p className="text-xs leading-5 text-ink/45">
+          Кадры и фразы шаблона можно оставить. Замените только те фото, которые хотите своими.
+        </p>
         <Field
           label="Адрес ссылки"
           hint={
@@ -97,8 +135,13 @@ export function EventForm({
             readOnly={mode === "edit"}
           />
         </Field>
-        <Field label="Шаблон" hint="Как выглядит страница. Quiet luxury — день рождения, Paper envelope — свадьба, Dark editorial — вечерний гала, Garden daylight — выездная церемония.">
-          <select name="templateId" className="field mt-2" defaultValue={templateId}>
+        <Field label="Шаблон" hint="Как выглядит страница. Quiet luxury — день рождения, Paper envelope — свадьба, Dark editorial — вечерний гала, Garden daylight — свадьба в саду или за городом.">
+          <select
+            name="templateId"
+            className="field mt-2"
+            value={templateId}
+            onChange={(event) => applyTemplate(event.target.value as TemplateId)}
+          >
             {TEMPLATE_IDS.map((id) => (
               <option key={id} value={id}>
                 {templateLabels[id]}
@@ -114,14 +157,15 @@ export function EventForm({
         </Field>
         <Field
           label="Тип события"
-          hint="Над именами. Quiet luxury — «День рождения», Paper envelope — «Свадьба», Dark editorial — «Вечерний гала», Garden daylight — «Выездная церемония»."
+          hint="Над именами. Quiet luxury — «День рождения», Paper envelope — «Свадьба», Dark editorial — «Вечерний гала», Garden daylight — «Свадьба в саду»."
         >
           <input
             required
             name="kicker"
             placeholder="День рождения"
             className="field mt-2"
-            defaultValue={values?.kicker}
+            value={kicker}
+            onChange={(event) => setKicker(event.target.value)}
           />
         </Field>
         <Field label="Короткий слоган" hint="Одна строка под заголовком.">
@@ -129,7 +173,8 @@ export function EventForm({
             name="tagline"
             placeholder="Приходите такими, какие вы есть"
             className="field mt-2"
-            defaultValue={values?.tagline}
+            value={tagline}
+            onChange={(event) => setTagline(event.target.value)}
           />
         </Field>
         <Field
@@ -141,7 +186,8 @@ export function EventForm({
             rows={3}
             placeholder="В этот вечер хочу быть рядом с теми, кто делает жизнь теплее."
             className="field mt-2"
-            defaultValue={values?.inviteLead}
+            value={inviteLead}
+            onChange={(event) => setInviteLead(event.target.value)}
           />
         </Field>
         <Field label="О вечере и атмосфере" hint="Текст в блоке «Дата, место, настроение».">
@@ -150,7 +196,8 @@ export function EventForm({
             rows={4}
             placeholder="Ужин, разговоры и немного золота в воздухе. Без строгого регламента."
             className="field mt-2"
-            defaultValue={values?.inviteBody}
+            value={inviteBody}
+            onChange={(event) => setInviteBody(event.target.value)}
           />
         </Field>
         <Field
@@ -205,7 +252,35 @@ export function EventForm({
             defaultValue={values?.venueNotes}
           />
         </Field>
-        <GalleryFields initial={values?.gallery} />
+        <Field
+          label="Надпись над фото"
+          hint="Короткая строка над блоком. Если оставить пустым, шаблон подставит свою. Например: «Сад», «Моменты»."
+        >
+          <input
+            name="galleryKicker"
+            placeholder="Сад"
+            className="field mt-2"
+            value={galleryKicker}
+            onChange={(event) => setGalleryKicker(event.target.value)}
+          />
+        </Field>
+        <Field
+          label="Заголовок блока фото"
+          hint="Заголовок секции снимков. Если оставить пустым, шаблон подставит свой. Например: «Атмосфера дня», «Наша история»."
+        >
+          <input
+            name="galleryHeading"
+            placeholder="Свет и зелень"
+            className="field mt-2"
+            value={galleryHeading}
+            onChange={(event) => setGalleryHeading(event.target.value)}
+          />
+        </Field>
+        <GalleryFields
+          key={galleryKey}
+          initial={galleryInitial}
+          onCustomFile={() => setFileDirty(true)}
+        />
         <button type="submit" className="btn-gold w-full">
           {mode === "edit" ? "Сохранить" : "Создать"}
         </button>

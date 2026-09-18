@@ -100,11 +100,16 @@
 
 .garden-hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 38rem;
+}
+
+.garden-tagline {
+  position: relative;
+  z-index: 2;
 }
 
 /* Botanical Crest Header */
@@ -117,8 +122,8 @@
 }
 
 .garden-crest-img {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
 .garden-kicker {
@@ -348,33 +353,70 @@
 }
 
 @media (max-width: 767px) {
+  .garden-hero-copy {
+    isolation: isolate;
+    padding-inline: 1.25rem;
+  }
+
+  .garden-hero-copy h1,
+  .garden-kicker,
+  .garden-tagline,
+  .garden-hero-copy .btn-gold {
+    position: relative;
+    z-index: 2;
+  }
+
+  .garden-story-head {
+    position: relative;
+    z-index: 2;
+    padding-inline: 1.5rem;
+  }
+
+  .garden-art-top-left,
+  .garden-art-top-right,
+  .garden-art-mid-left,
+  .garden-art-lower-right {
+    opacity: 1;
+  }
+
+  .garden-art-top-left .garden-engraving,
+  .garden-art-top-right .garden-engraving {
+    opacity: 0.5;
+  }
+
+  .garden-art-mid-left .garden-engraving,
+  .garden-art-lower-right .garden-engraving {
+    opacity: 0.45;
+  }
+
   .garden-art-top-left {
-    top: 4rem;
-    left: -2rem;
-    width: 9.5rem;
-    opacity: 0.7;
+    top: 2.5rem;
+    left: -1.25rem;
+    width: 11.5rem;
   }
   .garden-art-top-right {
-    top: 19rem;
-    right: -2rem;
-    width: 10.5rem;
-    opacity: 0.7;
+    top: 36rem;
+    right: -1.25rem;
+    width: 12rem;
   }
   .garden-art-mid-left {
-    top: 100rem;
-    left: -2.5rem;
-    width: 9.5rem;
-    opacity: 0.65;
+    top: 108rem;
+    left: -1.25rem;
+    width: 11rem;
   }
   .garden-art-lower-right {
-    top: 175rem;
-    right: -2.5rem;
-    width: 9.5rem;
-    opacity: 0.65;
+    top: 180rem;
+    right: -1.25rem;
+    width: 11rem;
   }
 }
 
 @media (min-width: 768px) {
+  .garden-crest-img {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
   .garden-windows {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 52rem;

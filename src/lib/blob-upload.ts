@@ -1,5 +1,6 @@
-import { put } from "@vercel/blob";
+import { del, put } from "@vercel/blob";
 import type { GalleryItem } from "@/content/types";
+import { isGallerySrc } from "@/lib/event-content";
 import { gallerySlotMissingCopy, gallerySlotsFromForm } from "@/lib/event-form";
 
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -59,4 +60,30 @@ export async function uploadGallerySlots(form: FormData): Promise<GallerySlotsUp
     }
   }
   return { ok: true, gallery };
+}
+
+export function orphanBlobUrls(previous: GalleryItem[], next: GalleryItem[]): string[] {
+  const kept = new Set(next.map((item) => item.src));
+  const orphans: string[] = [];
+  for (const item of previous) {
+    if (kept.has(item.src)) continue;
+    if (isGallerySrc(item.src) && item.src.startsWith("https://")) {
+      orphans.push(item.src);
+    }
+  }
+  return orphans;
+}
+
+export async function deleteOrphanBlobs(previous: GalleryItem[], next: GalleryItem[]) {
+  const urls = orphanBlobUrls(previous, next);
+  if (urls.length === 0) return;
+  if (!process.env.BLOB_READ_WRITE_TOKEN?.trim()) {
+    console.error("[blob] gallery delete skipped: missing token");
+    return;
+  }
+  try {
+    await del(urls);
+  } catch (error) {
+    console.error("[blob] gallery delete failed", error);
+  }
 }

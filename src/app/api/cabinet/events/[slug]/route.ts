@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { uploadGallerySlots } from "@/lib/blob-upload";
+import { deleteOrphanBlobs, uploadGallerySlots } from "@/lib/blob-upload";
 import { getCurrentOrganizer } from "@/lib/current-organizer";
 import { asFormString, eventFromForm } from "@/lib/event-form";
 import { getDbEventBySlug, updateEvent } from "@/lib/event-store";
@@ -48,6 +48,8 @@ export async function POST(request: Request, context: RouteContext) {
     console.error("[cabinet] update event failed", error);
     return fail("save");
   }
+
+  await deleteOrphanBlobs(stored.content.gallery, content.gallery);
 
   return NextResponse.redirect(new URL("/cabinet", url.origin), 303);
 }

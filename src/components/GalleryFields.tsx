@@ -66,11 +66,16 @@ export function GalleryFields({ initial }: { initial?: GalleryItem[] }) {
               defaultValue={slot.caption}
             />
           </label>
-          {slots.length > 1 ? (
+          {slots.length > 1 || slot.src ? (
             <button
               type="button"
               className="text-[10px] tracking-[0.28em] text-ink/40 uppercase transition-colors hover:text-burgundy/75"
-              onClick={() => setSlots((current) => current.filter((_, i) => i !== index))}
+              onClick={() =>
+                setSlots((current) => {
+                  const next = current.filter((_, i) => i !== index);
+                  return next.length ? next : [newSlot()];
+                })
+              }
             >
               Убрать
             </button>

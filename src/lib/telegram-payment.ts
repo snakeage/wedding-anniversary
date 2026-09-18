@@ -55,6 +55,11 @@ export function siteEventUrl(siteUrl: string, slug: string) {
   return `${base}/${slug}`;
 }
 
+export function siteCabinetUrl(siteUrl: string) {
+  const base = siteUrl.trim().replace(/\/+$/, "") || "https://wedding-anniversary-seven-tau.vercel.app";
+  return `${base}/cabinet`;
+}
+
 export function welcomeMessageText() {
   return [
     "Кабинет цифровых приглашений.",
@@ -176,4 +181,26 @@ export function rsvpOrganizerNoticeText(payload: {
       ? `${payload.name} — придёт, гостей: ${payload.guests}`
       : `${payload.name} — не сможет`;
   return `Ответ гостя · /${payload.slug}\n\n${who}`;
+}
+
+export function draftRemindText(siteUrl: string, slug: string) {
+  return [
+    `Черновик /${slug} всё ещё без оплаты.`,
+    "",
+    "Адрес ссылки за вами. Откройте кабинет, закончите страницу и оплатите — гости её не видят, пока нет оплаты.",
+    siteCabinetUrl(siteUrl),
+    "",
+    "Если 16 дней ничего не делать, пришлём последнее предупреждение и потом удалим черновик, адрес смогут занять другие.",
+  ].join("\n");
+}
+
+export function draftWarnText(siteUrl: string, slug: string) {
+  return [
+    `Через 2 дня удалим черновик /${slug}.`,
+    "",
+    "Страница не оплачена, гости её не откроют. Откройте кабинет сегодня: допишите тексты и оплатите — адрес останется за вами.",
+    siteCabinetUrl(siteUrl),
+    "",
+    `Если не успеете, черновик и фото снимем, ссылку /${slug} освободим.`,
+  ].join("\n");
 }

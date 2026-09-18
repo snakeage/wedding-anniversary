@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS events (
   status text NOT NULL DEFAULT 'draft',
   paid_at timestamptz,
   created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  draft_reminded_at timestamptz,
+  draft_warned_at timestamptz,
   CONSTRAINT events_status_check CHECK (status IN ('draft', 'pending_approval', 'active'))
 );
 
@@ -38,3 +41,9 @@ ALTER TABLE events ADD COLUMN IF NOT EXISTS paid_at timestamptz;
 ALTER TABLE events DROP CONSTRAINT IF EXISTS events_status_check;
 ALTER TABLE events ADD CONSTRAINT events_status_check CHECK (status IN ('draft', 'pending_approval', 'active'));
 ALTER TABLE organizers ADD COLUMN IF NOT EXISTS pending_payment_slug text;
+ALTER TABLE events ADD COLUMN IF NOT EXISTS updated_at timestamptz;
+UPDATE events SET updated_at = created_at WHERE updated_at IS NULL;
+ALTER TABLE events ALTER COLUMN updated_at SET DEFAULT now();
+ALTER TABLE events ALTER COLUMN updated_at SET NOT NULL;
+ALTER TABLE events ADD COLUMN IF NOT EXISTS draft_reminded_at timestamptz;
+ALTER TABLE events ADD COLUMN IF NOT EXISTS draft_warned_at timestamptz;

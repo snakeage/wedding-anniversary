@@ -53,6 +53,7 @@ RSVP_ADMIN_SECRET=long-random-string
 TELEGRAM_BOT_TOKEN=
 NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=
 TELEGRAM_WEBHOOK_SECRET=
+CRON_SECRET=
 ```
 
 Без `DATABASE_URL` форма покажет ошибку, а не ложный успех.
@@ -65,4 +66,4 @@ npx vercel
 
 Или подключите репозиторий на [vercel.com](https://vercel.com/new): framework Next.js, root directory `wedding-anniversary`, если репозиторий — родительская папка `Invitation_web`.
 
-После деплоя обновите `NEXT_PUBLIC_SITE_URL` на прод-домен — от него зависит превью ссылки в мессенджерах. Визиты гостей: в проекте Vercel откройте **Analytics** (на проде; в `next dev` счётчик молчит).
+После деплоя обновите `NEXT_PUBLIC_SITE_URL` на прод-домен — от него зависит превью ссылки в мессенджерах. Визиты гостей: в проекте Vercel откройте **Analytics** (на проде; в `next dev` счётчик молчит). Задайте `CRON_SECRET` (случайная строка) в Production и Preview: раз в сутки бот напоминает про заброшенный черновик и снимает его только после предупреждения.

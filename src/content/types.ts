@@ -1,4 +1,4 @@
-export const TEMPLATE_IDS = ["quiet-luxury", "paper-envelope", "dark-editorial"] as const;
+export const TEMPLATE_IDS = ["quiet-luxury", "paper-envelope", "dark-editorial", "garden-daylight"] as const;
 
 export type TemplateId = (typeof TEMPLATE_IDS)[number];
 

@@ -2,7 +2,7 @@
 
 Две роли. Юридическое — на [`/terms`](https://wedding-anniversary-seven-tau.vercel.app/terms). Как поднять код и env — в [`README.md`](../README.md). Очередь работ — GitHub Issues, не этот файл.
 
-Живой сайт: [каталог](https://wedding-anniversary-seven-tau.vercel.app/) · [вход](https://wedding-anniversary-seven-tau.vercel.app/login) · демо [`/sofia`](https://wedding-anniversary-seven-tau.vercel.app/sofia), [`/ivan-maria`](https://wedding-anniversary-seven-tau.vercel.app/ivan-maria) и [`/kira`](https://wedding-anniversary-seven-tau.vercel.app/kira) (файлы в репо, не кабинет).
+Живой сайт: [каталог](https://wedding-anniversary-seven-tau.vercel.app/) · [вход](https://wedding-anniversary-seven-tau.vercel.app/login) · демо [`/sofia`](https://wedding-anniversary-seven-tau.vercel.app/sofia), [`/ivan-maria`](https://wedding-anniversary-seven-tau.vercel.app/ivan-maria), [`/kira`](https://wedding-anniversary-seven-tau.vercel.app/kira) и [`/olga-nikita`](https://wedding-anniversary-seven-tau.vercel.app/olga-nikita) (файлы в репо, не кабинет).
 
 ---
 
@@ -29,8 +29,8 @@
 
 В кабинете → **Создать приглашение**.
 
-- **Адрес ссылки** (`slug`) — латиница и дефис, например `anna-dr`. Гости откроют `сайт/этот-адрес`. После создания его **нельзя** сменить. Адреса `sofia`, `ivan-maria` и `kira` заняты демо.
-- Шаблон: Quiet luxury (день рождения), Paper envelope (свадьба) или Dark editorial (вечерний гала).
+- **Адрес ссылки** (`slug`) — латиница и дефис, например `anna-dr`. Гости откроют `сайт/этот-адрес`. После создания его **нельзя** сменить. Адреса `sofia`, `ivan-maria`, `kira` и `olga-nikita` заняты демо.
+- Шаблон: Quiet luxury (день рождения), Paper envelope (свадьба), Dark editorial (вечерний гала) или Garden daylight (выездная церемония).
 - Имена, дата (московское время), площадка, ссылка из Яндекс.Карт или координаты.
 - Фото необязательно: до 6 снимков, JPEG / PNG / WebP до 4 МБ каждый, плюс alt и подпись у каждого. Без файлов блок фото на странице не появится.
 

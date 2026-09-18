@@ -61,7 +61,7 @@ export async function productOgImage() {
             color: "#2c2420cc",
           }}
         >
-          Quiet luxury · Paper envelope
+          Quiet luxury · Paper envelope · Dark editorial
         </div>
       </div>
     ),

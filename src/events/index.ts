@@ -1,8 +1,9 @@
 import type { EventContent } from "@/content/types";
 import { ivanMaria } from "@/events/ivan-maria";
+import { kira } from "@/events/kira";
 import { sofia } from "@/events/sofia";
 
-export const events: EventContent[] = [sofia, ivanMaria];
+export const events: EventContent[] = [sofia, ivanMaria, kira];
 
 /** Fallback event when RSVP admin omits `slug`. */
 export const demoEvent = sofia;

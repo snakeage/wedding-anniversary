@@ -11,7 +11,7 @@ export const sofia: EventContent = {
   inviteLead:
     "В этот вечер хочу быть рядом с теми, кто делает жизнь теплее — тихо, светло и по-настоящему.",
   inviteBody:
-    "Без громких речей и строгого регламента: ужин, разговоры, музыка и немного золота в воздухе. Приходите такими, какие вы есть.",
+    "Ужин, разговоры, музыка и немного золота в воздухе. Приходите такими, какие вы есть.",
   event: {
     iso: "2026-10-17T16:00:00+03:00",
     gathering: "Сбор гостей с 15:30",
@@ -26,33 +26,28 @@ export const sofia: EventContent = {
   },
   gallery: [
     {
-      src: "/gallery/gallery-01-champagne.jpg",
-      alt: "Бокалы шампанского при свечах",
-      caption: "За столом, без спешки",
+      src: "/gallery/quiet-luxury/ql-01-candles.jpg",
+      alt: "Бокалы и свечи на кремовом льне",
+      caption: "Свечи к вечеру",
     },
     {
-      src: "/gallery/gallery-02-roses.jpg",
+      src: "/gallery/quiet-luxury/ql-02-cake.jpg",
+      alt: "Кремовый торт с одной свечой",
+      caption: "Тихий торт",
+    },
+    {
+      src: "/gallery/quiet-luxury/ql-03-roses.jpg",
       alt: "Кремовые и бордовые розы",
-      caption: "Цветы к вечеру",
+      caption: "Цветы к празднику",
     },
     {
-      src: "/gallery/gallery-03-envelope.jpg",
-      alt: "Конверт с сургучной печатью",
-      caption: "Письмо вместо открытки",
-    },
-    {
-      src: "/gallery/gallery-04-table.jpg",
-      alt: "Накрытый стол",
+      src: "/gallery/quiet-luxury/ql-04-table.jpg",
+      alt: "Камерный стол на двоих в свете свечей",
       caption: "Ужин для своих",
     },
     {
-      src: "/gallery/gallery-05-rings.jpg",
-      alt: "Золото на шёлке",
-      caption: "Немного блеска",
-    },
-    {
-      src: "/gallery/gallery-06-hall.jpg",
-      alt: "Вечерний зал ресторана",
+      src: "/gallery/quiet-luxury/ql-05-room.jpg",
+      alt: "Тёплый зал с люстрами и бордовыми шторами",
       caption: "Празднуем вместе",
     },
   ],

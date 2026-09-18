@@ -53,13 +53,13 @@ export function Gallery({ event }: { event: EventContent }) {
         </p>
       </Reveal>
 
-      <div className="mx-auto mt-12 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+      <div className="mx-auto mt-12 flex max-w-6xl snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
         {gallery.map((item, index) => (
-          <Reveal key={item.src} delay={index * 0.06} className="min-w-[78%] snap-center md:min-w-0">
+          <Reveal key={item.src} delay={index * 0.06} className="flex min-w-[78%] flex-col snap-center md:h-full md:min-w-0">
             <button
               type="button"
               onClick={() => setActive(index)}
-              className="group panel relative block w-full overflow-hidden text-left"
+              className="group panel relative flex min-h-full w-full flex-1 flex-col overflow-hidden text-left"
             >
               <div className="relative aspect-4/3">
                 <Image
@@ -70,7 +70,7 @@ export function Gallery({ event }: { event: EventContent }) {
                   className="object-cover transition duration-700 group-hover:scale-[1.04]"
                 />
               </div>
-              <div className="px-4 py-4">
+              <div className="flex flex-1 items-end px-4 py-4">
                 <p className="font-serif text-lg text-ink">{item.caption}</p>
               </div>
             </button>

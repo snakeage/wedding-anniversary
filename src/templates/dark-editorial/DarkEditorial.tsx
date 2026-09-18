@@ -43,12 +43,14 @@ function FilmHero({ event, still }: { event: EventContent; still?: GalleryItem }
           ) : null}
         </h1>
         {event.tagline ? (
-          <p className="font-serif mt-6 max-w-md text-xl italic text-ink/70 sm:text-2xl">{event.tagline}</p>
+          <p className="dark-tagline font-serif mt-6 max-w-sm text-lg italic leading-relaxed text-ink/80 sm:max-w-md sm:text-2xl">
+            {event.tagline}
+          </p>
         ) : null}
         <p className="mt-6 text-sm tracking-[0.16em] text-ink/55 uppercase">
           {formatEventDate(event.event.iso)} · {formatEventTime(event.event.iso)}
         </p>
-        {event.event.gathering ? <p className="mt-2 text-sm text-ink/45">{event.event.gathering}</p> : null}
+        {event.event.gathering ? <p className="mt-2 text-sm text-ink/55">{event.event.gathering}</p> : null}
         {showLead ? <p className="mt-6 max-w-md text-sm leading-6 text-ink/60">{event.inviteLead}</p> : null}
         <a href="#rsvp" className="btn-gold mt-8 inline-flex">
           Подтвердить участие

@@ -19,4 +19,6 @@ Do not implement the full `docs/templates-catalog.md` list in one go. The work q
 
 Read `docs/product.md` for deploy/URL model and `AGENTS.md` for the same rules.
 
+Guest pages are opened mostly on phones. After UI, skin, or ornament work, check the affected `/slug` URLs at 390×844 and 375×667 so type does not sit under décor. Details: `.cursor/rules/mobile-ui.mdc`.
+
 `main` is protected. Always branch from `origin/main` and open a PR. Prefix = why the PR exists: `feature/` (new behavior), `fix/` (broken), `docs/` (docs only), `chore/` (scripts/CI/env). Do not use `refactor/` or push to `main`. One `now` task = one branch; mixed docs+code stays there — not a second docs PR. Say the branch name before starting. On «мердж» / «вливай»: `gh pr merge <n> --squash --delete-branch`, then update local `main` — never leave the remote branch after a squash. Details: `docs/product.md` § Git branches.

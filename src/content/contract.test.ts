@@ -28,16 +28,19 @@ test("every event matches the documented content contract", () => {
   }
 });
 
-test("couple.two is optional: birthday and gala have one name, wedding has two", () => {
+test("couple.two is optional: birthday and gala have one name, wedding and garden have two", () => {
   const birthday = getEventBySlug("sofia");
   const wedding = getEventBySlug("ivan-maria");
   const gala = getEventBySlug("kira");
+  const garden = getEventBySlug("olga-nikita");
   assert.ok(birthday);
   assert.ok(wedding);
   assert.ok(gala);
+  assert.ok(garden);
   assert.equal(birthday.couple.two, undefined);
   assert.equal(gala.couple.two, undefined);
   assert.ok(wedding.couple.two && wedding.couple.two.trim().length > 0);
+  assert.ok(garden.couple.two && garden.couple.two.trim().length > 0);
 });
 
 test("live catalog demoSlug resolves to the matching template", () => {

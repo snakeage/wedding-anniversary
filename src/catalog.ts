@@ -53,10 +53,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Почти чёрный холст, слоновая кость, кадры-стиллы и медленный ken-burns; без орнаментов",
     demoSlug: "kira",
   }),
+  liveSkin({
+    id: "garden-daylight",
+    name: "Garden daylight",
+    audience: "Выездная церемония",
+    difference: "Воздух и зелень, выцветшие на солнце кадры, ботанический line art; без зала и позолоты",
+    demoSlug: "olga-nikita",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "garden-daylight", name: "Garden daylight", audience: "Выездная церемония" },
   { id: "minimal-swiss", name: "Minimal Swiss", audience: "ЗАГС, design-аудитория" },
   { id: "polaroid-story", name: "Polaroid story", audience: "Молодая пара" },
   { id: "gold-deco", name: "Gold deco", audience: "Формальный банкет" },

@@ -1,10 +1,32 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { getDatabaseUrl } from "@/lib/db";
+import { getEventWithOrganizer } from "@/lib/event-store";
 import { eventNames } from "@/lib/names";
-import { formatRsvpEmail, parseRsvp } from "@/lib/rsvp";
+import { formatRsvpEmail, parseRsvp, type RsvpPayload } from "@/lib/rsvp";
 import { insertRsvp } from "@/lib/rsvp-store";
 import { resolveEventWithAccess } from "@/lib/resolve-event";
+import { sendTelegramMessage } from "@/lib/telegram-bot";
+import { rsvpOrganizerNoticeText } from "@/lib/telegram-payment";
+
+async function notifyOrganizerOfRsvp(payload: RsvpPayload) {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN?.trim() ?? "";
+  if (!botToken) return;
+  try {
+    const stored = await getEventWithOrganizer(payload.slug);
+    if (!stored) return;
+    const ok = await sendTelegramMessage(
+      botToken,
+      stored.organizerTelegramId,
+      rsvpOrganizerNoticeText(payload),
+    );
+    if (!ok) {
+      console.error("[rsvp] telegram notice failed");
+    }
+  } catch (error) {
+    console.error("[rsvp] telegram notice failed", error);
+  }
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -42,6 +64,8 @@ export async function POST(request: Request) {
     console.error("[rsvp] insert failed", error);
     return NextResponse.json({ error: "Не удалось сохранить ответ. Попробуйте позже." }, { status: 500 });
   }
+
+  await notifyOrganizerOfRsvp(payload);
 
   const to = process.env.RSVP_TO_EMAIL;
   const apiKey = process.env.RESEND_API_KEY;

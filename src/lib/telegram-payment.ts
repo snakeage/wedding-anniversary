@@ -164,3 +164,16 @@ export function adminConfirmedCaption(previous: string) {
 export function adminRejectedCaption(previous: string) {
   return `${previous}\n\nОтклонено.`;
 }
+
+export function rsvpOrganizerNoticeText(payload: {
+  slug: string;
+  name: string;
+  attending: "yes" | "no";
+  guests: number;
+}) {
+  const who =
+    payload.attending === "yes"
+      ? `${payload.name} — придёт, гостей: ${payload.guests}`
+      : `${payload.name} — не сможет`;
+  return `Ответ гостя · /${payload.slug}\n\n${who}`;
+}

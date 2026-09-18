@@ -16,6 +16,7 @@ import {
   parsePayStart,
   payCallbackData,
   receiptCancelledText,
+  rsvpOrganizerNoticeText,
   siteEventUrl,
   unknownTextReply,
   welcomeMessageText,
@@ -92,4 +93,15 @@ test("receipt copy names the slug and published URL", () => {
   assert.match(clientActivatedText("https://example.com", "anna-dr"), /https:\/\/example.com\/anna-dr/);
   assert.match(adminReceiptCaption({ slug: "anna-dr", firstName: "Анна", username: "anna" }), /@anna/);
   assert.match(adminReceiptCaption({ slug: "anna-dr", firstName: "Анна", username: "anna" }), /5/);
+});
+
+test("rsvpOrganizerNoticeText names guest, reply, and slug", () => {
+  assert.equal(
+    rsvpOrganizerNoticeText({ slug: "anna-dr", name: "Анна", attending: "yes", guests: 2 }),
+    "Ответ гостя · /anna-dr\n\nАнна — придёт, гостей: 2",
+  );
+  assert.equal(
+    rsvpOrganizerNoticeText({ slug: "anna-dr", name: "Пётр", attending: "no", guests: 0 }),
+    "Ответ гостя · /anna-dr\n\nПётр — не сможет",
+  );
 });

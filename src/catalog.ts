@@ -56,8 +56,8 @@ export const liveSkins: LiveSkin[] = [
   liveSkin({
     id: "garden-daylight",
     name: "Garden daylight",
-    audience: "Выездная церемония",
-    difference: "Воздух и зелень, выцветшие на солнце кадры, ботанический line art; без зала и позолоты",
+    audience: "Свадьба в саду или за городом",
+    difference: "Хлопковая бумага, ботанические гравюры и арочные фото; дневной сад, не банкетный зал",
     demoSlug: "olga-nikita",
   }),
 ];

@@ -1,6 +1,6 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/olga-nikita` (outdoor ceremony).
+Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/olga-nikita` (garden wedding).
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 
@@ -9,7 +9,7 @@ Each row is a **skin**: different composition, motion, and audience — not a re
 | 1 | `quiet-luxury` | Quiet luxury | Adult birthday | Cream, burgundy, gold; WebGL silk + grain; editorial serif; full-page scroll | Live |
 | 2 | `paper-envelope` | Paper envelope | Classic wedding | First screen is a seal/envelope; page “opens” into a card; paper texture, little motion | Live |
 | 3 | `dark-editorial` | Dark editorial | Evening gala, fashion-forward | Near-black canvas, ivory type, film stills, slow ken-burns, no cute ornaments | Live |
-| 4 | `garden-daylight` | Garden daylight | Outdoor ceremony | Airy greens, sun-wash photos, botanical line art, light sans + soft serif | Live |
+| 4 | `garden-daylight` | Garden daylight | Garden or countryside wedding | Cotton paper, botanical etchings, arch photos, daylight sans + soft serif | Live |
 | 5 | `minimal-swiss` | Minimal Swiss | City hall, design crowd | Grid, one accent color, huge type, almost no decoration, sharp rules | Idea |
 | 6 | `polaroid-story` | Polaroid story | Young couple | Tilted prints, handwritten captions, horizontal snap gallery, playful type | Idea |
 | 7 | `gold-deco` | Gold deco | Formal banquet | Geometry, metallic lines, symmetrical lockup, 1920s poster hero | Idea |

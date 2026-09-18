@@ -143,7 +143,7 @@ function GardenHero({ event, still }: { event: EventContent; still?: GalleryItem
         </h1>
 
         {event.tagline ? (
-          <p className="font-serif mx-auto mt-6 max-w-md text-xl italic text-ink/75 sm:text-2xl">
+          <p className="garden-tagline font-serif mx-auto mt-6 max-w-sm px-4 text-lg leading-relaxed italic text-ink/75 sm:max-w-md sm:px-0 sm:text-2xl">
             {event.tagline}
           </p>
         ) : null}

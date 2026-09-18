@@ -90,3 +90,33 @@ test("defaultsFromEvent keeps the full gallery array", () => {
   assert.ok(content);
   assert.deepEqual(defaultsFromEvent(content).gallery, content.gallery);
 });
+
+test("eventFromForm keeps gallery kicker and heading", () => {
+  const form = baseForm();
+  form.set("galleryKicker", "Сад");
+  form.set("galleryHeading", "Свет и зелень");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.galleryKicker, "Сад");
+  assert.equal(content.galleryHeading, "Свет и зелень");
+  const defaults = defaultsFromEvent(content);
+  assert.equal(defaults.galleryKicker, "Сад");
+  assert.equal(defaults.galleryHeading, "Свет и зелень");
+});
+
+test("eventFromForm keeps a public garden starter photo", () => {
+  const form = baseForm();
+  form.set("templateId", "garden-daylight");
+  form.append("gallerySrc", "/gallery/garden/garden-01-morning.jpg");
+  form.append("galleryAlt", "Цветочная арка в утреннем яблоневом саду");
+  form.append("galleryCaption", "Утренний сад");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.deepEqual(content.gallery, [
+    {
+      src: "/gallery/garden/garden-01-morning.jpg",
+      alt: "Цветочная арка в утреннем яблоневом саду",
+      caption: "Утренний сад",
+    },
+  ]);
+});

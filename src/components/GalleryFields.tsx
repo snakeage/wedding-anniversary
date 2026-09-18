@@ -21,36 +21,52 @@ function newSlot(item?: Pick<GalleryItem, "src" | "alt" | "caption">): Slot {
   };
 }
 
-export function GalleryFields({ initial }: { initial?: GalleryItem[] }) {
-  const [slots, setSlots] = useState<Slot[]>(() =>
-    initial?.length ? initial.map((item) => newSlot(item)) : [newSlot()],
-  );
+function slotsFrom(initial?: GalleryItem[]) {
+  return initial?.length ? initial.map((item) => newSlot(item)) : [newSlot()];
+}
+
+export function GalleryFields({
+  initial,
+  onCustomFile,
+}: {
+  initial?: GalleryItem[];
+  onCustomFile?: () => void;
+}) {
+  const [slots, setSlots] = useState<Slot[]>(() => slotsFrom(initial));
 
   return (
     <div className="space-y-4">
       <p className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Фото (необязательно)</p>
       <p className="text-xs leading-5 text-ink/45">
-        До {GALLERY_MAX} снимков. JPEG, PNG или WebP, до 4 МБ каждый. Без файлов блок фото на странице не
-        появится. Alt и подпись нужны у каждого выбранного снимка.
+        Кадры шаблона можно оставить. Замените только те, которые хотите своими — до {GALLERY_MAX}{" "}
+        снимков, JPEG / PNG / WebP, до 4 МБ. Без снимков блок фото на странице не появится. Alt и
+        подпись нужны у каждого выбранного кадра.
       </p>
       {slots.map((slot, index) => (
         <div key={slot.id} className="space-y-3 border border-gold/25 px-4 py-4">
+          <p className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Фото {index + 1}</p>
           <input type="hidden" name="gallerySrc" value={slot.src} />
           {slot.src ? (
-            <p className="truncate text-xs text-ink/55">Текущее: {slot.src}</p>
+            // Starter and blob URLs are already public; a plain img is enough in the cabinet form.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={slot.src} alt={slot.alt || ""} className="h-28 w-full object-cover" />
           ) : null}
           <label className="block">
-            <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Файл</span>
+            <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">
+              {slot.src ? "Заменить своим" : "Загрузить"}
+            </span>
             <input
               name="galleryFile"
               type="file"
               accept="image/jpeg,image/png,image/webp"
               className="field mt-2"
+              onChange={() => onCustomFile?.()}
             />
           </label>
           <label className="block">
             <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Alt</span>
             <input
+              key={`${slot.id}-alt`}
               name="galleryAlt"
               placeholder="Бокалы шампанского"
               className="field mt-2"
@@ -60,6 +76,7 @@ export function GalleryFields({ initial }: { initial?: GalleryItem[] }) {
           <label className="block">
             <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Подпись</span>
             <input
+              key={`${slot.id}-caption`}
               name="galleryCaption"
               placeholder="Встречаемся здесь"
               className="field mt-2"

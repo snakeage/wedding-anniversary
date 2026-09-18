@@ -15,13 +15,13 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (церемония) [http://localhost:3000/olga-nikita](http://localhost:3000/olga-nikita).
+Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (свадьба в саду) [http://localhost:3000/olga-nikita](http://localhost:3000/olga-nikita).
 
 ## Что править
 
 Все тексты демо — в [`src/events/`](src/events/). Свои события организатор создаёт в `/cabinet` (Neon). Гостевая ссылка — `/{slug}`.
 
-Фото для демо — в `public/gallery/`. Организатор в кабинете загружает JPEG/PNG/WebP (Vercel Blob), не путь из репозитория.
+Фото для демо — в `public/gallery/` (у Garden daylight — `public/gallery/garden/`). Форма создания подставляет эти кадры как стартовые: организатор может оставить их, заменить часть своими JPEG/PNG/WebP (Vercel Blob) или убрать блок.
 
 `BLOB_READ_WRITE_TOKEN` — в `.env.local` и в Vercel (Production и Preview). Без токена событие без фото создать можно; с файлом форма покажет ошибку загрузки.
 

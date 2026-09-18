@@ -114,5 +114,7 @@ export function defaultsFromEvent(content: EventContent) {
     map: mapUrlFromPoint(content.venue.lat, content.venue.lng),
     venueNotes: content.venue.notes,
     gallery: content.gallery,
+    galleryKicker: content.galleryKicker ?? "",
+    galleryHeading: content.galleryHeading ?? "",
   };
 }

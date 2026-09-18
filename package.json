@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --import ./scripts/register-test-loader.mjs src/lib/rsvp.test.ts src/lib/rsvp-csv.test.ts src/lib/event-content.test.ts src/lib/event-form.test.ts src/lib/telegram-auth.test.ts src/lib/resolve-event.test.ts src/lib/yandex-maps.test.ts src/lib/sbp.test.ts src/lib/telegram-payment.test.ts src/lib/datetime.test.ts src/content/contract.test.ts",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --import ./scripts/register-test-loader.mjs src/lib/rsvp.test.ts src/lib/rsvp-csv.test.ts src/lib/event-content.test.ts src/lib/event-form.test.ts src/lib/blob-upload.test.ts src/lib/telegram-auth.test.ts src/lib/resolve-event.test.ts src/lib/yandex-maps.test.ts src/lib/sbp.test.ts src/lib/telegram-payment.test.ts src/lib/datetime.test.ts src/content/contract.test.ts",
     "db:migrate": "node scripts/migrate-rsvp.mjs",
     "telegram:webhook": "node scripts/telegram-set-webhook.mjs"
   },

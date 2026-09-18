@@ -32,6 +32,14 @@ test("mapUrlFromPoint writes Yandex ll as lng,lat", () => {
   assert.equal(mapUrlFromPoint(55.75, 37.62), "https://yandex.ru/maps/?ll=37.62,55.75");
 });
 
+test("eventFromForm accepts dark-editorial", () => {
+  const form = baseForm();
+  form.set("templateId", "dark-editorial");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "dark-editorial");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

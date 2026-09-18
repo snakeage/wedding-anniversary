@@ -6,6 +6,7 @@ import { TEMPLATE_IDS, type GalleryItem, type TemplateId } from "@/content/types
 const templateLabels: Record<TemplateId, string> = {
   "quiet-luxury": "Quiet luxury",
   "paper-envelope": "Paper envelope",
+  "dark-editorial": "Dark editorial",
 };
 
 export const EVENT_FORM_ERRORS: Record<string, string> = {
@@ -83,7 +84,7 @@ export function EventForm({
           hint={
             mode === "edit"
               ? "Адрес нельзя сменить после создания."
-              : "Латиница и дефис. Гости откроют site.ru/этот-адрес. Демо sofia и ivan-maria занять нельзя."
+              : "Латиница и дефис. Гости откроют site.ru/этот-адрес. Демо sofia, ivan-maria и kira занять нельзя."
           }
         >
           <input
@@ -95,7 +96,7 @@ export function EventForm({
             readOnly={mode === "edit"}
           />
         </Field>
-        <Field label="Шаблон" hint="Как выглядит страница. Quiet luxury — день рождения, Paper envelope — свадьба.">
+        <Field label="Шаблон" hint="Как выглядит страница. Quiet luxury — день рождения, Paper envelope — свадьба, Dark editorial — вечерний гала.">
           <select name="templateId" className="field mt-2" defaultValue={templateId}>
             {TEMPLATE_IDS.map((id) => (
               <option key={id} value={id}>
@@ -112,7 +113,7 @@ export function EventForm({
         </Field>
         <Field
           label="Тип события"
-          hint="Над именами. Quiet luxury — «День рождения», Paper envelope — «Свадьба»."
+          hint="Над именами. Quiet luxury — «День рождения», Paper envelope — «Свадьба», Dark editorial — «Вечерний гала»."
         >
           <input
             required

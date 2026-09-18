@@ -28,12 +28,15 @@ test("every event matches the documented content contract", () => {
   }
 });
 
-test("couple.two is optional: birthday has one name, wedding has two", () => {
+test("couple.two is optional: birthday and gala have one name, wedding has two", () => {
   const birthday = getEventBySlug("sofia");
   const wedding = getEventBySlug("ivan-maria");
+  const gala = getEventBySlug("kira");
   assert.ok(birthday);
   assert.ok(wedding);
+  assert.ok(gala);
   assert.equal(birthday.couple.two, undefined);
+  assert.equal(gala.couple.two, undefined);
   assert.ok(wedding.couple.two && wedding.couple.two.trim().length > 0);
 });
 

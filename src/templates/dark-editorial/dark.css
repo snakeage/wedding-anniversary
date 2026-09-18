@@ -1,0 +1,103 @@
+.dark-editorial {
+  --cream: #0b0b0b;
+  --cream-dark: #141414;
+  --ink: #f3eee6;
+  --burgundy: #d6cfc4;
+  --gold: #8d877c;
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.dark-editorial [aria-hidden] > span:nth-child(2) {
+  display: none;
+}
+
+.dark-hero {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7rem 1.5rem 3.25rem;
+}
+
+.dark-hero-still {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.dark-ken {
+  object-fit: cover;
+  animation: dark-ken 32s ease-in-out infinite alternate;
+}
+
+.dark-hero-veil {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(11 11 11 / 0.94) 10%,
+    rgb(11 11 11 / 0.42) 52%,
+    rgb(11 11 11 / 0.55) 100%
+  );
+}
+
+.dark-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 42rem;
+}
+
+.dark-credit {
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+}
+
+.dark-stills {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding: 4rem 1.5rem 2rem;
+}
+
+.dark-still {
+  margin: 0 auto;
+  width: min(100%, 56rem);
+}
+
+.dark-still-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+
+.dark-still figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 58%, transparent);
+}
+
+@keyframes dark-ken {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(-1.2%, 0.8%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark-ken {
+    animation: none;
+  }
+}

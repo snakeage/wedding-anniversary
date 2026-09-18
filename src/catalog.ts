@@ -46,10 +46,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Конверт с сургучом открывается в бумажную карточку; мало motion",
     demoSlug: "ivan-maria",
   }),
+  liveSkin({
+    id: "dark-editorial",
+    name: "Dark editorial",
+    audience: "Вечерний гала, fashion",
+    difference: "Почти чёрный холст, слоновая кость, кадры-стиллы и медленный ken-burns; без орнаментов",
+    demoSlug: "kira",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "dark-editorial", name: "Dark editorial", audience: "Вечерний гала, fashion" },
   { id: "garden-daylight", name: "Garden daylight", audience: "Выездная церемония" },
   { id: "minimal-swiss", name: "Minimal Swiss", audience: "ЗАГС, design-аудитория" },
   { id: "polaroid-story", name: "Polaroid story", audience: "Молодая пара" },

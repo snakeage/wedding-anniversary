@@ -4,6 +4,8 @@ import {
   adminReceiptCaption,
   askForReceiptText,
   clientActivatedText,
+  draftRemindText,
+  draftWarnText,
   formatEventsListText,
   helpMessageText,
   isAdminChat,
@@ -17,6 +19,7 @@ import {
   payCallbackData,
   receiptCancelledText,
   rsvpOrganizerNoticeText,
+  siteCabinetUrl,
   siteEventUrl,
   unknownTextReply,
   welcomeMessageText,
@@ -90,9 +93,17 @@ test("receipt copy names the slug and published URL", () => {
   assert.match(askForReceiptText("anna-dr"), /\/anna-dr/);
   assert.match(askForReceiptText("anna-dr"), /\/cancel/);
   assert.equal(siteEventUrl("https://example.com/", "anna-dr"), "https://example.com/anna-dr");
+  assert.equal(siteCabinetUrl("https://example.com/"), "https://example.com/cabinet");
   assert.match(clientActivatedText("https://example.com", "anna-dr"), /https:\/\/example.com\/anna-dr/);
   assert.match(adminReceiptCaption({ slug: "anna-dr", firstName: "Анна", username: "anna" }), /@anna/);
   assert.match(adminReceiptCaption({ slug: "anna-dr", firstName: "Анна", username: "anna" }), /5/);
+});
+
+test("draft remind and warn copy name the slug and cabinet", () => {
+  assert.match(draftRemindText("https://example.com", "anna-dr"), /\/anna-dr/);
+  assert.match(draftRemindText("https://example.com", "anna-dr"), /https:\/\/example.com\/cabinet/);
+  assert.match(draftWarnText("https://example.com", "anna-dr"), /Через 2 дня/);
+  assert.match(draftWarnText("https://example.com", "anna-dr"), /оплатите/i);
 });
 
 test("rsvpOrganizerNoticeText names guest, reply, and slug", () => {

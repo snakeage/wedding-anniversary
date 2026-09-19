@@ -123,7 +123,7 @@ export function EventForm({
           hint={
             mode === "edit"
               ? "Адрес нельзя сменить после создания."
-              : "Латиница и дефис. Гости откроют site.ru/этот-адрес. Демо sofia, ivan-maria, kira и olga-nikita занять нельзя."
+              : "Латиница и дефис, например anna-dr. Гости откроют /этот-адрес."
           }
         >
           <input

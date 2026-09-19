@@ -34,7 +34,6 @@ function NavItem({
 
 export function ServiceNav({ loggedIn }: { loggedIn: boolean }) {
   const pathname = usePathname();
-  const onCatalog = pathname === "/";
   const onCabinet = pathname.startsWith("/cabinet");
   const onLogin = pathname === "/login";
 
@@ -47,9 +46,6 @@ export function ServiceNav({ loggedIn }: { loggedIn: boolean }) {
         Приглашения
       </Link>
       <nav className="flex flex-wrap gap-x-7 gap-y-2">
-        <NavItem href="/" current={onCatalog}>
-          Каталог
-        </NavItem>
         {loggedIn ? (
           <NavItem href="/cabinet" current={onCabinet}>
             Кабинет

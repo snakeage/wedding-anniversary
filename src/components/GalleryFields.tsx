@@ -8,6 +8,7 @@ type Slot = {
   src: string;
   alt: string;
   caption: string;
+  fileName: string;
 };
 
 let nextSlotId = 0;
@@ -18,6 +19,7 @@ function newSlot(item?: Pick<GalleryItem, "src" | "alt" | "caption">): Slot {
     src: item?.src ?? "",
     alt: item?.alt ?? "",
     caption: item?.caption ?? "",
+    fileName: "",
   };
 }
 
@@ -51,18 +53,29 @@ export function GalleryFields({
             // eslint-disable-next-line @next/next/no-img-element
             <img src={slot.src} alt={slot.alt || ""} className="h-28 w-full object-cover" />
           ) : null}
-          <label className="block">
-            <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">
+          <div>
+            <p className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">
               {slot.src ? "Заменить своим" : "Загрузить"}
-            </span>
-            <input
-              name="galleryFile"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              className="field mt-2"
-              onChange={() => onCustomFile?.()}
-            />
-          </label>
+            </p>
+            <label className="btn-file mt-2">
+              <input
+                name="galleryFile"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="sr-only"
+                onChange={(event) => {
+                  const fileName = event.target.files?.[0]?.name ?? "";
+                  setSlots((current) =>
+                    current.map((item, i) => (i === index ? { ...item, fileName } : item)),
+                  );
+                  onCustomFile?.();
+                }}
+              />
+              <span className={slot.fileName ? "max-w-full truncate normal-case tracking-normal" : "truncate"}>
+                {slot.fileName || "Выбрать файл"}
+              </span>
+            </label>
+          </div>
           <label className="block">
             <span className="text-[10px] tracking-[0.28em] text-ink/50 uppercase">Alt</span>
             <input

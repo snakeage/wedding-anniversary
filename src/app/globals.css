@@ -102,6 +102,49 @@ body {
   color: var(--cream);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn-file {
+  position: relative;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  background: color-mix(in srgb, white 40%, var(--cream));
+  padding: 0.85rem 0.95rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-file:hover,
+.btn-file:focus-within {
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--burgundy) 28%, transparent);
+  transform: translateY(-1px);
+}
+
 .mesh-fallback {
   background:
     radial-gradient(ellipse at 18% 28%, rgb(196 165 116 / 0.42), transparent 52%),
@@ -186,5 +229,14 @@ body {
   .mesh-fallback,
   .scroll-cue {
     animation: none;
+  }
+
+  .btn-file {
+    transition: none;
+  }
+
+  .btn-file:hover,
+  .btn-file:focus-within {
+    transform: none;
   }
 }

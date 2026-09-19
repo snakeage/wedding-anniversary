@@ -6,6 +6,7 @@ import { RsvpForm } from "@/components/RsvpForm";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VenueMap } from "@/components/VenueMap";
 import type { EventContent, GalleryItem } from "@/content/types";
+import { GoldRule } from "@/components/Reveal";
 import { formatEventDate, formatEventTime } from "@/lib/datetime";
 import { partnerName } from "@/lib/names";
 import "./dark.css";
@@ -31,11 +32,14 @@ function FilmHero({ event, still }: { event: EventContent; still?: GalleryItem }
       <div className="dark-hero-veil" aria-hidden />
       <div className="dark-hero-copy">
         <p className="dark-credit">{event.kicker}</p>
-        <h1 className="font-serif mt-6 text-[clamp(3rem,12vw,7rem)] leading-[0.9] text-ink">
+        <div className="dark-hero-rule">
+          <GoldRule className="dark-foil mt-5" />
+        </div>
+        <h1 className="font-serif mt-5 text-[clamp(3rem,12vw,7rem)] leading-[0.9] text-ink">
           <span className="block">{event.couple.one}</span>
           {partner ? (
             <>
-              <span className="mt-2 block font-serif text-[clamp(1.1rem,3vw,1.7rem)] font-normal italic text-ink/55">
+              <span className="mt-2 block font-serif text-[clamp(1.1rem,3vw,1.7rem)] font-normal italic text-gold">
                 и
               </span>
               <span className="block">{partner}</span>
@@ -102,6 +106,9 @@ export function DarkEditorial({ event, preview }: { event: EventContent; preview
       <main className="relative z-10">
         <FilmHero event={event} still={heroStill} />
         {stills.length > 0 ? <FilmStills event={event} stills={stills} /> : null}
+        <div className="dark-foil-gap" aria-hidden>
+          <GoldRule className="dark-foil" />
+        </div>
         <Countdown event={event} />
         <Details event={event} />
         <VenueMap event={event} />

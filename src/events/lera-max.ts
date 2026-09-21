@@ -42,7 +42,7 @@ export const leraMax: EventContent = {
       caption: "Двор без адреса",
     },
     {
-      src: "/gallery/polaroid-story/ps-04-toast.jpg",
+      src: "/gallery/polaroid-story/ps-04-toast.jpg?v=2",
       alt: "Два бокала стоят на пледе в парке на закате",
       caption: "За нас",
     },

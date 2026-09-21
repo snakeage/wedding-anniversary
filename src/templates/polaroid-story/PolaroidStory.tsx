@@ -101,6 +101,7 @@ function PolaroidFrame({
           alt={item.alt}
           fill
           priority={priority}
+          unoptimized
           sizes="(max-width: 768px) 80vw, 20rem"
           className="object-cover"
         />

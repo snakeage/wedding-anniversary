@@ -1,6 +1,6 @@
 .polaroid-story {
-  --cream: #e8dcc8;
-  --cream-dark: #d4c4a8;
+  --cream: #f0e6d4;
+  --cream-dark: #e0d0b8;
   --ink: #3a2f28;
   --burgundy: #b5523a;
   --gold: #c9844a;
@@ -8,7 +8,9 @@
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
-  background: #d9c8a8;
+  background:
+    radial-gradient(ellipse at 50% 0%, #f7f0e4 0%, transparent 42%),
+    linear-gradient(180deg, #f3eadc 0%, #e8dcc8 48%, #ddd0b8 100%);
   color: var(--ink);
   overflow-x: hidden;
 }
@@ -21,12 +23,31 @@
   overflow: hidden;
 }
 
+.polaroid-linen {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.55;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.28) 0 1px,
+      transparent 1px 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(90, 58, 28, 0.05) 0 1px,
+      transparent 1px 9px
+    );
+}
+
 .polaroid-kraft {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.58;
+  opacity: 0.28;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: polaroid-grain-drift 32s linear infinite;
@@ -48,8 +69,8 @@
   width: min(78vw, 34rem);
   height: 58%;
   background:
-    radial-gradient(ellipse at 72% 18%, rgba(255, 146, 72, 0.55), transparent 62%),
-    radial-gradient(ellipse at 92% 78%, rgba(214, 78, 36, 0.28), transparent 54%);
+    radial-gradient(ellipse at 72% 18%, rgba(255, 168, 92, 0.42), transparent 62%),
+    radial-gradient(ellipse at 92% 78%, rgba(220, 92, 48, 0.18), transparent 54%);
   mix-blend-mode: screen;
 }
 
@@ -58,46 +79,81 @@
   pointer-events: none;
 }
 
-.polaroid-tape-tl {
-  top: 4.25rem;
-  left: -1.1rem;
-  transform: rotate(-28deg);
-}
-
-.polaroid-tape-br {
-  top: 198rem;
-  right: -0.85rem;
-  transform: rotate(21deg);
-}
-
-.polaroid-empty-tr {
-  top: 5.5rem;
-  right: -4.1rem;
-  width: 7.25rem;
-  opacity: 0.62;
-  transform: rotate(14deg);
-}
-
-.polaroid-empty-bl {
-  top: 122rem;
-  left: -4.35rem;
-  width: 7.5rem;
+.polaroid-film-pack {
+  top: 51.5rem;
+  left: -5.2rem;
+  width: 10.2rem;
   opacity: 0.55;
-  transform: rotate(-11deg);
 }
 
-.polaroid-empty-tr svg,
-.polaroid-empty-bl svg {
+.polaroid-film-pack svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 8px 14px rgba(58, 47, 40, 0.14));
+}
+
+.polaroid-empty svg {
   width: 100%;
   height: auto;
   display: block;
   filter: drop-shadow(0 10px 16px rgba(58, 47, 40, 0.16));
 }
 
-.polaroid-sprocket-l {
-  top: 34rem;
-  left: -0.15rem;
-  color: rgba(58, 47, 40, 0.2);
+.polaroid-empty-tr-back {
+  top: 3.8rem;
+  right: -3.2rem;
+  width: 7.1rem;
+  opacity: 0.58;
+}
+
+.polaroid-empty-tr-back svg {
+  transform: rotate(22deg);
+}
+
+.polaroid-empty-tr {
+  top: 6.4rem;
+  right: -4.4rem;
+  width: 7.6rem;
+  opacity: 0.82;
+}
+
+.polaroid-empty-tr svg {
+  transform: rotate(9deg);
+}
+
+.polaroid-empty-ml {
+  top: 64rem;
+  left: -5.1rem;
+  width: 7.2rem;
+  opacity: 0.6;
+}
+
+.polaroid-empty-ml svg {
+  transform: rotate(-16deg);
+}
+
+.polaroid-empty-bl-back {
+  top: 173rem;
+  right: -3.4rem;
+  width: 6.8rem;
+  opacity: 0.52;
+}
+
+.polaroid-empty-bl-back svg {
+  transform: rotate(8deg);
+}
+
+.polaroid-empty-bl {
+  top: 176rem;
+  right: -4.7rem;
+  width: 7.6rem;
+  opacity: 0.72;
+}
+
+.polaroid-empty-bl svg {
+  transform: rotate(-9deg);
 }
 
 .polaroid-story .font-serif,
@@ -112,7 +168,9 @@
 .polaroid-kicker,
 .polaroid-caption,
 .polaroid-and-line,
-.polaroid-and {
+.polaroid-and,
+.polaroid-film-pack text,
+.polaroid-empty text {
   font-family: var(--hand);
 }
 
@@ -131,7 +189,7 @@
 
 .polaroid-frame {
   background: #f7f1e4;
-  padding: 0.7rem 0.7rem 0;
+  padding: 0.55rem 0.55rem 0;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7),
     0 14px 28px rgba(58, 47, 40, 0.22);
@@ -145,11 +203,11 @@
 }
 
 .polaroid-caption {
-  min-height: 3.1rem;
+  min-height: 3.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 0.4rem 0.85rem;
+  padding: 0.7rem 0.4rem 1.05rem;
   text-align: center;
   font-size: 1.15rem;
   line-height: 1.2;
@@ -359,18 +417,34 @@
     flex-basis: 16.5rem;
   }
 
+  .polaroid-empty-tr-back {
+    right: -1.6rem;
+    width: 8.1rem;
+  }
+
   .polaroid-empty-tr {
-    right: -2.4rem;
-    width: 8.5rem;
+    right: -2.6rem;
+    width: 8.7rem;
+  }
+
+  .polaroid-empty-ml {
+    left: -2.8rem;
+    width: 8.2rem;
+  }
+
+  .polaroid-empty-bl-back {
+    right: -1.8rem;
+    width: 7.8rem;
   }
 
   .polaroid-empty-bl {
-    left: -2.6rem;
+    right: -2.8rem;
     width: 8.75rem;
   }
 
-  .polaroid-sprocket-l {
-    left: 0.4rem;
+  .polaroid-film-pack {
+    left: -4.2rem;
+    width: 10.8rem;
   }
 }
 
@@ -383,18 +457,34 @@
     font-size: 2.4rem;
   }
 
-  .polaroid-empty-tr {
-    right: -4.6rem;
-    width: 6.4rem;
+  .polaroid-empty-tr-back {
+    right: -3.6rem;
+    width: 6.2rem;
   }
 
-  .polaroid-empty-bl {
-    left: -4.8rem;
+  .polaroid-empty-tr {
+    right: -4.8rem;
     width: 6.6rem;
   }
 
-  .polaroid-sprocket-l {
-    left: -0.45rem;
+  .polaroid-empty-ml {
+    left: -5rem;
+    width: 6.4rem;
+  }
+
+  .polaroid-empty-bl-back {
+    right: -4rem;
+    width: 6.1rem;
+  }
+
+  .polaroid-empty-bl {
+    right: -5rem;
+    width: 6.6rem;
+  }
+
+  .polaroid-film-pack {
+    left: -4.9rem;
+    width: 9.8rem;
   }
 }
 

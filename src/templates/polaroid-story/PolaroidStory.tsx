@@ -16,68 +16,88 @@ import "./polaroid.css";
 function PolaroidAtmosphere() {
   const { scrollY } = useScroll();
   const yLeak = useTransform(scrollY, [0, 1800], [0, 140]);
-  const leakOpacity = useTransform(scrollY, [0, 1400], [0.9, 0.42]);
-  const yTape = useTransform(scrollY, [0, 2000], [0, -100]);
-  const yFrame = useTransform(scrollY, [0, 2200], [0, 120]);
-  const ySprocket = useTransform(scrollY, [200, 2400], [0, -130]);
+  const leakOpacity = useTransform(scrollY, [0, 1400], [0.85, 0.4]);
+  const yDump = useTransform(scrollY, [0, 2200], [0, 90]);
   const yLower = useTransform(scrollY, [900, 3000], [0, 110]);
+  const yPack = useTransform(scrollY, [400, 2200], [0, 56]);
 
   return (
     <div className="polaroid-atmosphere" aria-hidden>
+      <div className="polaroid-linen" />
       <div className="polaroid-kraft" />
       <motion.div className="polaroid-leak" style={{ y: yLeak, opacity: leakOpacity }} />
-      <motion.div className="polaroid-deco polaroid-tape-tl" style={{ y: yTape }}>
-        <TapeStrip />
+      <motion.div className="polaroid-deco polaroid-film-pack" style={{ y: yPack }}>
+        <InstantFilmPack />
       </motion.div>
-      <motion.div className="polaroid-deco polaroid-empty-tr" style={{ y: yFrame }}>
-        <EmptyPolaroid />
+      <motion.div className="polaroid-deco polaroid-empty polaroid-empty-tr-back" style={{ y: yDump }}>
+        <EmptyPolaroid developing mark="12.06" />
       </motion.div>
-      <motion.div className="polaroid-deco polaroid-sprocket-l" style={{ y: ySprocket }}>
-        <FilmSprocket />
+      <motion.div className="polaroid-deco polaroid-empty polaroid-empty-tr" style={{ y: yDump }}>
+        <EmptyPolaroid mark="кадр 01" />
       </motion.div>
-      <motion.div className="polaroid-deco polaroid-empty-bl" style={{ y: yLower }}>
-        <EmptyPolaroid />
+      <motion.div className="polaroid-deco polaroid-empty polaroid-empty-ml" style={{ y: yLower }}>
+        <EmptyPolaroid developing mark="проявляется…" />
       </motion.div>
-      <motion.div className="polaroid-deco polaroid-tape-br" style={{ y: yTape }}>
-        <TapeStrip />
+      <motion.div className="polaroid-deco polaroid-empty polaroid-empty-bl-back" style={{ y: yLower }}>
+        <EmptyPolaroid mark="лето · 27" />
+      </motion.div>
+      <motion.div className="polaroid-deco polaroid-empty polaroid-empty-bl" style={{ y: yLower }}>
+        <EmptyPolaroid developing mark="ещё один" />
       </motion.div>
     </div>
   );
 }
 
-function TapeStrip() {
+function InstantFilmPack() {
+  const bands = ["#c56a5a", "#d4a06a", "#d4c47a", "#7aa06e", "#6a88b4"];
   return (
-    <svg viewBox="0 0 96 22" width="96" height="22" aria-hidden>
-      <rect width="96" height="22" fill="rgba(236, 205, 130, 0.58)" />
-      <rect x="0" y="0" width="96" height="3" fill="rgba(255, 255, 255, 0.18)" />
-    </svg>
-  );
-}
-
-function EmptyPolaroid() {
-  return (
-    <svg viewBox="0 0 120 148" width="120" height="148" aria-hidden>
-      <rect x="3" y="3" width="114" height="142" rx="3" fill="#f6efe0" />
-      <rect x="12" y="12" width="96" height="96" fill="#d7c4a4" />
-      <rect x="12" y="12" width="96" height="96" fill="none" stroke="rgba(58, 47, 40, 0.12)" />
-    </svg>
-  );
-}
-
-function FilmSprocket() {
-  return (
-    <svg viewBox="0 0 28 220" width="28" height="220" fill="none" aria-hidden>
-      {Array.from({ length: 9 }, (_, index) => (
-        <rect
-          key={index}
-          x="6"
-          y={8 + index * 24}
-          width="16"
-          height="10"
-          rx="1.5"
-          fill="currentColor"
-        />
+    <svg viewBox="0 0 188 122" width="188" height="122" aria-hidden>
+      <rect x="3" y="3" width="182" height="116" rx="5" fill="#5a4a3c" />
+      <rect x="13" y="13" width="162" height="96" rx="2" fill="#efe4d0" />
+      {bands.map((color, index) => (
+        <rect key={color} x={24 + index * 22} y="42" width="22" height="8" fill={color} />
       ))}
+      <text
+        x="24"
+        y="86"
+        fill="#756b5e"
+        fontSize="13"
+        fontFamily="var(--font-hand), Caveat, cursive"
+      >
+        color · 8
+      </text>
+    </svg>
+  );
+}
+
+function EmptyPolaroid({
+  developing = false,
+  mark,
+}: {
+  developing?: boolean;
+  mark: string;
+}) {
+  return (
+    <svg viewBox="0 0 120 152" width="120" height="152" aria-hidden>
+      <rect x="2" y="2" width="116" height="148" rx="3" fill="#f7f1e4" />
+      <rect x="10" y="10" width="100" height="100" fill={developing ? "#b7bdb2" : "#d4c2a2"} />
+      {developing ? (
+        <>
+          <path d="M10 77C31 50 46 96 68 63C82 42 96 49 110 35V110H10Z" fill="#766d5d" opacity="0.46" />
+          <circle cx="83" cy="34" r="23" fill="#f5e6ba" opacity="0.48" />
+          <rect x="10" y="10" width="100" height="100" fill="#738f9d" opacity="0.22" />
+        </>
+      ) : null}
+      <text
+        x="60"
+        y="134"
+        fill="#554a40"
+        fontSize="11"
+        fontFamily="var(--font-hand), Caveat, cursive"
+        textAnchor="middle"
+      >
+        {mark}
+      </text>
     </svg>
   );
 }

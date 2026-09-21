@@ -32,7 +32,7 @@ export const leraMax: EventContent = {
       caption: "Скамейка наша",
     },
     {
-      src: "/gallery/polaroid-story/ps-02-rings.jpg",
+      src: "/gallery/polaroid-story/ps-02-rings.jpg?v=4",
       alt: "Руки пары над столиком в городском кафе",
       caption: "Держим крепче",
     },

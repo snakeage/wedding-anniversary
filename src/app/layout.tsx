@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Caveat, Cormorant_Garamond, Inter } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -14,6 +14,12 @@ const cormorant = Cormorant_Garamond({
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-inter",
+});
+
+const caveat = Caveat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "600"],
+  variable: "--font-hand",
 });
 
 const title = "Шаблоны приглашений";
@@ -41,7 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={`${cormorant.variable} ${inter.variable} antialiased`}
+      className={`${cormorant.variable} ${inter.variable} ${caveat.variable} antialiased`}
     >
       <body className="min-h-full bg-cream font-sans text-ink">
         <SmoothScroll>{children}</SmoothScroll>

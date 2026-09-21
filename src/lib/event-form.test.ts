@@ -48,6 +48,14 @@ test("eventFromForm accepts garden-daylight", () => {
   assert.equal(content.templateId, "garden-daylight");
 });
 
+test("eventFromForm accepts polaroid-story", () => {
+  const form = baseForm();
+  form.set("templateId", "polaroid-story");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "polaroid-story");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

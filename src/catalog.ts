@@ -60,11 +60,17 @@ export const liveSkins: LiveSkin[] = [
     difference: "Хлопковая бумага, ботанические гравюры и арочные фото; дневной сад, не банкетный зал",
     demoSlug: "olga-nikita",
   }),
+  liveSkin({
+    id: "polaroid-story",
+    name: "Polaroid story",
+    audience: "Молодая пара",
+    difference: "Наклонённые снимки, подписи от руки и горизонтальная лента кадров — городская свадьба без зала",
+    demoSlug: "lera-max",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
   { id: "minimal-swiss", name: "Minimal Swiss", audience: "ЗАГС, design-аудитория" },
-  { id: "polaroid-story", name: "Polaroid story", audience: "Молодая пара" },
   { id: "gold-deco", name: "Gold deco", audience: "Формальный банкет" },
   { id: "winter-frost", name: "Winter frost", audience: "Новый год, зимняя свадьба" },
   { id: "seaside", name: "Seaside", audience: "Destination, море" },

@@ -11,6 +11,7 @@ const templateLabels: Record<TemplateId, string> = {
   "paper-envelope": "Paper envelope",
   "dark-editorial": "Dark editorial",
   "garden-daylight": "Garden daylight",
+  "polaroid-story": "Polaroid story",
 };
 
 export const EVENT_FORM_ERRORS: Record<string, string> = {

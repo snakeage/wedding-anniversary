@@ -1,0 +1,23 @@
+---
+description: Agree file scope in Plan before editing; the user names the screen, the agent names files.
+alwaysApply: true
+---
+
+# Scope before edits
+
+The user often will not know paths. They describe the screen, the change, and what must stay (guest demos, cabinet, skins). The agent proposes files.
+
+**Ask or Plan first** for product, IA, or anything beyond a one-line obvious fix. Do not edit until the user agrees.
+
+In the plan, list:
+
+- In scope: files (or folders) to change
+- Out of scope: screens or files that stay
+
+«Делай» / implement the plan → Agent, only those files.
+
+If the work wants a neighboring screen or an extra file, ask. Do not also rewrite `ServiceNav` while changing `GalleryFields`.
+
+After edits, `git diff --stat` must match the plan. Extra files → revert them or ask before keeping.
+
+Example: file picker looks like OS chrome → `GalleryFields.tsx` and `globals.css`. Not `EventForm`, not guest skins.

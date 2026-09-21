@@ -43,7 +43,7 @@ export const leraMax: EventContent = {
     },
     {
       src: "/gallery/polaroid-story/ps-04-toast.jpg",
-      alt: "Бокалы на пледе в парке на закате",
+      alt: "Два бокала стоят на пледе в парке на закате",
       caption: "За нас",
     },
     {

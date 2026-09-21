@@ -13,14 +13,91 @@
   overflow-x: hidden;
 }
 
+.polaroid-atmosphere {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
 .polaroid-kraft {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.58;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: polaroid-grain-drift 32s linear infinite;
+}
+
+@keyframes polaroid-grain-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 180px 120px;
+  }
+}
+
+.polaroid-leak {
+  position: absolute;
+  top: -8%;
+  right: -18%;
+  width: min(78vw, 34rem);
+  height: 58%;
+  background:
+    radial-gradient(ellipse at 72% 18%, rgba(255, 146, 72, 0.55), transparent 62%),
+    radial-gradient(ellipse at 92% 78%, rgba(214, 78, 36, 0.28), transparent 54%);
+  mix-blend-mode: screen;
+}
+
+.polaroid-deco {
+  position: absolute;
+  pointer-events: none;
+}
+
+.polaroid-tape-tl {
+  top: 4.25rem;
+  left: -1.1rem;
+  transform: rotate(-28deg);
+}
+
+.polaroid-tape-br {
+  top: 198rem;
+  right: -0.85rem;
+  transform: rotate(21deg);
+}
+
+.polaroid-empty-tr {
+  top: 5.5rem;
+  right: -4.1rem;
+  width: 7.25rem;
+  opacity: 0.62;
+  transform: rotate(14deg);
+}
+
+.polaroid-empty-bl {
+  top: 122rem;
+  left: -4.35rem;
+  width: 7.5rem;
+  opacity: 0.55;
+  transform: rotate(-11deg);
+}
+
+.polaroid-empty-tr svg,
+.polaroid-empty-bl svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 16px rgba(58, 47, 40, 0.16));
+}
+
+.polaroid-sprocket-l {
+  top: 34rem;
+  left: -0.15rem;
+  color: rgba(58, 47, 40, 0.2);
 }
 
 .polaroid-story .font-serif,
@@ -50,7 +127,6 @@
 .polaroid-stack {
   position: relative;
   width: min(78vw, 18.5rem);
-  min-height: 22rem;
 }
 
 .polaroid-frame {
@@ -83,15 +159,6 @@
 .polaroid-front {
   position: relative;
   z-index: 2;
-  transform: rotate(-3.5deg);
-}
-
-.polaroid-back {
-  position: absolute;
-  inset: 1.4rem auto auto 18%;
-  width: 88%;
-  z-index: 1;
-  transform: rotate(8deg);
 }
 
 .polaroid-blank-body {
@@ -260,12 +327,21 @@
   background: color-mix(in srgb, var(--burgundy) 88%, black);
 }
 
-.polaroid-story [aria-hidden] > span:nth-child(2) {
+.polaroid-story #countdown [aria-hidden] > span:nth-child(2),
+.polaroid-story #details [aria-hidden] > span:nth-child(2),
+.polaroid-story #map [aria-hidden] > span:nth-child(2),
+.polaroid-story #rsvp [aria-hidden] > span:nth-child(2) {
   display: none;
 }
 
-.polaroid-story [aria-hidden] > span:first-child,
-.polaroid-story [aria-hidden] > span:last-child {
+.polaroid-story #countdown [aria-hidden] > span:first-child,
+.polaroid-story #countdown [aria-hidden] > span:last-child,
+.polaroid-story #details [aria-hidden] > span:first-child,
+.polaroid-story #details [aria-hidden] > span:last-child,
+.polaroid-story #map [aria-hidden] > span:first-child,
+.polaroid-story #map [aria-hidden] > span:last-child,
+.polaroid-story #rsvp [aria-hidden] > span:first-child,
+.polaroid-story #rsvp [aria-hidden] > span:last-child {
   background: color-mix(in srgb, var(--burgundy) 55%, transparent);
 }
 
@@ -277,32 +353,70 @@
 
   .polaroid-stack {
     width: min(52vw, 24rem);
-    min-height: 30rem;
   }
 
   .polaroid-strip .polaroid-frame {
     flex-basis: 16.5rem;
+  }
+
+  .polaroid-empty-tr {
+    right: -2.4rem;
+    width: 8.5rem;
+  }
+
+  .polaroid-empty-bl {
+    left: -2.6rem;
+    width: 8.75rem;
+  }
+
+  .polaroid-sprocket-l {
+    left: 0.4rem;
   }
 }
 
 @media (max-width: 389px) {
   .polaroid-stack {
     width: min(86vw, 17rem);
-    min-height: 20rem;
-  }
-
-  .polaroid-back {
-    inset: 1.1rem auto auto 12%;
   }
 
   .polaroid-names-block {
     font-size: 2.4rem;
   }
+
+  .polaroid-empty-tr {
+    right: -4.6rem;
+    width: 6.4rem;
+  }
+
+  .polaroid-empty-bl {
+    left: -4.8rem;
+    width: 6.6rem;
+  }
+
+  .polaroid-sprocket-l {
+    left: -0.45rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .polaroid-front,
-  .polaroid-back,
+  .polaroid-kraft {
+    animation: none;
+  }
+
+  .polaroid-leak {
+    transform: none !important;
+    opacity: 0.45 !important;
+  }
+
+  .polaroid-deco,
+  .polaroid-strip {
+    transform: none !important;
+  }
+
+  .polaroid-stack {
+    transform: rotate(-3.2deg) !important;
+  }
+
   .polaroid-tilt-left,
   .polaroid-tilt-right {
     transform: none;

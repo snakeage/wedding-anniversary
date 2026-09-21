@@ -14,4 +14,4 @@ Priorities: `p0` first live sale, `p1` second client / storefront, `p2` trust, `
 
 ## Agent
 
-See `AGENTS.md` and `.cursor/rules/product.mdc`. Before coding: say which issue is `now`. If sales are blocked by something that is not `now`, **propose** moving `now` — do not silently start another catalog skin or open a new issue without consent.
+See `AGENTS.md`, `.cursor/rules/product.mdc`, and `.cursor/rules/scope.mdc`. Before coding: say which issue is `now`. If sales are blocked by something that is not `now`, **propose** moving `now` — do not silently start another catalog skin or open a new issue without consent. The user describes the screen; the agent lists in-scope / out-of-scope files in Plan and waits for yes.

@@ -57,6 +57,4 @@ export const dashaIlya: EventContent = {
       caption: "Стол накрыт для вас",
     },
   ],
-  galleryKicker: "Свет",
-  galleryHeading: "Тепло за стеклом",
 };

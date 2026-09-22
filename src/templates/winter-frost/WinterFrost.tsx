@@ -213,9 +213,18 @@ function WinterHero({ event, still }: { event: EventContent; still?: GalleryItem
   );
 }
 
-function WinterWindows({ stills }: { stills: GalleryItem[] }) {
+function WinterWindows({ event, stills }: { event: EventContent; stills: GalleryItem[] }) {
+  const kicker = event.galleryKicker?.trim();
+  const heading = event.galleryHeading?.trim();
+
   return (
     <section id="story" className="winter-story">
+      {kicker || heading ? (
+        <div className="winter-story-head">
+          {kicker ? <p className="winter-kicker">{kicker}</p> : null}
+          {heading ? <h2 className="font-serif winter-heading">{heading}</h2> : null}
+        </div>
+      ) : null}
       <div className="winter-windows">
         {stills.map((item, index) => (
           <WinterPane key={item.src} item={item} caption={item.caption} thawIndex={index + 1} />
@@ -235,7 +244,7 @@ export function WinterFrost({ event, preview }: { event: EventContent; preview?:
       <WinterHeader />
       <main className="winter-sheet">
         <WinterHero event={event} still={still} />
-        {rest.length > 0 ? <WinterWindows stills={rest} /> : null}
+        {rest.length > 0 ? <WinterWindows event={event} stills={rest} /> : null}
         <Countdown event={event} />
         <Details event={event} />
         <VenueMap event={event} />

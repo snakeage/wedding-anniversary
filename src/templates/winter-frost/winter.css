@@ -395,6 +395,22 @@
   padding-top: 2.75rem;
 }
 
+.winter-story-head {
+  padding: 0 1.35rem 0.35rem;
+  text-align: center;
+}
+
+.winter-heading {
+  margin: 0.85rem 0 0;
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.winter-story-head .winter-heading:first-child {
+  margin-top: 0;
+}
+
 .winter-windows {
   display: flex;
   flex-direction: column;

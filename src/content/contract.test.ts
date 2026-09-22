@@ -34,16 +34,19 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   const gala = getEventBySlug("kira");
   const garden = getEventBySlug("olga-nikita");
   const polaroid = getEventBySlug("lera-max");
+  const winter = getEventBySlug("dasha-ilya");
   assert.ok(birthday);
   assert.ok(wedding);
   assert.ok(gala);
   assert.ok(garden);
   assert.ok(polaroid);
+  assert.ok(winter);
   assert.equal(birthday.couple.two, undefined);
   assert.equal(gala.couple.two, undefined);
   assert.ok(wedding.couple.two && wedding.couple.two.trim().length > 0);
   assert.ok(garden.couple.two && garden.couple.two.trim().length > 0);
   assert.ok(polaroid.couple.two && polaroid.couple.two.trim().length > 0);
+  assert.ok(winter.couple.two && winter.couple.two.trim().length > 0);
 });
 
 test("live catalog demoSlug resolves to the matching template", () => {

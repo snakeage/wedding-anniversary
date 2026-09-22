@@ -33,6 +33,8 @@ test("live skins do not share the old restaurant gallery files", () => {
   assert.equal(templateStarters("paper-envelope").gallery[0]?.src, "/gallery/paper-envelope/pe-01-envelope.jpg");
   assert.equal(templateStarters("dark-editorial").gallery[0]?.src, "/gallery/dark-editorial/de-01-hall.jpg");
   assert.equal(templateStarters("polaroid-story").gallery[0]?.src, "/gallery/polaroid-story/ps-01-park.jpg");
+  assert.equal(templateStarters("winter-frost").gallery[0]?.src, "/gallery/winter-frost/wf-hero-snow.jpg?v=3");
+  assert.equal(templateStarters("winter-frost").gallery[1]?.src, "/gallery/winter-frost/wf-01-glass.jpg?v=3");
   assert.equal(new Set(srcs).size, srcs.length);
   for (const src of srcs) {
     assert.equal(src.includes("/gallery/gallery-0"), false);

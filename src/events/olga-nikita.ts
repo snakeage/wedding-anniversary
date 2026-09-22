@@ -4,8 +4,8 @@ export const olgaNikita: EventContent = {
   templateId: "garden-daylight",
   slug: "olga-nikita",
   couple: {
-    one: "Ольга",
-    two: "Никита",
+    one: "Никита",
+    two: "Ольга",
   },
   kicker: "Свадьба в саду",
   tagline: "Тёплый день среди яблонь, живая музыка и ужин под открытым небом",

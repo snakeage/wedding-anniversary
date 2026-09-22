@@ -56,6 +56,14 @@ test("eventFromForm accepts polaroid-story", () => {
   assert.equal(content.templateId, "polaroid-story");
 });
 
+test("eventFromForm accepts winter-frost", () => {
+  const form = baseForm();
+  form.set("templateId", "winter-frost");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "winter-frost");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

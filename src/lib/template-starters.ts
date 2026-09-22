@@ -1,4 +1,5 @@
 import type { GalleryItem, TemplateId } from "@/content/types";
+import { dashaIlya } from "@/events/dasha-ilya";
 import { ivanMaria } from "@/events/ivan-maria";
 import { kira } from "@/events/kira";
 import { leraMax } from "@/events/lera-max";
@@ -41,6 +42,7 @@ const STARTERS: Record<TemplateId, TemplateStarter> = {
   "dark-editorial": fromDemo(kira),
   "garden-daylight": fromDemo(olgaNikita),
   "polaroid-story": fromDemo(leraMax),
+  "winter-frost": fromDemo(dashaIlya),
 };
 
 export function templateStarters(id: TemplateId): TemplateStarter {

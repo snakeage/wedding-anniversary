@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Countdown } from "@/components/Countdown";
 import { Details } from "@/components/Details";
 import { Footer } from "@/components/Footer";
@@ -162,7 +162,7 @@ function WinterPane({
               "--side-span-x": thaw.gsx,
               "--side-span-y": thaw.gsy,
               "--ice-turn": thaw.turn,
-            } as React.CSSProperties
+            } as CSSProperties
           }
         >
           <Image

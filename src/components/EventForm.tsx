@@ -12,6 +12,7 @@ const templateLabels: Record<TemplateId, string> = {
   "dark-editorial": "Dark editorial",
   "garden-daylight": "Garden daylight",
   "polaroid-story": "Polaroid story",
+  "winter-frost": "Winter frost",
 };
 
 export const EVENT_FORM_ERRORS: Record<string, string> = {
@@ -150,11 +151,11 @@ export function EventForm({
             ))}
           </select>
         </Field>
-        <Field label="Имя" hint="Именинник или первый из пары.">
-          <input required name="one" placeholder="Анна" className="field mt-2" defaultValue={values?.one} />
+        <Field label="Имя" hint="Для свадьбы — имя жениха. Для дня рождения — именинник.">
+          <input required name="one" placeholder="Иван" className="field mt-2" defaultValue={values?.one} />
         </Field>
-        <Field label="Второе имя" hint="Для свадьбы. Для дня рождения оставьте пустым.">
-          <input name="two" placeholder="Дмитрий" className="field mt-2" defaultValue={values?.two} />
+        <Field label="Второе имя" hint="Для свадьбы — имя невесты. Для дня рождения оставьте пустым.">
+          <input name="two" placeholder="Мария" className="field mt-2" defaultValue={values?.two} />
         </Field>
         <Field
           label="Тип события"

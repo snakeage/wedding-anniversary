@@ -1,0 +1,449 @@
+.winter-frost {
+  --cream: #f7f1e6;
+  --cream-dark: #e8dcc8;
+  --ink: #3a312a;
+  --burgundy: #5c4033;
+  --gold: #d2b17a;
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.winter-plates {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.winter-plate {
+  position: absolute;
+  inset: -12%;
+}
+
+.winter-plate-field {
+  animation: winter-drift-a 40s ease-in-out infinite alternate;
+}
+
+.winter-plate-glass {
+  opacity: 0.42;
+  mix-blend-mode: overlay;
+  animation: winter-drift-b 40s ease-in-out infinite alternate;
+}
+
+.winter-veil {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgb(247 241 230 / 0.62);
+}
+
+.winter-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+.winter-sheen {
+  pointer-events: none;
+  position: fixed;
+  inset: -15% 0;
+  z-index: 2;
+  background: linear-gradient(
+    108deg,
+    transparent 42%,
+    rgb(255 214 160 / 0.45) 50%,
+    transparent 58%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+  animation: winter-breath 32s ease-in-out infinite alternate;
+}
+
+@keyframes winter-breath {
+  from {
+    transform: translateX(-7%);
+  }
+  to {
+    transform: translateX(7%);
+  }
+}
+
+@keyframes winter-drift-a {
+  from {
+    transform: translate3d(-3%, -2%, 0);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0);
+  }
+}
+
+@keyframes winter-drift-b {
+  from {
+    transform: translate3d(3%, 2%, 0);
+  }
+  to {
+    transform: translate3d(-3%, -2%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-sheen,
+  .winter-plate-field,
+  .winter-plate-glass {
+    animation: none;
+  }
+}
+
+.winter-branches {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.winter-branch {
+  position: absolute;
+  color: #8a7564;
+}
+
+.winter-branch-tl {
+  top: -0.5rem;
+  left: -2.75rem;
+  width: 8.75rem;
+  opacity: 0.4;
+}
+
+.winter-branch-br {
+  top: 64%;
+  right: -3.25rem;
+  width: 10rem;
+  opacity: 0.32;
+  transform: scaleX(-1);
+}
+
+.winter-sheet {
+  position: relative;
+  z-index: 3;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.winter-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4.75rem 1.35rem 1rem;
+}
+
+.winter-hero .winter-pane {
+  margin-top: 0;
+}
+
+.winter-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.winter-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 62%, var(--gold));
+}
+
+.winter-names {
+  margin-top: 1.25rem;
+  font-size: clamp(3rem, 12vw, 5.4rem);
+  line-height: 0.9;
+  color: var(--ink);
+}
+
+.winter-and {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--ink) 45%, var(--gold));
+}
+
+.winter-rule {
+  width: 4.5rem;
+  height: 1px;
+  margin: 1.35rem auto 0;
+  background: var(--gold);
+}
+
+.winter-tagline {
+  margin: 1.35rem auto 0;
+  max-width: 18rem;
+  font-size: clamp(1.15rem, 3.4vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 78%, white);
+}
+
+.winter-when {
+  margin-top: 1.15rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 58%, var(--gold));
+}
+
+.winter-gathering {
+  margin: 0.7rem auto 0;
+  max-width: 22rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 68%, white);
+}
+
+.winter-letter {
+  margin: 1.6rem auto 0.25rem;
+  max-width: 22rem;
+  font-size: clamp(1.2rem, 3.6vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink) 84%, white);
+}
+
+@media (max-height: 740px) {
+  .winter-hero {
+    padding: 3.85rem 1.15rem 0.5rem;
+  }
+
+  .winter-hero-copy {
+    margin-top: 1rem;
+  }
+
+  .winter-names {
+    margin-top: 0.7rem;
+  }
+
+  .winter-rule,
+  .winter-tagline {
+    margin-top: 0.75rem;
+  }
+
+  .winter-when {
+    margin-top: 0.65rem;
+  }
+
+  .winter-gathering {
+    margin-top: 0.4rem;
+  }
+
+  .winter-letter {
+    margin-top: 1rem;
+  }
+}
+
+.winter-pane {
+  width: min(100%, 36rem);
+  margin: 2.25rem auto 0;
+}
+
+.winter-pane-glass {
+  padding: 0.55rem;
+  background: color-mix(in srgb, white 82%, var(--cream));
+  border: 1px solid color-mix(in srgb, var(--gold) 80%, white);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+@property --hole {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+.winter-pane-inner {
+  --hole: 0%;
+  --thaw-x: 70%;
+  --thaw-y: 40%;
+  --span-x: 140%;
+  --span-y: 80%;
+  --finger-x: 50%;
+  --finger-y: 30%;
+  --finger-span-x: 90%;
+  --finger-span-y: 40%;
+  --side-x: 80%;
+  --side-y: 70%;
+  --side-span-x: 60%;
+  --side-span-y: 110%;
+  --ice-turn: 0deg;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+
+.winter-pane.is-lit .winter-pane-inner {
+  animation: winter-thaw 8s linear forwards;
+}
+
+@keyframes winter-thaw {
+  to {
+    --hole: 120%;
+  }
+}
+
+.winter-ice {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  -webkit-mask-image:
+    radial-gradient(ellipse var(--span-x) var(--span-y) at var(--thaw-x) var(--thaw-y), transparent var(--hole), rgb(0 0 0 / 0.22) calc(var(--hole) + 18%), #000 calc(var(--hole) + 40%)),
+    radial-gradient(ellipse var(--finger-span-x) var(--finger-span-y) at var(--finger-x) var(--finger-y), transparent calc(var(--hole) * 0.62), #000 calc(var(--hole) * 0.62 + 44%)),
+    radial-gradient(ellipse var(--side-span-x) var(--side-span-y) at var(--side-x) var(--side-y), transparent calc(var(--hole) * 0.4), #000 calc(var(--hole) * 0.4 + 48%));
+  mask-image:
+    radial-gradient(ellipse var(--span-x) var(--span-y) at var(--thaw-x) var(--thaw-y), transparent var(--hole), rgb(0 0 0 / 0.22) calc(var(--hole) + 18%), #000 calc(var(--hole) + 40%)),
+    radial-gradient(ellipse var(--finger-span-x) var(--finger-span-y) at var(--finger-x) var(--finger-y), transparent calc(var(--hole) * 0.62), #000 calc(var(--hole) * 0.62 + 44%)),
+    radial-gradient(ellipse var(--side-span-x) var(--side-span-y) at var(--side-x) var(--side-y), transparent calc(var(--hole) * 0.4), #000 calc(var(--hole) * 0.4 + 48%));
+  -webkit-mask-composite: source-in, source-in;
+  mask-composite: intersect, intersect;
+}
+
+.winter-ice-crystal {
+  position: absolute;
+  inset: -32%;
+  background: rgb(255 252 250 / 0.97);
+  transform: rotate(var(--ice-turn)) scale(1.25);
+  -webkit-mask-image: url("/gallery/winter-frost/bg-glass.jpg?v=2");
+  mask-image: url("/gallery/winter-frost/bg-glass.jpg?v=2");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
+}
+
+.winter-pane figcaption {
+  margin: 1.35rem auto 0;
+  max-width: 16rem;
+  text-align: center;
+  font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--ink) 82%, white);
+  opacity: 0;
+  transform: translateY(0.45rem);
+}
+
+.winter-pane.is-lit figcaption {
+  animation: winter-line 0.9s ease 6.3s forwards;
+}
+
+@keyframes winter-line {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-pane .winter-pane-inner,
+  .winter-pane.is-lit .winter-pane-inner {
+    animation: none;
+  }
+
+  .winter-pane .winter-ice,
+  .winter-pane.is-lit .winter-ice {
+    opacity: 0;
+    animation: none;
+  }
+
+  .winter-pane figcaption,
+  .winter-pane.is-lit figcaption {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (scripting: none) {
+  .winter-ice,
+  .winter-melt {
+    display: none;
+  }
+
+  .winter-pane figcaption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.winter-story {
+  padding-top: 2.75rem;
+}
+
+.winter-windows {
+  display: flex;
+  flex-direction: column;
+  gap: 3.25rem;
+  padding: 0.5rem 1.35rem 1rem;
+}
+
+.winter-windows .winter-pane {
+  margin-top: 0;
+}
+
+.winter-frost .panel {
+  background: color-mix(in srgb, white 80%, var(--cream));
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--ink) 6%, transparent);
+  backdrop-filter: none;
+}
+
+.winter-frost .field {
+  background: color-mix(in srgb, white 88%, var(--cream));
+  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+.winter-frost [aria-hidden] > span.rotate-45 {
+  width: 1.75rem;
+  height: 1px;
+  rotate: none;
+  border: 0;
+  background: var(--gold);
+}
+
+@media (max-width: 767px) {
+  .winter-branch-tl {
+    left: -4.4rem;
+    width: 7rem;
+    opacity: 0.3;
+  }
+
+  .winter-branch-br {
+    right: -4.8rem;
+    width: 7.25rem;
+  }
+
+  .winter-hero-copy h1,
+  .winter-kicker,
+  .winter-tagline,
+  .winter-when,
+  .winter-letter {
+    position: relative;
+    z-index: 2;
+  }
+}

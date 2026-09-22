@@ -67,12 +67,18 @@ export const liveSkins: LiveSkin[] = [
     difference: "Наклонённые снимки, подписи от руки и горизонтальная лента кадров — городская свадьба без зала",
     demoSlug: "lera-max",
   }),
+  liveSkin({
+    id: "winter-frost",
+    name: "Winter frost",
+    audience: "Новый год, зимняя свадьба",
+    difference: "Слоновая кость и свечи на странице, иней и снег только за стеклом",
+    demoSlug: "dasha-ilya",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
   { id: "minimal-swiss", name: "Minimal Swiss", audience: "ЗАГС, design-аудитория" },
   { id: "gold-deco", name: "Gold deco", audience: "Формальный банкет" },
-  { id: "winter-frost", name: "Winter frost", audience: "Новый год, зимняя свадьба" },
   { id: "seaside", name: "Seaside", audience: "Destination, море" },
   { id: "kids-birthday", name: "Kids birthday", audience: "Детский праздник" },
   { id: "corporate-evening", name: "Corporate evening", audience: "Корпоративный ужин" },

@@ -4,8 +4,8 @@ export const leraMax: EventContent = {
   templateId: "polaroid-story",
   slug: "lera-max",
   couple: {
-    one: "Лера",
-    two: "Макс",
+    one: "Макс",
+    two: "Лера",
   },
   kicker: "Свадьба",
   tagline: "Город, кроссовки и стопка снимков — без зала и без сценария",
@@ -28,7 +28,7 @@ export const leraMax: EventContent = {
   gallery: [
     {
       src: "/gallery/polaroid-story/ps-01-park.jpg",
-      alt: "Лера и Макс на скамейке в парке летним днём",
+      alt: "Макс и Лера на скамейке в парке летним днём",
       caption: "Скамейка наша",
     },
     {

@@ -5,6 +5,7 @@ import { GardenDaylight } from "@/templates/garden-daylight/GardenDaylight";
 import { PaperEnvelope } from "@/templates/paper-envelope/PaperEnvelope";
 import { PolaroidStory } from "@/templates/polaroid-story/PolaroidStory";
 import { QuietLuxury } from "@/templates/quiet-luxury/QuietLuxury";
+import { WinterFrost } from "@/templates/winter-frost/WinterFrost";
 
 type TemplateComponent = ComponentType<{ event: EventContent; preview?: boolean }>;
 
@@ -14,6 +15,7 @@ export const templates: Record<TemplateId, TemplateComponent> = {
   "dark-editorial": DarkEditorial,
   "garden-daylight": GardenDaylight,
   "polaroid-story": PolaroidStory,
+  "winter-frost": WinterFrost,
 };
 
 export function resolveTemplate(templateId: TemplateId): TemplateComponent {

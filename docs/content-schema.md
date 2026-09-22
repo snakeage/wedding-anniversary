@@ -1,6 +1,6 @@
 # Content schema
 
-Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/olga-nikita.ts`](../src/events/olga-nikita.ts), [`src/events/lera-max.ts`](../src/events/lera-max.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
+Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/olga-nikita.ts`](../src/events/olga-nikita.ts), [`src/events/lera-max.ts`](../src/events/lera-max.ts), [`src/events/dasha-ilya.ts`](../src/events/dasha-ilya.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
 
 A skin may restyle or reorder blocks. **Countdown is required** on every invitation (from `event.iso`). It should not require extra required fields that other skins cannot store, unless this file is updated first.
 
@@ -8,7 +8,7 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 
 | Field | Type | Used by |
 | --- | --- | --- |
-| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`, `dark-editorial`, `garden-daylight`, `polaroid-story`) |
+| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`, `dark-editorial`, `garden-daylight`, `polaroid-story`, `winter-frost`) |
 | `slug` | string | Public path `/sofia` |
 | `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
 | `couple.two` | string, optional | Second name for a couple; omit for a birthday |

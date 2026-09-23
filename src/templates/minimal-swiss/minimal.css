@@ -1,0 +1,789 @@
+/* Minimal Swiss Theme */
+.minimal-swiss {
+  --swiss-red: #e32b2b;
+  --swiss-black: #0f0f0f;
+  --swiss-white: #ffffff;
+  --swiss-gray-50: #f8f9fa;
+  --swiss-gray-100: #f1f3f5;
+  --swiss-gray-200: #e9ecef;
+  --swiss-border: rgba(15, 15, 15, 0.16);
+  --swiss-border-strong: #0f0f0f;
+
+  background-color: var(--swiss-gray-50);
+  color: var(--swiss-black);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  letter-spacing: -0.01em;
+}
+
+/* Force sharp geometric corners everywhere in Minimal Swiss */
+.minimal-swiss * {
+  border-radius: 0 !important;
+}
+
+/* Header / Top Bar */
+.swiss-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--swiss-border-strong);
+}
+
+.swiss-topbar-inner {
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.swiss-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.swiss-accent-square {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  background-color: var(--swiss-red);
+}
+
+.swiss-topbar-center {
+  display: none;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .swiss-topbar-center {
+    display: block;
+  }
+}
+
+.swiss-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.swiss-nav-link {
+  color: var(--swiss-black);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .swiss-nav-link {
+    display: inline-block;
+  }
+}
+
+.swiss-nav-link:hover {
+  color: var(--swiss-red);
+}
+
+.swiss-nav-btn {
+  background-color: var(--swiss-black);
+  color: var(--swiss-white);
+  padding: 0.35rem 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.swiss-nav-btn:hover {
+  background-color: var(--swiss-red);
+}
+
+/* Main Layout */
+.swiss-main {
+  max-width: 84rem;
+  margin: 0 auto;
+  border-left: 1px solid var(--swiss-border-strong);
+  border-right: 1px solid var(--swiss-border-strong);
+  background-color: var(--swiss-white);
+}
+
+/* Hero Section: Asymmetric Split Screen */
+.swiss-hero {
+  border-bottom: 1px solid var(--swiss-border-strong);
+}
+
+.swiss-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .swiss-hero-grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+.swiss-hero-meta {
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--swiss-border-strong);
+}
+
+@media (min-width: 640px) {
+  .swiss-hero-meta {
+    padding: 3.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .swiss-hero-meta {
+    padding: 4rem 3.5rem;
+    border-bottom: none;
+    border-right: 1px solid var(--swiss-border-strong);
+  }
+}
+
+.swiss-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.swiss-badge-index {
+  color: var(--swiss-red);
+}
+
+.swiss-badge-title {
+  color: var(--swiss-black);
+}
+
+.swiss-headline {
+  font-size: clamp(3rem, 9vw, 6.75rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--swiss-black);
+}
+
+.swiss-headline-partner {
+  margin-top: 0.5rem;
+}
+
+.swiss-amp {
+  color: var(--swiss-red);
+  font-weight: 400;
+}
+
+.swiss-tagline {
+  margin-top: 1.75rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--swiss-black);
+  max-width: 32rem;
+}
+
+.swiss-lead-box {
+  margin-top: 1.75rem;
+  padding: 1.25rem;
+  background-color: var(--swiss-gray-50);
+  border-left: 3px solid var(--swiss-red);
+  border-top: 1px solid var(--swiss-border);
+  border-right: 1px solid var(--swiss-border);
+  border-bottom: 1px solid var(--swiss-border);
+}
+
+.swiss-lead {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(15, 15, 15, 0.85);
+  margin: 0;
+}
+
+.swiss-meta-bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--swiss-border);
+}
+
+.swiss-date-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .swiss-date-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.swiss-micro-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--swiss-red);
+  margin-bottom: 0.35rem;
+}
+
+.swiss-date-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.swiss-time-value {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(15, 15, 15, 0.65);
+}
+
+.swiss-venue-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.swiss-venue-addr {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(15, 15, 15, 0.65);
+  margin-top: 0.25rem;
+}
+
+.swiss-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.swiss-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--swiss-black);
+  color: var(--swiss-white);
+  padding: 0.9rem 1.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 1px solid var(--swiss-black);
+  transition: all 0.15s ease;
+}
+
+.swiss-btn-primary:hover {
+  background-color: var(--swiss-red);
+  border-color: var(--swiss-red);
+}
+
+.swiss-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--swiss-black);
+  padding: 0.9rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 1px solid var(--swiss-border-strong);
+  transition: all 0.15s ease;
+}
+
+.swiss-btn-ghost:hover {
+  background-color: var(--swiss-gray-100);
+}
+
+.swiss-arrow {
+  font-weight: 900;
+  transition: transform 0.15s ease;
+}
+
+.swiss-btn-primary:hover .swiss-arrow {
+  transform: translateX(3px);
+}
+
+/* Right Column: Hero Visual Frame */
+.swiss-hero-visual {
+  background-color: var(--swiss-gray-100);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .swiss-hero-visual {
+    padding: 2.5rem;
+  }
+}
+
+.swiss-photo-container {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.swiss-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--swiss-border-strong);
+  background-color: var(--swiss-white);
+}
+
+/* Swiss Crosshair Crop Marks */
+.swiss-crop {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.swiss-crop::before,
+.swiss-crop::after {
+  content: "";
+  position: absolute;
+  background-color: var(--swiss-red);
+}
+
+.swiss-crop::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.swiss-crop::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.swiss-crop-tl {
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.swiss-crop-tr {
+  top: -0.5rem;
+  right: -0.5rem;
+}
+
+.swiss-crop-bl {
+  bottom: 1.5rem;
+  left: -0.5rem;
+}
+
+.swiss-crop-br {
+  bottom: 1.5rem;
+  right: -0.5rem;
+}
+
+.swiss-photo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.25rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.swiss-photo-num {
+  color: var(--swiss-red);
+}
+
+.swiss-photo-desc {
+  color: rgba(15, 15, 15, 0.65);
+}
+
+/* Section Common Header */
+.swiss-section {
+  border-bottom: 1px solid var(--swiss-border-strong);
+  padding: 3rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .swiss-section {
+    padding: 4.5rem 3rem;
+  }
+}
+
+.swiss-section-header {
+  margin-bottom: 3rem;
+}
+
+.swiss-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.swiss-section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Modular Gallery Grid */
+.swiss-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--swiss-border-strong);
+  border-left: 1px solid var(--swiss-border-strong);
+}
+
+@media (min-width: 640px) {
+  .swiss-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .swiss-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.swiss-gallery-item {
+  border-right: 1px solid var(--swiss-border-strong);
+  border-bottom: 1px solid var(--swiss-border-strong);
+  background-color: var(--swiss-white);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease;
+}
+
+.swiss-gallery-item:hover {
+  background-color: var(--swiss-gray-50);
+}
+
+.swiss-gallery-item-head {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--swiss-border);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--swiss-red);
+}
+
+.swiss-gallery-photo-box {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--swiss-gray-100);
+}
+
+.swiss-gallery-item-footer {
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swiss-accent-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: var(--swiss-red);
+  flex-shrink: 0;
+}
+
+.swiss-gallery-caption {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--swiss-black);
+}
+
+/* ---------------------------------------------------- */
+/* THEME OVERRIDES FOR SHARED COMPONENTS                */
+/* ---------------------------------------------------- */
+
+/* Override Countdown (#countdown) */
+.minimal-swiss #countdown {
+  border-bottom: 1px solid var(--swiss-border-strong);
+  background-color: var(--swiss-gray-50);
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .minimal-swiss #countdown {
+    padding: 5rem 3rem;
+  }
+}
+
+.minimal-swiss #countdown p.uppercase {
+  font-family: var(--font-inter) !important;
+  color: var(--swiss-red) !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.minimal-swiss #countdown .font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: uppercase !important;
+  color: var(--swiss-black) !important;
+}
+
+.minimal-swiss #countdown .border-gold\/30 {
+  border: 1px solid var(--swiss-border-strong) !important;
+  background-color: var(--swiss-white) !important;
+  padding: 1.5rem !important;
+  box-shadow: none !important;
+}
+
+.minimal-swiss #countdown .text-burgundy {
+  font-family: var(--font-inter) !important;
+  font-weight: 900 !important;
+  color: var(--swiss-black) !important;
+  letter-spacing: -0.04em !important;
+}
+
+.minimal-swiss #countdown .text-ink\/65 {
+  font-family: var(--font-inter) !important;
+  color: var(--swiss-red) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Override Details (#details) - Swiss Timetable Look */
+.minimal-swiss #details {
+  border-bottom: 1px solid var(--swiss-border-strong);
+  padding: 4rem 1.5rem;
+  background-color: var(--swiss-white);
+}
+
+@media (min-width: 640px) {
+  .minimal-swiss #details {
+    padding: 5rem 3rem;
+  }
+}
+
+.minimal-swiss #details p.uppercase {
+  font-family: var(--font-inter) !important;
+  color: var(--swiss-red) !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.minimal-swiss #details h2.font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+  text-transform: uppercase !important;
+  color: var(--swiss-black) !important;
+}
+
+.minimal-swiss #details .panel {
+  border: 1px solid var(--swiss-border-strong) !important;
+  background-color: var(--swiss-gray-50) !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease;
+}
+
+.minimal-swiss #details .panel:hover {
+  background-color: var(--swiss-black) !important;
+}
+
+.minimal-swiss #details .panel:hover p {
+  color: var(--swiss-white) !important;
+}
+
+.minimal-swiss #details .panel .text-gold {
+  color: var(--swiss-red) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.minimal-swiss #details .panel .font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Hide or restyle GoldRule lines */
+.minimal-swiss .h-px {
+  background: var(--swiss-border-strong) !important;
+  height: 1px !important;
+  opacity: 0.25 !important;
+}
+
+/* Override VenueMap (#map) */
+.minimal-swiss #map {
+  border-bottom: 1px solid var(--swiss-border-strong);
+  padding: 4rem 1.5rem;
+  background-color: var(--swiss-gray-50);
+}
+
+@media (min-width: 640px) {
+  .minimal-swiss #map {
+    padding: 5rem 3rem;
+  }
+}
+
+.minimal-swiss #map p.uppercase {
+  font-family: var(--font-inter) !important;
+  color: var(--swiss-red) !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.minimal-swiss #map h2.font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+  text-transform: uppercase !important;
+  color: var(--swiss-black) !important;
+}
+
+.minimal-swiss #map .btn-gold {
+  background-color: var(--swiss-black) !important;
+  color: var(--swiss-white) !important;
+  border: 1px solid var(--swiss-black) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.minimal-swiss #map .btn-gold:hover {
+  background-color: var(--swiss-red) !important;
+  border-color: var(--swiss-red) !important;
+}
+
+.minimal-swiss #map .panel {
+  border: 1px solid var(--swiss-border-strong) !important;
+  background-color: var(--swiss-white) !important;
+  box-shadow: none !important;
+}
+
+/* Override RSVP (#rsvp) */
+.minimal-swiss #rsvp {
+  border-bottom: 1px solid var(--swiss-border-strong);
+  padding: 4rem 1.5rem;
+  background-color: var(--swiss-white);
+}
+
+@media (min-width: 640px) {
+  .minimal-swiss #rsvp {
+    padding: 5rem 3rem;
+  }
+}
+
+.minimal-swiss #rsvp p.uppercase {
+  font-family: var(--font-inter) !important;
+  color: var(--swiss-red) !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.minimal-swiss #rsvp h2.font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+  text-transform: uppercase !important;
+  color: var(--swiss-black) !important;
+}
+
+.minimal-swiss #rsvp .panel {
+  border: 1px solid var(--swiss-border-strong) !important;
+  background-color: var(--swiss-gray-50) !important;
+  box-shadow: none !important;
+}
+
+.minimal-swiss #rsvp input[type="text"],
+.minimal-swiss #rsvp textarea {
+  border: 1px solid var(--swiss-border-strong) !important;
+  background-color: var(--swiss-white) !important;
+  box-shadow: none !important;
+}
+
+.minimal-swiss #rsvp input[type="text"]:focus,
+.minimal-swiss #rsvp textarea:focus {
+  outline: 2px solid var(--swiss-red) !important;
+  border-color: var(--swiss-red) !important;
+}
+
+.minimal-swiss #rsvp button[type="submit"] {
+  background-color: var(--swiss-black) !important;
+  color: var(--swiss-white) !important;
+  border: 1px solid var(--swiss-black) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.minimal-swiss #rsvp button[type="submit"]:hover {
+  background-color: var(--swiss-red) !important;
+  border-color: var(--swiss-red) !important;
+}
+
+/* Footer */
+.minimal-swiss footer {
+  padding: 3rem 1.5rem;
+  background-color: var(--swiss-white);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.minimal-swiss footer .font-serif {
+  font-family: var(--font-inter) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: uppercase !important;
+}

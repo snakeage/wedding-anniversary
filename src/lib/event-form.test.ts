@@ -64,6 +64,14 @@ test("eventFromForm accepts winter-frost", () => {
   assert.equal(content.templateId, "winter-frost");
 });
 
+test("eventFromForm accepts minimal-swiss", () => {
+  const form = baseForm();
+  form.set("templateId", "minimal-swiss");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "minimal-swiss");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

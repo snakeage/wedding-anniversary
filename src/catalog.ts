@@ -74,10 +74,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Слоновая кость и свечи на странице, иней и снег только за стеклом",
     demoSlug: "dasha-ilya",
   }),
+  liveSkin({
+    id: "minimal-swiss",
+    name: "Minimal Swiss",
+    audience: "ЗАГС, городская свадьба",
+    difference: "Швейцарская модульная сетка, акцентный Vermilion, крупная типографика и timetable",
+    demoSlug: "mark-alisa",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "minimal-swiss", name: "Minimal Swiss", audience: "ЗАГС, design-аудитория" },
   { id: "gold-deco", name: "Gold deco", audience: "Формальный банкет" },
   { id: "seaside", name: "Seaside", audience: "Destination, море" },
   { id: "kids-birthday", name: "Kids birthday", audience: "Детский праздник" },

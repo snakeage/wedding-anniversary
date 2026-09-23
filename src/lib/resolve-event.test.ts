@@ -12,12 +12,14 @@ test("resolveEvent falls back to git demos when DATABASE_URL is unset", async ()
     const garden = await resolveEvent("olga-nikita");
     const polaroid = await resolveEvent("lera-max");
     const winter = await resolveEvent("dasha-ilya");
+    const swiss = await resolveEvent("mark-alisa");
     assert.equal(birthday?.slug, "sofia");
     assert.equal(wedding?.slug, "ivan-maria");
     assert.equal(gala?.slug, "kira");
     assert.equal(garden?.slug, "olga-nikita");
     assert.equal(polaroid?.slug, "lera-max");
     assert.equal(winter?.slug, "dasha-ilya");
+    assert.equal(swiss?.slug, "mark-alisa");
     assert.equal(await resolveEvent("not-a-real-event"), undefined);
   } finally {
     if (prev !== undefined) process.env.DATABASE_URL = prev;

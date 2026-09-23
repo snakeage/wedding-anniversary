@@ -13,6 +13,7 @@ const templateLabels: Record<TemplateId, string> = {
   "garden-daylight": "Garden daylight",
   "polaroid-story": "Polaroid story",
   "winter-frost": "Winter frost",
+  "minimal-swiss": "Minimal Swiss",
 };
 
 export const EVENT_FORM_ERRORS: Record<string, string> = {

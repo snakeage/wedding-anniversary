@@ -1,6 +1,6 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/olga-nikita` (garden wedding), `polaroid-story` on `/lera-max` (young couple, city wedding), `winter-frost` on `/dasha-ilya` (winter wedding).
+Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/olga-nikita` (garden wedding), `polaroid-story` on `/lera-max` (young couple, city wedding), `winter-frost` on `/dasha-ilya` (winter wedding), `minimal-swiss` on `/mark-alisa` (city hall wedding).
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 
@@ -10,7 +10,7 @@ Each row is a **skin**: different composition, motion, and audience — not a re
 | 2 | `paper-envelope` | Paper envelope | Classic wedding | First screen is a seal/envelope; page “opens” into a card; paper texture, little motion | Live |
 | 3 | `dark-editorial` | Dark editorial | Evening gala, fashion-forward | Espresso canvas, ivory type, champagne gold, film stills, slow ken-burns, thin foil hairlines | Live |
 | 4 | `garden-daylight` | Garden daylight | Garden or countryside wedding | Cotton paper, botanical etchings, arch photos, daylight sans + soft serif | Live |
-| 5 | `minimal-swiss` | Minimal Swiss | City hall, design crowd | Grid, one accent color, huge type, almost no decoration, sharp rules | Idea |
+| 5 | `minimal-swiss` | Minimal Swiss | City hall, design crowd | Grid, one accent color, huge type, almost no decoration, sharp rules | Live |
 | 6 | `polaroid-story` | Polaroid story | Young couple | Tilted prints, handwritten captions, horizontal snap gallery, playful type | Live |
 | 7 | `gold-deco` | Gold deco | Formal banquet | Geometry, metallic lines, symmetrical lockup, 1920s poster hero | Idea |
 | 8 | `winter-frost` | Winter frost | New Year, winter wedding | Ivory paper and candlelight on the page, frost and snow only behind the glass | Live |

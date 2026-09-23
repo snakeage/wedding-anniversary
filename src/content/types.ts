@@ -5,6 +5,7 @@ export const TEMPLATE_IDS = [
   "garden-daylight",
   "polaroid-story",
   "winter-frost",
+  "minimal-swiss",
 ] as const;
 
 export type TemplateId = (typeof TEMPLATE_IDS)[number];

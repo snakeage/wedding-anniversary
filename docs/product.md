@@ -49,7 +49,7 @@ Say the branch name before starting (`docs/how-to`, not “just main”).
 app (one deploy)
   templates/     visual skins
   events/        names, photos, date  (src/events/)
-  guests → /sofia, /ivan-maria, /kira, /olga-nikita, /lera-max, /dasha-ilya
+  guests → /sofia, /ivan-maria, /kira, /olga-nikita, /lera-max, /dasha-ilya, /mark-alisa
 ```
 
 ## What is shared vs what differs
@@ -64,6 +64,6 @@ Templates are not “twenty button colors.” They can change composition and mo
 
 ## Now vs next
 
-`/` is the sales catalog. Live demos: Quiet luxury (adult birthday) at `/sofia`, Paper envelope (wedding) at `/ivan-maria`, Dark editorial (evening gala) at `/kira`, Garden daylight (garden wedding) at `/olga-nikita`, Polaroid story (young couple) at `/lera-max`, Winter frost (winter wedding) at `/dasha-ilya`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
+`/` is the sales catalog. Live demos: Quiet luxury (adult birthday) at `/sofia`, Paper envelope (wedding) at `/ivan-maria`, Dark editorial (evening gala) at `/kira`, Garden daylight (garden wedding) at `/olga-nikita`, Polaroid story (young couple) at `/lera-max`, Winter frost (winter wedding) at `/dasha-ilya`, Minimal Swiss (city hall wedding) at `/mark-alisa`. What to build next is **not** this paragraph — it is the issue labeled `now`: [GitHub Issues](https://github.com/snakeage/wedding-anniversary/issues) and [how we work](./backlog.md).
 
 How to use the live product (organizer + admin): [how-to.md](./how-to.md). Schema: [content-schema.md](./content-schema.md). Skins: [templates-catalog.md](./templates-catalog.md).

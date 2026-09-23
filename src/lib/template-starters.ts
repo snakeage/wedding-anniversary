@@ -3,6 +3,7 @@ import { dashaIlya } from "@/events/dasha-ilya";
 import { ivanMaria } from "@/events/ivan-maria";
 import { kira } from "@/events/kira";
 import { leraMax } from "@/events/lera-max";
+import { markAlisa } from "@/events/mark-alisa";
 import { olgaNikita } from "@/events/olga-nikita";
 import { sofia } from "@/events/sofia";
 
@@ -43,6 +44,7 @@ const STARTERS: Record<TemplateId, TemplateStarter> = {
   "garden-daylight": fromDemo(olgaNikita),
   "polaroid-story": fromDemo(leraMax),
   "winter-frost": fromDemo(dashaIlya),
+  "minimal-swiss": fromDemo(markAlisa),
 };
 
 export function templateStarters(id: TemplateId): TemplateStarter {

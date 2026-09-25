@@ -72,6 +72,14 @@ test("eventFromForm accepts minimal-swiss", () => {
   assert.equal(content.templateId, "minimal-swiss");
 });
 
+test("eventFromForm accepts gold-deco", () => {
+  const form = baseForm();
+  form.set("templateId", "gold-deco");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "gold-deco");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

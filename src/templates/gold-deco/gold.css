@@ -1,0 +1,607 @@
+.gold-deco {
+  --gold-lacquer: #120e0a;
+  --gold-ivory: #f6f0e6;
+  --gold-brass: #c6a15b;
+  --gold-highlight: #f3e6c4;
+  --gold-muted: rgb(246 240 230 / 0.72);
+
+  min-height: 100vh;
+  background-color: var(--gold-lacquer);
+  background-image:
+    radial-gradient(ellipse 90% 45% at 50% 0%, rgb(243 230 196 / 0.06), transparent 60%),
+    linear-gradient(180deg, rgb(18 14 10 / 0.25), rgb(18 14 10 / 0.85)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='none' stroke='%23c6a15b' stroke-opacity='0.09' stroke-width='0.5'%3E%3Ccircle cx='90' cy='90' r='18'/%3E%3Ccircle cx='90' cy='90' r='36'/%3E%3Ccircle cx='90' cy='90' r='54'/%3E%3Ccircle cx='90' cy='90' r='72'/%3E%3Cpath d='M0 90Q45 48 90 90T180 90'/%3E%3Cpath d='M0 90Q45 132 90 90T180 90'/%3E%3Cpath d='M90 0Q48 45 90 90T90 180'/%3E%3Cpath d='M90 0Q132 45 90 90T90 180'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, 180px 180px;
+  background-attachment: fixed, fixed, scroll;
+  color: var(--gold-ivory);
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.gold-hero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.gold-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgb(243 230 196 / 0.14), transparent 50%),
+    linear-gradient(180deg, rgb(18 14 10 / 0.15), rgb(18 14 10 / 0.65));
+}
+
+.gold-lockup,
+.gold-hero-figure,
+.gold-meta,
+.gold-cta {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-kicker,
+.gold-section-kicker,
+.gold-frame-caption,
+.gold-meta {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.gold-lockup {
+  position: relative;
+  display: flex;
+  width: min(100%, 38rem);
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem 0.25rem;
+}
+
+/* Fan layer: architectural sunburst with calm center cutout behind names */
+.gold-sunburst-wrap {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: min(94vw, 36rem);
+  height: min(94vw, 36rem);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse 52% 44% at 50% 50%, transparent 32%, black 62%);
+  -webkit-mask-image: radial-gradient(ellipse 52% 44% at 50% 50%, transparent 32%, black 62%);
+}
+
+.gold-sunburst {
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+.gold-sunburst-metal {
+  stroke: var(--gold-brass);
+  stroke-width: 0.7;
+  opacity: 0.45;
+}
+
+.gold-sunburst-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgb(243 230 196 / 0.55) 50%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  mix-blend-mode: screen;
+  animation: gold-foil-sheen 12s linear infinite;
+  pointer-events: none;
+}
+
+.gold-sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gold-spark {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-highlight);
+  box-shadow: 0 0 10px rgb(243 230 196 / 0.85);
+  animation: gold-spark 4.8s ease-in-out infinite;
+}
+
+/* Sparks positioned along outer fan rays and metal frame, safely away from text */
+.gold-spark-1 { top: 6%; left: 10%; animation-delay: 0s; }
+.gold-spark-2 { top: 6%; right: 10%; animation-delay: 0.8s; }
+.gold-spark-3 { top: 48%; left: 2%; animation-delay: 1.6s; }
+.gold-spark-4 { top: 48%; right: 2%; animation-delay: 2.4s; }
+.gold-spark-5 { top: 86%; left: 12%; animation-delay: 1.2s; }
+.gold-spark-6 { top: 86%; right: 12%; animation-delay: 2.0s; }
+.gold-spark-7 { bottom: -8px; left: 28%; animation-delay: 0.4s; }
+.gold-spark-8 { bottom: -8px; right: 28%; animation-delay: 2.8s; }
+.gold-spark-9 { top: 24%; left: 5%; animation-delay: 1.8s; }
+.gold-spark-10 { top: 24%; right: 5%; animation-delay: 3.2s; }
+
+.gold-kicker {
+  position: relative;
+  z-index: 2;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-brass);
+}
+
+.gold-names {
+  position: relative;
+  z-index: 2;
+  margin: 0.35rem 0 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.4rem, 10vw, 5.2rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: 0.18em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp", "c2sc";
+}
+
+.gold-names .gold-foil,
+.gold-amp {
+  display: block;
+}
+
+.gold-amp {
+  margin: 0.15rem 0;
+  font-size: 0.28em;
+  font-style: italic;
+  letter-spacing: 0.35em;
+  text-transform: lowercase;
+  font-variant-caps: normal;
+  color: var(--gold-brass);
+}
+
+.gold-foil {
+  background-image: linear-gradient(
+    110deg,
+    #8a6a32 0%,
+    #c6a15b 32%,
+    #f3e6c4 48%,
+    #c6a15b 64%,
+    #8a6a32 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-foil 12s linear infinite;
+}
+
+.gold-rule {
+  position: relative;
+  z-index: 2;
+  width: min(14rem, 65%);
+  height: 1px;
+  margin-top: 0.65rem;
+  overflow: hidden;
+  background: rgb(198 161 91 / 0.35);
+}
+
+.gold-rule-shine {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold-highlight), transparent);
+  animation: gold-sweep 12s linear infinite;
+}
+
+.gold-tagline {
+  position: relative;
+  z-index: 2;
+  max-width: 22rem;
+  margin: 0.5rem 0 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--gold-ivory);
+}
+
+.gold-hero-figure {
+  margin-top: 1rem;
+}
+
+.gold-arch {
+  position: relative;
+  width: clamp(260px, 70vw, 320px);
+  aspect-ratio: 3 / 4;
+  padding: 4px;
+  background-image: linear-gradient(120deg, #8a6a32, #f3e6c4, #c6a15b, #8a6a32);
+  background-size: 220% 100%;
+  animation: gold-foil 12s linear infinite;
+  border-radius: 9999px 9999px 0 0;
+  box-shadow: 0 16px 44px rgb(0 0 0 / 0.75), 0 0 32px rgb(198 161 91 / 0.2);
+}
+
+@media (min-width: 640px) {
+  .gold-arch {
+    width: clamp(320px, 42vw, 420px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gold-arch {
+    width: clamp(380px, 30vw, 480px);
+  }
+}
+
+.gold-arch-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--gold-lacquer);
+  border-radius: 9999px 9999px 0 0;
+  overflow: hidden;
+}
+
+.gold-frame-caption {
+  margin-top: 0.65rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-brass);
+}
+
+.gold-meta {
+  max-width: min(92vw, 34rem);
+  margin-top: 0.85rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-highlight);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gold-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 1rem;
+  border: 1px solid var(--gold-brass);
+  padding: 0.75rem 1.6rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold-highlight);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.gold-cta:hover {
+  background: var(--gold-brass);
+  color: var(--gold-lacquer);
+}
+
+.gold-gallery {
+  position: relative;
+  padding: 4.5rem 1.25rem 2rem;
+  text-align: center;
+}
+
+.gold-section-kicker {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold-brass);
+}
+
+.gold-section-title {
+  margin: 0.65rem 0 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp", "c2sc";
+  color: var(--gold-ivory);
+}
+
+.gold-section-lead {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--gold-muted);
+}
+
+.gold-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1.25rem;
+  max-width: 52rem;
+  margin: 2.5rem auto 0;
+}
+
+.gold-frame {
+  width: 100%;
+}
+
+/* When 5 items: lead item (Vera & Lev) is a centered portrait, followed by a 2x2 grid */
+.gold-gallery-grid > .gold-frame:first-child:nth-last-child(5) {
+  grid-column: 1 / -1;
+  max-width: 24rem;
+  width: 100%;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .gold-gallery-grid {
+    gap: 2.25rem 1.75rem;
+  }
+
+  .gold-gallery-grid > .gold-frame:first-child:nth-last-child(5) {
+    max-width: 26rem;
+  }
+}
+
+.gold-frame-plate {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #18120c;
+  border: 1px solid rgb(198 161 91 / 0.7);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.5);
+  overflow: hidden;
+}
+
+.gold-frame-plate::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgb(198 161 91 / 0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gold-frame-inner {
+  position: absolute;
+  inset: 6px;
+  overflow: hidden;
+}
+
+.gold-tick {
+  position: absolute;
+  z-index: 3;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-color: var(--gold-highlight);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.gold-tick-tl { top: 0.35rem; left: 0.35rem; border-width: 1px 0 0 1px; }
+.gold-tick-tr { top: 0.35rem; right: 0.35rem; border-width: 1px 1px 0 0; }
+.gold-tick-bl { bottom: 0.35rem; left: 0.35rem; border-width: 0 0 1px 1px; }
+.gold-tick-br { right: 0.35rem; bottom: 0.35rem; border-width: 0 1px 1px 0; }
+
+@keyframes gold-foil {
+  from { background-position: 100% 0; }
+  to { background-position: -120% 0; }
+}
+
+@keyframes gold-foil-sheen {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes gold-sweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(320%); }
+}
+
+@keyframes gold-spark {
+  0%, 100% { opacity: 0.2; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 639px) {
+  .gold-spark-5,
+  .gold-spark-6,
+  .gold-spark-7,
+  .gold-spark-8,
+  .gold-spark-9,
+  .gold-spark-10 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-foil,
+  .gold-arch,
+  .gold-sunburst-sheen,
+  .gold-spark,
+  .gold-rule-shine {
+    animation: none !important;
+  }
+
+  .gold-foil {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: var(--gold-highlight) !important;
+  }
+
+  .gold-arch {
+    background: var(--gold-brass) !important;
+  }
+
+  .gold-sunburst-sheen {
+    display: none !important;
+  }
+
+  .gold-rule-shine {
+    display: none !important;
+  }
+
+  .gold-rule {
+    background: var(--gold-brass);
+  }
+}
+
+.gold-deco #countdown,
+.gold-deco #details,
+.gold-deco #map,
+.gold-deco #rsvp,
+.gold-deco footer {
+  color: var(--gold-ivory);
+}
+
+.gold-deco #countdown .text-burgundy\/75,
+.gold-deco #details .text-burgundy\/75,
+.gold-deco #map .text-burgundy\/75,
+.gold-deco #rsvp .text-burgundy\/75,
+.gold-deco .text-gold {
+  color: var(--gold-brass);
+}
+
+.gold-deco .text-ink,
+.gold-deco .font-serif {
+  color: var(--gold-ivory);
+}
+
+.gold-deco .text-ink\/65,
+.gold-deco .text-ink\/55,
+.gold-deco .text-ink\/50,
+.gold-deco .text-ink\/70,
+.gold-deco .text-ink\/40 {
+  color: var(--gold-muted);
+}
+
+.gold-deco .panel {
+  background: rgb(22 17 12 / 0.85);
+  border: 1px solid rgb(198 161 91 / 0.55);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* Countdown: Brass digit cells */
+.gold-deco #countdown .panel {
+  background: linear-gradient(180deg, #241a12 0%, #16100a 100%);
+  border: 1px solid rgb(198 161 91 / 0.7);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(243 230 196 / 0.25);
+  position: relative;
+}
+
+.gold-deco #countdown .panel::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgb(198 161 91 / 0.25);
+  pointer-events: none;
+}
+
+.gold-deco #countdown .panel .font-serif {
+  color: var(--gold-highlight);
+  letter-spacing: 0.06em;
+}
+
+/* Details: Single unified Art Deco program card with metallic divider lines */
+.gold-deco #details .grid {
+  display: block;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(198 161 91 / 0.7);
+  background: rgb(22 17 12 / 0.85);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(243 230 196 / 0.1);
+}
+
+.gold-deco #details .panel {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 1.75rem 1.5rem;
+}
+
+.gold-deco #details .grid > div:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: min(85%, 26rem);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(198 161 91 / 0.75) 25%,
+    rgb(243 230 196 / 0.95) 50%,
+    rgb(198 161 91 / 0.75) 75%,
+    transparent 100%
+  );
+}
+
+.gold-deco .field {
+  border-color: rgb(198 161 91 / 0.55);
+  background: rgb(18 14 10 / 0.85);
+  color: var(--gold-ivory);
+}
+
+.gold-deco .field:focus {
+  border-color: var(--gold-highlight);
+}
+
+.gold-deco .choice {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-color: rgb(198 161 91 / 0.55);
+  background: transparent;
+  color: var(--gold-ivory);
+}
+
+.gold-deco .choice-active {
+  background: var(--gold-brass);
+  border-color: var(--gold-brass);
+  color: var(--gold-lacquer);
+}
+
+.gold-deco .btn-gold {
+  background: transparent;
+  border-color: var(--gold-brass);
+  color: var(--gold-highlight);
+  box-shadow: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.gold-deco .btn-gold:hover {
+  background: var(--gold-brass);
+  color: var(--gold-lacquer);
+  box-shadow: none;
+}
+
+.gold-deco #map .panel,
+.gold-deco #rsvp .panel {
+  background: rgb(22 17 12 / 0.85);
+  border: 1px solid rgb(198 161 91 / 0.6);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.55);
+}
+
+.gold-deco #map iframe {
+  filter: grayscale(0.35) contrast(1.05);
+}

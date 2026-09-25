@@ -81,10 +81,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Швейцарская модульная сетка, акцентный Vermilion, крупная типографика и timetable",
     demoSlug: "mark-alisa",
   }),
+  liveSkin({
+    id: "gold-deco",
+    name: "Gold deco",
+    audience: "Формальный банкет",
+    difference: "Чёрный лак, гильош и латунная фольга; симметричный плакат и веер за именами",
+    demoSlug: "lev-vera",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "gold-deco", name: "Gold deco", audience: "Формальный банкет" },
   { id: "seaside", name: "Seaside", audience: "Destination, море" },
   { id: "kids-birthday", name: "Kids birthday", audience: "Детский праздник" },
   { id: "corporate-evening", name: "Corporate evening", audience: "Корпоративный ужин" },

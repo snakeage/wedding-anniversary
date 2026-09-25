@@ -1,17 +1,19 @@
 # Content schema
 
-Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/olga-nikita.ts`](../src/events/olga-nikita.ts), [`src/events/lera-max.ts`](../src/events/lera-max.ts), [`src/events/dasha-ilya.ts`](../src/events/dasha-ilya.ts), [`src/events/mark-alisa.ts`](../src/events/mark-alisa.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
+Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/olga-nikita.ts`](../src/events/olga-nikita.ts), [`src/events/lera-max.ts`](../src/events/lera-max.ts), [`src/events/dasha-ilya.ts`](../src/events/dasha-ilya.ts), [`src/events/mark-alisa.ts`](../src/events/mark-alisa.ts), [`src/events/lev-vera.ts`](../src/events/lev-vera.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
 
 A skin may restyle or reorder blocks. **Countdown is required** on every invitation (from `event.iso`). It should not require extra required fields that other skins cannot store, unless this file is updated first.
+
+Порядок имён: в парных свадебных приглашениях принято указывать первым мужское имя (жених, `couple.one`), вторым женское (невеста, `couple.two`). В URL-слаге используется тот же порядок: `мужское-женское` (например, `/lev-vera`).
 
 ## Event content
 
 | Field | Type | Used by |
 | --- | --- | --- |
-| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`, `dark-editorial`, `garden-daylight`, `polaroid-story`, `winter-frost`, `minimal-swiss`) |
-| `slug` | string | Public path `/sofia` |
-| `couple.one` | string | Hero, header, footer, OG, RSVP email subject |
-| `couple.two` | string, optional | Second name for a couple; omit for a birthday |
+| `templateId` | string, catalog **Id** | Which skin to render (`quiet-luxury`, `paper-envelope`, `dark-editorial`, `garden-daylight`, `polaroid-story`, `winter-frost`, `minimal-swiss`, `gold-deco`) |
+| `slug` | string | Public path `/sofia`, `/lev-vera` |
+| `couple.one` | string | Hero, header, footer, OG, RSVP email subject (жених для свадеб, именинник для ДР) |
+| `couple.two` | string, optional | Second name for a couple (невеста); omit for a birthday |
 | `kicker` | string | Small label above names (event type) |
 | `tagline` | string | Hero subtitle |
 | `inviteLead` | string | Short lead (gallery intro) |
@@ -41,7 +43,7 @@ A skin may restyle or reorder blocks. **Countdown is required** on every invitat
 6. RSVP — form
 7. Footer — names
 
-`/` is the template catalog. Public guest URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury, Paper envelope, Dark editorial, Garden daylight, Polaroid story, Winter frost, Minimal Swiss. Countdown is required on every skin; other blocks may be restyled or reordered.
+`/` is the template catalog. Public guest URLs are `/[slug]` via [`src/app/[slug]/page.tsx`](../src/app/[slug]/page.tsx). Skins live in [`src/templates/`](../src/templates/): Quiet luxury, Paper envelope, Dark editorial, Garden daylight, Polaroid story, Winter frost, Minimal Swiss, Gold deco. Countdown is required on every skin; other blocks may be restyled or reordered.
 
 ## RSVP (one form for all skins)
 

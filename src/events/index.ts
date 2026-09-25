@@ -6,8 +6,18 @@ import { leraMax } from "@/events/lera-max";
 import { markAlisa } from "@/events/mark-alisa";
 import { olgaNikita } from "@/events/olga-nikita";
 import { sofia } from "@/events/sofia";
+import { levVera } from "@/events/lev-vera";
 
-export const events: EventContent[] = [sofia, ivanMaria, kira, olgaNikita, leraMax, dashaIlya, markAlisa];
+export const events: EventContent[] = [
+  sofia,
+  ivanMaria,
+  kira,
+  olgaNikita,
+  leraMax,
+  dashaIlya,
+  markAlisa,
+  levVera,
+];
 
 /** Fallback event when RSVP admin omits `slug`. */
 export const demoEvent = sofia;

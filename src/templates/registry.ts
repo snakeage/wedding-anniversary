@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import type { EventContent, TemplateId } from "@/content/types";
 import { DarkEditorial } from "@/templates/dark-editorial/DarkEditorial";
 import { GardenDaylight } from "@/templates/garden-daylight/GardenDaylight";
+import { GoldDeco } from "@/templates/gold-deco/GoldDeco";
 import { MinimalSwiss } from "@/templates/minimal-swiss/MinimalSwiss";
 import { PaperEnvelope } from "@/templates/paper-envelope/PaperEnvelope";
 import { PolaroidStory } from "@/templates/polaroid-story/PolaroidStory";
@@ -18,6 +19,7 @@ export const templates: Record<TemplateId, TemplateComponent> = {
   "polaroid-story": PolaroidStory,
   "winter-frost": WinterFrost,
   "minimal-swiss": MinimalSwiss,
+  "gold-deco": GoldDeco,
 };
 
 export function resolveTemplate(templateId: TemplateId): TemplateComponent {

@@ -15,7 +15,7 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (свадьба в саду) [http://localhost:3000/olga-nikita](http://localhost:3000/olga-nikita), Polaroid story (молодая пара) [http://localhost:3000/lera-max](http://localhost:3000/lera-max), Winter frost (зимняя свадьба) [http://localhost:3000/dasha-ilya](http://localhost:3000/dasha-ilya), Minimal Swiss (городская свадьба, ЗАГС) [http://localhost:3000/mark-alisa](http://localhost:3000/mark-alisa), Gold deco (формальный банкет) [http://localhost:3000/lev-vera](http://localhost:3000/lev-vera).
+Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (свадьба в саду) [http://localhost:3000/nikita-olga](http://localhost:3000/nikita-olga), Polaroid story (молодая пара) [http://localhost:3000/max-lera](http://localhost:3000/max-lera), Winter frost (зимняя свадьба) [http://localhost:3000/ilya-dasha](http://localhost:3000/ilya-dasha), Minimal Swiss (городская свадьба, ЗАГС) [http://localhost:3000/mark-alisa](http://localhost:3000/mark-alisa), Gold deco (формальный банкет) [http://localhost:3000/lev-vera](http://localhost:3000/lev-vera).
 
 ## Что править
 

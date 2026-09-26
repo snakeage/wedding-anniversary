@@ -1,8 +1,8 @@
 import type { EventContent } from "@/content/types";
 
-export const dashaIlya: EventContent = {
+export const ilyaDasha: EventContent = {
   templateId: "winter-frost",
-  slug: "dasha-ilya",
+  slug: "ilya-dasha",
   couple: {
     one: "Илья",
     two: "Даша",

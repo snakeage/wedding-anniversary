@@ -1,10 +1,10 @@
 import type { GalleryItem, TemplateId } from "@/content/types";
-import { dashaIlya } from "@/events/dasha-ilya";
+import { ilyaDasha } from "@/events/ilya-dasha";
 import { ivanMaria } from "@/events/ivan-maria";
 import { kira } from "@/events/kira";
-import { leraMax } from "@/events/lera-max";
+import { maxLera } from "@/events/max-lera";
 import { markAlisa } from "@/events/mark-alisa";
-import { olgaNikita } from "@/events/olga-nikita";
+import { nikitaOlga } from "@/events/nikita-olga";
 import { sofia } from "@/events/sofia";
 import { levVera } from "@/events/lev-vera";
 
@@ -42,9 +42,9 @@ const STARTERS: Record<TemplateId, TemplateStarter> = {
   "quiet-luxury": fromDemo(sofia),
   "paper-envelope": fromDemo(ivanMaria),
   "dark-editorial": fromDemo(kira),
-  "garden-daylight": fromDemo(olgaNikita),
-  "polaroid-story": fromDemo(leraMax),
-  "winter-frost": fromDemo(dashaIlya),
+  "garden-daylight": fromDemo(nikitaOlga),
+  "polaroid-story": fromDemo(maxLera),
+  "winter-frost": fromDemo(ilyaDasha),
   "minimal-swiss": fromDemo(markAlisa),
   "gold-deco": fromDemo(levVera),
 };

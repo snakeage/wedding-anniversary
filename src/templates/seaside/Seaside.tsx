@@ -42,7 +42,11 @@ function HorizonCompass() {
 function SeasideHero({ event, still }: { event: EventContent; still?: GalleryItem }) {
   const partner = partnerName(event);
   const formattedDate = formatSeasideDate(event.event.iso);
-  const coords = formatCoordinates(event.venue.lat, event.venue.lng);
+  const hasCoords =
+    (event.venue.lat !== 0 || event.venue.lng !== 0) &&
+    Number.isFinite(event.venue.lat) &&
+    Number.isFinite(event.venue.lng);
+  const coords = hasCoords ? formatCoordinates(event.venue.lat, event.venue.lng) : null;
 
   return (
     <section id="hero" className="seaside-hero">
@@ -69,9 +73,11 @@ function SeasideHero({ event, still }: { event: EventContent; still?: GalleryIte
 
         {event.tagline ? <p className="seaside-tagline">{event.tagline}</p> : null}
 
-        <p className="seaside-coords" aria-label={`Координаты: ${coords}`}>
-          {coords}
-        </p>
+        {coords ? (
+          <p className="seaside-coords" aria-label={`Координаты: ${coords}`}>
+            {coords}
+          </p>
+        ) : null}
       </div>
 
       {still ? (

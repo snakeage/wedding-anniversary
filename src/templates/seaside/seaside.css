@@ -1,4 +1,10 @@
 .seaside {
+  --cream: #f4f8fa;
+  --cream-dark: #eef5f9;
+  --ink: #0c2132;
+  --burgundy: #225171;
+  --gold: #3b6582;
+
   --seaside-navy: #0c2132;
   --seaside-deep: #14354d;
   --seaside-horizon: #225171;
@@ -168,6 +174,33 @@
 }
 
 @media (max-width: 639px) {
+  .seaside-names {
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+  }
+
+  .seaside-name-part {
+    display: block;
+    padding-inline: 0;
+  }
+
+  .seaside-amp {
+    display: block;
+    margin-inline: 0;
+    margin-block: 0.15rem 0.25rem;
+    font-size: 0.55em;
+  }
+
+  .seaside-hero-meta {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .seaside-meta-venue::before {
+    display: none;
+  }
+
   .seaside-hero-frame {
     aspect-ratio: 4 / 3;
   }
@@ -409,7 +442,11 @@
   font-weight: 500;
 }
 
-.seaside #countdown .panel span:last-child {
+.seaside [aria-hidden] > span.size-1\.5 {
+  border-color: var(--seaside-salt);
+}
+
+.seaside #countdown .panel div:last-child {
   color: var(--seaside-salt);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -567,6 +604,8 @@
   .seaside-cta,
   .seaside #map .btn-gold,
   .seaside .btn-gold,
+  .seaside .choice,
+  .seaside .field,
   .seaside-frame-box img,
   .seaside-lead-frame img,
   .seaside-hero-frame img {

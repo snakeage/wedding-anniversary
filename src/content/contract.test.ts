@@ -66,3 +66,10 @@ test("live catalog demoSlug resolves to the matching template", () => {
     assert.equal(event.templateId, skin.id);
   }
 });
+
+test("seaside demo event has valid coastal coordinates", () => {
+  const seaside = getEventBySlug("arseniy-maya");
+  assert.ok(seaside);
+  assert.ok(seaside.venue.lat > 0 && seaside.venue.lat <= 90);
+  assert.ok(seaside.venue.lng > 0 && seaside.venue.lng <= 180);
+});

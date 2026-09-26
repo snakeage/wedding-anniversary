@@ -9,6 +9,7 @@ import { PolaroidStory } from "@/templates/polaroid-story/PolaroidStory";
 import { QuietLuxury } from "@/templates/quiet-luxury/QuietLuxury";
 import { Seaside } from "@/templates/seaside/Seaside";
 import { WinterFrost } from "@/templates/winter-frost/WinterFrost";
+import { KidsBirthday } from "@/templates/kids-birthday/KidsBirthday";
 
 type TemplateComponent = ComponentType<{ event: EventContent; preview?: boolean }>;
 
@@ -22,6 +23,7 @@ export const templates: Record<TemplateId, TemplateComponent> = {
   "minimal-swiss": MinimalSwiss,
   "gold-deco": GoldDeco,
   "seaside": Seaside,
+  "kids-birthday": KidsBirthday,
 };
 
 export function resolveTemplate(templateId: TemplateId): TemplateComponent {

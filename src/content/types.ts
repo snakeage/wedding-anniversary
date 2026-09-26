@@ -8,6 +8,7 @@ export const TEMPLATE_IDS = [
   "minimal-swiss",
   "gold-deco",
   "seaside",
+  "kids-birthday",
 ] as const;
 
 export type TemplateId = (typeof TEMPLATE_IDS)[number];

@@ -67,7 +67,12 @@ test("kids birthday demo event has valid party details", () => {
   assert.equal(kids.templateId, "kids-birthday");
   assert.equal(kids.couple.one, "Миша");
   assert.equal(kids.couple.two, undefined);
+  assert.ok(kids.kicker.includes("7 лет"));
+  assert.ok(kids.venue.name.length > 0);
+  assert.ok(kids.venue.address.length > 0);
   assert.equal(kids.gallery.length, 6);
+  assert.ok(kids.gallery.every((g) => g.src.startsWith("/gallery/kids-birthday/")));
+  assert.ok(kids.gallery.every((g) => g.alt.length > 0 && g.caption.length > 0));
 });
 
 test("live catalog demoSlug resolves to the matching template", () => {

@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { RsvpForm } from "@/components/RsvpForm";
 import { VenueMap } from "@/components/VenueMap";
 import type { EventContent, GalleryItem } from "@/content/types";
-import { formatEventDate, formatEventTime } from "@/lib/datetime";
+import { formatEventTime } from "@/lib/datetime";
 import { partnerName } from "@/lib/names";
 import "./kids-birthday.css";
 
@@ -75,9 +75,16 @@ function ConfettiDecor() {
   );
 }
 
+const kidsHeroDateFormatter = new Intl.DateTimeFormat("ru-RU", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "Europe/Moscow",
+});
+
 function KidsHero({ event, still }: { event: EventContent; still?: GalleryItem }) {
   const partner = partnerName(event);
-  const formattedDate = formatEventDate(event.event.iso);
+  const formattedDate = kidsHeroDateFormatter.format(new Date(event.event.iso));
   const formattedTime = formatEventTime(event.event.iso);
 
   return (
@@ -92,18 +99,19 @@ function KidsHero({ event, still }: { event: EventContent; still?: GalleryItem }
           </div>
         ) : null}
 
-        <div className="kids-name-row">
+        <div className="kids-crown-wrap">
           <PartyCrownIcon />
-          <h1 className="kids-names">
-            <span className="kids-name-part">{event.couple.one}</span>
-            {partner ? (
-              <>
-                <span className="kids-amp">&amp;</span>
-                <span className="kids-name-part">{partner}</span>
-              </>
-            ) : null}
-          </h1>
         </div>
+
+        <h1 className="kids-names">
+          <span className="kids-name-part">{event.couple.one}</span>
+          {partner ? (
+            <>
+              <span className="kids-amp">&amp;</span>
+              <span className="kids-name-part">{partner}</span>
+            </>
+          ) : null}
+        </h1>
 
         {event.tagline ? <p className="kids-tagline">{event.tagline}</p> : null}
 

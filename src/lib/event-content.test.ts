@@ -42,6 +42,12 @@ test("parseEventContent accepts seaside template", () => {
   assert.equal(parsed.templateId, "seaside");
 });
 
+test("parseEventContent accepts kids-birthday template", () => {
+  const parsed = parseEventContent({ ...valid, templateId: "kids-birthday" });
+  assert.ok(parsed);
+  assert.equal(parsed.templateId, "kids-birthday");
+});
+
 test("isValidSlug and reserved demo slugs", () => {
   assert.equal(isValidSlug("sofia"), true);
   assert.equal(isValidSlug("AB"), false);
@@ -53,6 +59,7 @@ test("isValidSlug and reserved demo slugs", () => {
   assert.ok(reservedSlugs().has("mark-alisa"));
   assert.ok(reservedSlugs().has("lev-vera"));
   assert.ok(reservedSlugs().has("arseniy-maya"));
+  assert.ok(reservedSlugs().has("misha"));
   assert.ok(reservedSlugs().has("login"));
   assert.ok(reservedSlugs().has("cabinet"));
   assert.ok(reservedSlugs().has("terms"));

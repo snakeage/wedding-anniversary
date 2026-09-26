@@ -95,10 +95,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Горизонт, размытые морские оттенки, широкая типографика и карта как визуальный центр",
     demoSlug: "arseniy-maya",
   }),
+  liveSkin({
+    id: "kids-birthday",
+    name: "Kids birthday",
+    audience: "Детский праздник",
+    difference: "Яркая жизнерадостная палитра, крупные кнопки, короткие тексты, конфетти и иллюстративные акценты",
+    demoSlug: "misha",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "kids-birthday", name: "Kids birthday", audience: "Детский праздник" },
   { id: "corporate-evening", name: "Corporate evening", audience: "Корпоративный ужин" },
   { id: "folk-linen", name: "Folk linen", audience: "Деревня, традиция" },
   { id: "neon-night", name: "Neon night", audience: "Клуб, afterparty" },

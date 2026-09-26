@@ -49,7 +49,7 @@ Say the branch name before starting (`docs/how-to`, not “just main”).
 app (one deploy)
   templates/     visual skins
   events/        names, photos, date  (src/events/)
-  guests → /sofia, /ivan-maria, /kira, /nikita-olga, /max-lera, /ilya-dasha, /mark-alisa, /lev-vera, /arseniy-maya
+  guests → /sofia, /ivan-maria, /kira, /nikita-olga, /max-lera, /ilya-dasha, /mark-alisa, /lev-vera, /arseniy-maya, /misha
 ```
 
 ## What is shared vs what differs

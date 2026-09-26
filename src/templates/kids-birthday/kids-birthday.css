@@ -1,0 +1,752 @@
+.kids-birthday {
+  --cream: #fffdfa;
+  --cream-dark: #fef8ee;
+  --ink: #1e293b;
+  --burgundy: #e11d48;
+  --gold: #d97706;
+
+  --kids-canvas: #fffdf9;
+  --kids-ink: #1e293b;
+  --kids-ink-muted: #475569;
+  --kids-pink: #ff3366;
+  --kids-coral: #f43f5e;
+  --kids-amber: #d97706;
+  --kids-yellow: #fbbf24;
+  --kids-blue: #0284c7;
+  --kids-green: #10b981;
+  --kids-purple: #8b5cf6;
+  --kids-card-bg: #ffffff;
+  --kids-card-border: #fed7aa;
+  --kids-card-shadow: 0 10px 25px -5px rgb(251 146 60 / 0.12), 0 8px 10px -6px rgb(251 146 60 / 0.08);
+
+  min-height: 100vh;
+  background-color: var(--kids-canvas);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgb(254 243 199 / 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 90% 30%, rgb(224 242 254 / 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgb(254 226 226 / 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, #fffdf9 0%, #fffbf2 50%, #fffdfa 100%);
+  color: var(--kids-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Bunting & Confetti
+   ========================================================================== */
+
+.kids-bunting {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.kids-bunting-svg {
+  width: 100%;
+  height: 48px;
+  display: block;
+}
+
+.kids-confetti-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.kids-confetti-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.kids-confetti-dot.dot-1 {
+  top: 8%;
+  left: 6%;
+  width: 12px;
+  height: 12px;
+  background: #ff4b72;
+  opacity: 0.7;
+}
+
+.kids-confetti-dot.dot-2 {
+  top: 14%;
+  right: 8%;
+  width: 14px;
+  height: 14px;
+  background: #0284c7;
+  opacity: 0.65;
+}
+
+.kids-confetti-dot.dot-3 {
+  top: 36%;
+  left: 4%;
+  width: 10px;
+  height: 10px;
+  background: #ffb800;
+  opacity: 0.7;
+}
+
+.kids-confetti-dot.dot-4 {
+  top: 42%;
+  right: 5%;
+  width: 12px;
+  height: 12px;
+  background: #10b981;
+  opacity: 0.65;
+}
+
+.kids-confetti-dot.dot-5 {
+  top: 70%;
+  left: 8%;
+  width: 14px;
+  height: 14px;
+  background: #8b5cf6;
+  opacity: 0.6;
+}
+
+.kids-confetti-dot.dot-6 {
+  top: 76%;
+  right: 7%;
+  width: 10px;
+  height: 10px;
+  background: #f97316;
+  opacity: 0.7;
+}
+
+.kids-confetti-star {
+  position: absolute;
+  font-size: 1.25rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.kids-confetti-star.star-1 {
+  top: 10%;
+  right: 12%;
+  color: #ffb800;
+  opacity: 0.8;
+  transform: rotate(15deg);
+}
+
+.kids-confetti-star.star-2 {
+  top: 28%;
+  left: 8%;
+  color: #ff4b72;
+  opacity: 0.75;
+  transform: rotate(-10deg);
+}
+
+.kids-confetti-star.star-3 {
+  top: 50%;
+  right: 9%;
+  color: #0284c7;
+  opacity: 0.75;
+  transform: rotate(25deg);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.kids-hero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.kids-hero-lockup {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 46rem);
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.kids-kicker-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.kids-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: #fef3c7;
+  color: #b45309;
+  border: 1.5px solid #fde68a;
+  border-radius: 9999px;
+  padding: 0.375rem 1.125rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgb(245 158 11 / 0.15);
+}
+
+.kids-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block: 0.5rem 0.75rem;
+}
+
+.kids-crown-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-4px) rotate(-8deg);
+  flex-shrink: 0;
+}
+
+.kids-names {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(2.5rem, 8.5vw, 4.75rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--kids-pink);
+  text-shadow: 2px 2px 0px #fed7aa;
+  margin: 0;
+}
+
+.kids-name-part {
+  display: inline-block;
+  padding-inline: 0.125rem;
+}
+
+.kids-amp {
+  display: inline-block;
+  font-size: 0.8em;
+  color: var(--kids-blue);
+  margin-inline: 0.375rem;
+  text-shadow: none;
+}
+
+.kids-tagline {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(1.0625rem, 3.5vw, 1.3125rem);
+  line-height: 1.5;
+  color: var(--kids-ink-muted);
+  font-weight: 500;
+  max-width: 32rem;
+  margin-block: 0.5rem 1.25rem;
+}
+
+.kids-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-bottom: 1.75rem;
+}
+
+.kids-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  color: var(--kids-ink);
+  border-radius: 9999px;
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgb(251 146 60 / 0.1);
+}
+
+.kids-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  min-width: 220px;
+  padding: 0.875rem 2.25rem;
+  background: linear-gradient(135deg, #ff4b72 0%, #ff7849 100%);
+  color: #ffffff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -4px rgb(255 75 114 / 0.45);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.kids-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 28px -4px rgb(255 75 114 / 0.55);
+}
+
+.kids-cta:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.kids-cta:focus-visible {
+  outline: 3px solid var(--kids-blue);
+  outline-offset: 3px;
+}
+
+.kids-hero-figure {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 54rem);
+  margin-top: 1rem;
+}
+
+.kids-hero-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 3px solid #ffedd5;
+  box-shadow: 0 16px 36px -8px rgb(249 115 22 / 0.16);
+  background: #fed7aa;
+}
+
+@media (max-width: 639px) {
+  .kids-hero-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+}
+
+.kids-hero-caption {
+  margin-top: 0.75rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--kids-ink-muted);
+}
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.kids-gallery {
+  position: relative;
+  padding: 4rem 1.25rem 5rem;
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+.kids-section-head {
+  text-align: center;
+  max-width: 38rem;
+  margin-inline: auto;
+  margin-bottom: 2.75rem;
+}
+
+.kids-section-kicker {
+  display: inline-block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kids-coral);
+  background: #ffe4e6;
+  border-radius: 9999px;
+  padding: 0.25rem 0.875rem;
+  margin-bottom: 0.625rem;
+}
+
+.kids-section-title {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(1.875rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--kids-ink);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.kids-section-lead {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--kids-ink-muted);
+  font-weight: 500;
+  margin-top: 0.875rem;
+}
+
+.kids-lead-figure {
+  margin-bottom: 2rem;
+}
+
+.kids-lead-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 3px solid #fef08a;
+  box-shadow: 0 14px 32px -6px rgb(234 179 8 / 0.18);
+  background: #fef9c3;
+}
+
+@media (max-width: 639px) {
+  .kids-lead-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+}
+
+.kids-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .kids-gallery-grid {
+    gap: 1.75rem;
+  }
+}
+
+.kids-gallery-grid > .kids-frame:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 24rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.kids-frame-box {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid #bae6fd;
+  box-shadow: 0 10px 24px -4px rgb(14 165 233 / 0.16);
+  background: #e0f2fe;
+}
+
+.kids-frame-caption {
+  margin-top: 0.625rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--kids-ink);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Shared Blocks: Countdown, Details, Map, RSVP, Footer
+   ========================================================================== */
+
+.kids-birthday #countdown,
+.kids-birthday #details,
+.kids-birthday #map,
+.kids-birthday #rsvp,
+.kids-birthday footer {
+  color: var(--kids-ink);
+}
+
+/* Headings and labels */
+.kids-birthday #countdown .text-burgundy\/75,
+.kids-birthday #details .text-burgundy\/75,
+.kids-birthday #map .text-burgundy\/75,
+.kids-birthday #rsvp .text-burgundy\/75 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kids-coral);
+  background: #ffe4e6;
+  border-radius: 9999px;
+  padding: 0.25rem 0.875rem;
+  display: inline-block;
+}
+
+.kids-birthday .text-gold {
+  color: var(--kids-amber);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.kids-birthday .text-ink,
+.kids-birthday .font-serif {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: var(--kids-ink);
+  letter-spacing: -0.01em;
+  font-weight: 800;
+}
+
+.kids-birthday .text-ink\/65,
+.kids-birthday .text-ink\/55,
+.kids-birthday .text-ink\/50,
+.kids-birthday .text-ink\/70,
+.kids-birthday .text-ink\/40 {
+  color: var(--kids-ink-muted);
+  font-weight: 500;
+}
+
+.kids-birthday .panel {
+  background: var(--kids-card-bg);
+  border: 2px solid var(--kids-card-border);
+  border-radius: 22px;
+  box-shadow: var(--kids-card-shadow);
+}
+
+/* Countdown: Colorful party blocks */
+.kids-birthday #countdown .grid {
+  gap: 1rem;
+}
+
+.kids-birthday #countdown .panel {
+  border-radius: 20px;
+  border-width: 2.5px;
+  padding: 1.25rem 0.75rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kids-birthday #countdown .panel:hover {
+  transform: translateY(-2px);
+}
+
+/* Distinct color accents for each countdown block */
+.kids-birthday #countdown .grid > div:nth-child(1) {
+  border-color: #38bdf8;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+}
+.kids-birthday #countdown .grid > div:nth-child(1) .font-serif {
+  color: #0284c7;
+}
+
+.kids-birthday #countdown .grid > div:nth-child(2) {
+  border-color: #fb7185;
+  background: linear-gradient(180deg, #ffffff 0%, #fff1f2 100%);
+}
+.kids-birthday #countdown .grid > div:nth-child(2) .font-serif {
+  color: #e11d48;
+}
+
+.kids-birthday #countdown .grid > div:nth-child(3) {
+  border-color: #facc15;
+  background: linear-gradient(180deg, #ffffff 0%, #fefce8 100%);
+}
+.kids-birthday #countdown .grid > div:nth-child(3) .font-serif {
+  color: #ca8a04;
+}
+
+.kids-birthday #countdown .grid > div:nth-child(4) {
+  border-color: #4ade80;
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+}
+.kids-birthday #countdown .grid > div:nth-child(4) .font-serif {
+  color: #16a34a;
+}
+
+.kids-birthday #countdown .panel .font-serif {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.kids-birthday #countdown .panel div:last-child {
+  color: var(--kids-ink-muted);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Details: Playful info cards */
+.kids-birthday #details .panel {
+  border-radius: 22px;
+  border: 2.5px solid #fed7aa;
+  background: #ffffff;
+  box-shadow: 0 10px 24px -6px rgb(251 146 60 / 0.14);
+}
+
+.kids-birthday #details .panel .font-serif,
+.kids-birthday #details .panel p.font-serif {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.375rem;
+  color: var(--kids-ink);
+}
+
+.kids-birthday #details .panel .text-gold {
+  color: var(--kids-amber);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* Map */
+.kids-birthday #map .panel {
+  border-radius: 24px;
+  border: 2.5px solid #fed7aa;
+  box-shadow: 0 14px 34px -8px rgb(251 146 60 / 0.15);
+  overflow: hidden;
+  padding: 0;
+}
+
+.kids-birthday #map .btn-gold {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0284c7;
+  color: #ffffff;
+  border: 2px solid #0284c7;
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgb(2 132 199 / 0.28);
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kids-birthday #map .btn-gold:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* RSVP Form */
+.kids-birthday #rsvp .panel {
+  border-radius: 24px;
+  border: 2.5px solid #fed7aa;
+  background: #ffffff;
+  box-shadow: 0 14px 36px -8px rgb(251 146 60 / 0.16);
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .kids-birthday #rsvp .panel {
+    padding: 2.5rem 2rem;
+  }
+}
+
+.kids-birthday .field {
+  min-height: 50px;
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  color: var(--kids-ink);
+  border-radius: 14px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kids-birthday .field:focus {
+  border-color: var(--kids-blue);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgb(2 132 199 / 0.2);
+  outline: none;
+}
+
+.kids-birthday .choice {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  color: var(--kids-ink);
+  border-radius: 14px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.kids-birthday .choice:hover {
+  border-color: #94a3b8;
+  background: #f1f5f9;
+}
+
+.kids-birthday .choice-active {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgb(16 185 129 / 0.28);
+}
+
+.kids-birthday .btn-gold {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff4b72 0%, #ff7849 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px -4px rgb(255 75 114 / 0.4);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.kids-birthday .btn-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 28px -4px rgb(255 75 114 / 0.5);
+}
+
+.kids-birthday .btn-gold:active {
+  transform: translateY(1px);
+}
+
+.kids-birthday .btn-gold:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
+
+.kids-birthday #rsvp .text-burgundy {
+  color: #e11d48;
+}
+
+/* Footer */
+.kids-birthday footer {
+  border-top: 2px dashed #fed7aa;
+  padding-block: 3.5rem 3rem;
+  background: #fff8ec;
+}
+
+.kids-birthday footer .font-serif {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--kids-pink);
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .kids-cta,
+  .kids-birthday #map .btn-gold,
+  .kids-birthday .btn-gold,
+  .kids-birthday .choice,
+  .kids-birthday .field,
+  .kids-birthday #countdown .panel,
+  .kids-frame-box img,
+  .kids-lead-frame img,
+  .kids-hero-frame img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

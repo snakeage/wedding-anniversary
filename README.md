@@ -15,13 +15,13 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (свадьба в саду) [http://localhost:3000/nikita-olga](http://localhost:3000/nikita-olga), Polaroid story (молодая пара) [http://localhost:3000/max-lera](http://localhost:3000/max-lera), Winter frost (зимняя свадьба) [http://localhost:3000/ilya-dasha](http://localhost:3000/ilya-dasha), Minimal Swiss (городская свадьба, ЗАГС) [http://localhost:3000/mark-alisa](http://localhost:3000/mark-alisa), Gold deco (формальный банкет) [http://localhost:3000/lev-vera](http://localhost:3000/lev-vera), Seaside (свадьба на побережье) [http://localhost:3000/arseniy-maya](http://localhost:3000/arseniy-maya).
+Откройте [http://localhost:3000](http://localhost:3000) — каталог скинов (sales URL). Демо: Quiet luxury (день рождения) [http://localhost:3000/sofia](http://localhost:3000/sofia), Paper envelope (свадьба) [http://localhost:3000/ivan-maria](http://localhost:3000/ivan-maria), Dark editorial (гала) [http://localhost:3000/kira](http://localhost:3000/kira), Garden daylight (свадьба в саду) [http://localhost:3000/nikita-olga](http://localhost:3000/nikita-olga), Polaroid story (молодая пара) [http://localhost:3000/max-lera](http://localhost:3000/max-lera), Winter frost (зимняя свадьба) [http://localhost:3000/ilya-dasha](http://localhost:3000/ilya-dasha), Minimal Swiss (городская свадьба, ЗАГС) [http://localhost:3000/mark-alisa](http://localhost:3000/mark-alisa), Gold deco (формальный банкет) [http://localhost:3000/lev-vera](http://localhost:3000/lev-vera), Seaside (свадьба на побережье) [http://localhost:3000/arseniy-maya](http://localhost:3000/arseniy-maya), Kids birthday (детский праздник) [http://localhost:3000/misha](http://localhost:3000/misha).
 
 ## Что править
 
 Все тексты демо — в [`src/events/`](src/events/). Свои события организатор создаёт в `/cabinet` (Neon). Гостевая ссылка — `/{slug}`.
 
-Фото для демо — в `public/gallery/` по папкам скинов (`quiet-luxury/`, `paper-envelope/`, `dark-editorial/`, `garden/`, `polaroid-story/`, `winter-frost/`, `minimal-swiss/`, `gold-deco/`, `seaside/`). Форма создания подставляет эти кадры как стартовые: организатор может оставить их, заменить часть своими JPEG/PNG/WebP (Vercel Blob) или убрать блок.
+Фото для демо — в `public/gallery/` по папкам скинов (`quiet-luxury/`, `paper-envelope/`, `dark-editorial/`, `garden/`, `polaroid-story/`, `winter-frost/`, `minimal-swiss/`, `gold-deco/`, `seaside/`, `kids-birthday/`). Форма создания подставляет эти кадры как стартовые: организатор может оставить их, заменить часть своими JPEG/PNG/WebP (Vercel Blob) или убрать блок.
 
 `BLOB_READ_WRITE_TOKEN` — в `.env.local` и в Vercel (Production и Preview). Без токена событие без фото создать можно; с файлом форма покажет ошибку загрузки.
 

@@ -32,9 +32,9 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   const birthday = getEventBySlug("sofia");
   const wedding = getEventBySlug("ivan-maria");
   const gala = getEventBySlug("kira");
-  const garden = getEventBySlug("olga-nikita");
-  const polaroid = getEventBySlug("lera-max");
-  const winter = getEventBySlug("dasha-ilya");
+  const garden = getEventBySlug("nikita-olga");
+  const polaroid = getEventBySlug("max-lera");
+  const winter = getEventBySlug("ilya-dasha");
   const swiss = getEventBySlug("mark-alisa");
   const goldDeco = getEventBySlug("lev-vera");
   assert.ok(birthday);

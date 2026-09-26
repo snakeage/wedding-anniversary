@@ -1,10 +1,10 @@
 import type { EventContent } from "@/content/types";
-import { dashaIlya } from "@/events/dasha-ilya";
+import { ilyaDasha } from "@/events/ilya-dasha";
 import { ivanMaria } from "@/events/ivan-maria";
 import { kira } from "@/events/kira";
-import { leraMax } from "@/events/lera-max";
+import { maxLera } from "@/events/max-lera";
 import { markAlisa } from "@/events/mark-alisa";
-import { olgaNikita } from "@/events/olga-nikita";
+import { nikitaOlga } from "@/events/nikita-olga";
 import { sofia } from "@/events/sofia";
 import { levVera } from "@/events/lev-vera";
 
@@ -12,9 +12,9 @@ export const events: EventContent[] = [
   sofia,
   ivanMaria,
   kira,
-  olgaNikita,
-  leraMax,
-  dashaIlya,
+  nikitaOlga,
+  maxLera,
+  ilyaDasha,
   markAlisa,
   levVera,
 ];

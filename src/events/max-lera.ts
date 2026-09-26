@@ -1,8 +1,8 @@
 import type { EventContent } from "@/content/types";
 
-export const leraMax: EventContent = {
+export const maxLera: EventContent = {
   templateId: "polaroid-story",
-  slug: "lera-max",
+  slug: "max-lera",
   couple: {
     one: "Макс",
     two: "Лера",

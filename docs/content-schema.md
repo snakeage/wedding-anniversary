@@ -1,6 +1,6 @@
 # Content schema
 
-Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/olga-nikita.ts`](../src/events/olga-nikita.ts), [`src/events/lera-max.ts`](../src/events/lera-max.ts), [`src/events/dasha-ilya.ts`](../src/events/dasha-ilya.ts), [`src/events/mark-alisa.ts`](../src/events/mark-alisa.ts), [`src/events/lev-vera.ts`](../src/events/lev-vera.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
+Contract for every template. Types: [`src/content/types.ts`](../src/content/types.ts). Demo events: [`src/events/sofia.ts`](../src/events/sofia.ts), [`src/events/ivan-maria.ts`](../src/events/ivan-maria.ts), [`src/events/kira.ts`](../src/events/kira.ts), [`src/events/nikita-olga.ts`](../src/events/nikita-olga.ts), [`src/events/max-lera.ts`](../src/events/max-lera.ts), [`src/events/ilya-dasha.ts`](../src/events/ilya-dasha.ts), [`src/events/mark-alisa.ts`](../src/events/mark-alisa.ts), [`src/events/lev-vera.ts`](../src/events/lev-vera.ts). RSVP payload: [`src/lib/rsvp.ts`](../src/lib/rsvp.ts).
 
 A skin may restyle or reorder blocks. **Countdown is required** on every invitation (from `event.iso`). It should not require extra required fields that other skins cannot store, unless this file is updated first.
 

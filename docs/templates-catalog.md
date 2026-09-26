@@ -1,6 +1,6 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/olga-nikita` (garden wedding), `polaroid-story` on `/lera-max` (young couple, city wedding), `winter-frost` on `/dasha-ilya` (winter wedding), `minimal-swiss` on `/mark-alisa` (city hall wedding), `gold-deco` on `/lev-vera` (formal banquet).
+Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/nikita-olga` (garden wedding), `polaroid-story` on `/max-lera` (young couple, city wedding), `winter-frost` on `/ilya-dasha` (winter wedding), `minimal-swiss` on `/mark-alisa` (city hall wedding), `gold-deco` on `/lev-vera` (formal banquet).
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 

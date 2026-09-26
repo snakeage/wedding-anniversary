@@ -67,6 +67,21 @@ test("seaside starter keeps dedicated coastal photos and captions", async () => 
   assert.equal(starter.galleryKicker, "Побережье");
   assert.equal(starter.galleryHeading, "Горизонт и прибой");
   assert.equal(starter.gallery.length, 6);
+
+  const expectedSrcs = [
+    "/gallery/seaside/sea-hero-horizon.jpg",
+    "/gallery/seaside/sea-01-couple.jpg",
+    "/gallery/seaside/sea-02-rings.jpg",
+    "/gallery/seaside/sea-03-table.jpg",
+    "/gallery/seaside/sea-04-lighthouse.jpg",
+    "/gallery/seaside/sea-05-waves.jpg",
+  ];
+  assert.deepEqual(
+    starter.gallery.map((i) => i.src),
+    expectedSrcs,
+  );
+  assert.equal(new Set(starter.gallery.map((i) => i.src)).size, 6);
+
   for (const item of starter.gallery) {
     const cleanSrc = item.src.replace(/\?.*$/, "");
     const filePath = path.join(process.cwd(), "public", cleanSrc);

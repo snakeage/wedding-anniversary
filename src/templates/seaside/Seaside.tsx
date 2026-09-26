@@ -54,7 +54,7 @@ function SeasideHero({ event, still }: { event: EventContent; still?: GalleryIte
 
       <div className="seaside-hero-lockup">
         <HorizonCompass />
-        <p className="seaside-kicker">{event.kicker}</p>
+        {event.kicker ? <p className="seaside-kicker">{event.kicker}</p> : null}
         <h1 className="seaside-names">
           <span className="seaside-name-part">{event.couple.one}</span>
           {partner ? (

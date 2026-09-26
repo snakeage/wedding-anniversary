@@ -8,6 +8,7 @@ import { nikitaOlga } from "@/events/nikita-olga";
 import { sofia } from "@/events/sofia";
 import { levVera } from "@/events/lev-vera";
 import { arseniyMaya } from "@/events/arseniy-maya";
+import { misha } from "@/events/misha";
 
 export type TemplateStarter = {
   kicker: string;
@@ -49,6 +50,7 @@ const STARTERS: Record<TemplateId, TemplateStarter> = {
   "minimal-swiss": fromDemo(markAlisa),
   "gold-deco": fromDemo(levVera),
   "seaside": fromDemo(arseniyMaya),
+  "kids-birthday": fromDemo(misha),
 };
 
 export function templateStarters(id: TemplateId): TemplateStarter {

@@ -38,6 +38,7 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   const swiss = getEventBySlug("mark-alisa");
   const goldDeco = getEventBySlug("lev-vera");
   const seaside = getEventBySlug("arseniy-maya");
+  const kidsBirthday = getEventBySlug("misha");
   assert.ok(birthday);
   assert.ok(wedding);
   assert.ok(gala);
@@ -47,8 +48,10 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   assert.ok(swiss);
   assert.ok(goldDeco);
   assert.ok(seaside);
+  assert.ok(kidsBirthday);
   assert.equal(birthday.couple.two, undefined);
   assert.equal(gala.couple.two, undefined);
+  assert.equal(kidsBirthday.couple.two, undefined);
   assert.ok(wedding.couple.two && wedding.couple.two.trim().length > 0);
   assert.ok(garden.couple.two && garden.couple.two.trim().length > 0);
   assert.ok(polaroid.couple.two && polaroid.couple.two.trim().length > 0);
@@ -56,6 +59,20 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   assert.ok(swiss.couple.two && swiss.couple.two.trim().length > 0);
   assert.ok(goldDeco.couple.two && goldDeco.couple.two.trim().length > 0);
   assert.ok(seaside.couple.two && seaside.couple.two.trim().length > 0);
+});
+
+test("kids birthday demo event has valid party details", () => {
+  const kids = getEventBySlug("misha");
+  assert.ok(kids);
+  assert.equal(kids.templateId, "kids-birthday");
+  assert.equal(kids.couple.one, "Миша");
+  assert.equal(kids.couple.two, undefined);
+  assert.ok(kids.kicker.includes("7 лет"));
+  assert.ok(kids.venue.name.length > 0);
+  assert.ok(kids.venue.address.length > 0);
+  assert.equal(kids.gallery.length, 6);
+  assert.ok(kids.gallery.every((g) => g.src.startsWith("/gallery/kids-birthday/")));
+  assert.ok(kids.gallery.every((g) => g.alt.length > 0 && g.caption.length > 0));
 });
 
 test("live catalog demoSlug resolves to the matching template", () => {

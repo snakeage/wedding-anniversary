@@ -1,6 +1,6 @@
 # Template catalog
 
-Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/nikita-olga` (garden wedding), `polaroid-story` on `/max-lera` (young couple, city wedding), `winter-frost` on `/ilya-dasha` (winter wedding), `minimal-swiss` on `/mark-alisa` (city hall wedding), `gold-deco` on `/lev-vera` (formal banquet), `seaside` on `/arseniy-maya` (destination wedding).
+Ideas only. Do not implement this list in one pass. **Live:** `quiet-luxury` on `/sofia` (adult birthday), `paper-envelope` on `/ivan-maria` (wedding), `dark-editorial` on `/kira` (evening gala), `garden-daylight` on `/nikita-olga` (garden wedding), `polaroid-story` on `/max-lera` (young couple, city wedding), `winter-frost` on `/ilya-dasha` (winter wedding), `minimal-swiss` on `/mark-alisa` (city hall wedding), `gold-deco` on `/lev-vera` (formal banquet), `seaside` on `/arseniy-maya` (destination wedding), `kids-birthday` on `/misha` (children's party).
 
 Each row is a **skin**: different composition, motion, and audience — not a recolor of Quiet luxury. All rows use the same [content schema](./content-schema.md).
 
@@ -15,7 +15,7 @@ Each row is a **skin**: different composition, motion, and audience — not a re
 | 7 | `gold-deco` | Gold deco | Formal banquet | Geometry, metallic lines, symmetrical lockup, 1920s poster hero | Live |
 | 8 | `winter-frost` | Winter frost | New Year, winter wedding | Ivory paper and candlelight on the page, frost and snow only behind the glass | Live |
 | 9 | `seaside` | Seaside | Destination, coast | Horizon hero, salt-washed blues, wide type, map as the visual center | Live |
-| 10 | `kids-birthday` | Kids birthday | Children’s party | Bright, large tap targets, short copy, illustration-led; countdown still required | Idea |
+| 10 | `kids-birthday` | Kids birthday | Children’s party | Bright, large tap targets, short copy, illustration-led; countdown still required | Live |
 | 11 | `corporate-evening` | Corporate evening | Company dinner | Strict hierarchy, agenda block, speakers optional later, restrained color | Idea |
 | 12 | `folk-linen` | Folk linen | Countryside, tradition | Linen ground, folk motif, warm wood, slower serif, craft not luxury | Idea |
 | 13 | `neon-night` | Neon night | Club, afterparty | Dark UI, one neon accent, kinetic type, gallery as posters | Idea |

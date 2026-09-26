@@ -100,7 +100,7 @@ export const liveSkins: LiveSkin[] = [
     name: "Kids birthday",
     audience: "Детский праздник",
     difference: "Яркая жизнерадостная палитра, крупные кнопки, короткие тексты, конфетти и иллюстративные акценты",
-    demoSlug: "misha",
+    demoSlug: "liza",
   }),
 ];
 

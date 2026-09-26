@@ -94,7 +94,7 @@ test("kids-birthday starter keeps dedicated children's party photos and captions
   const fs = await import("node:fs");
   const path = await import("node:path");
   const starter = templateStarters("kids-birthday");
-  assert.equal(starter.kicker, "Детский праздник · 7 лет");
+  assert.equal(starter.kicker, "Детский праздник · 8 лет");
   assert.equal(starter.galleryKicker, "Веселье");
   assert.equal(starter.galleryHeading, "Кадры праздника");
   assert.equal(starter.gallery.length, 6);

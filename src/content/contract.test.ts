@@ -38,7 +38,7 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   const swiss = getEventBySlug("mark-alisa");
   const goldDeco = getEventBySlug("lev-vera");
   const seaside = getEventBySlug("arseniy-maya");
-  const kidsBirthday = getEventBySlug("misha");
+  const kidsBirthday = getEventBySlug("liza");
   assert.ok(birthday);
   assert.ok(wedding);
   assert.ok(gala);
@@ -62,12 +62,12 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
 });
 
 test("kids birthday demo event has valid party details", () => {
-  const kids = getEventBySlug("misha");
+  const kids = getEventBySlug("liza");
   assert.ok(kids);
   assert.equal(kids.templateId, "kids-birthday");
-  assert.equal(kids.couple.one, "Миша");
+  assert.equal(kids.couple.one, "Лиза");
   assert.equal(kids.couple.two, undefined);
-  assert.ok(kids.kicker.includes("7 лет"));
+  assert.ok(kids.kicker.includes("8 лет"));
   assert.ok(kids.venue.name.length > 0);
   assert.ok(kids.venue.address.length > 0);
   assert.equal(kids.gallery.length, 6);

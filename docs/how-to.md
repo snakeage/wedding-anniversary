@@ -2,7 +2,7 @@
 
 Две роли. Юридическое — на [`/terms`](https://wedding-anniversary-seven-tau.vercel.app/terms). Как поднять код и env — в [`README.md`](../README.md). Очередь работ — GitHub Issues, не этот файл.
 
-Живой сайт: [каталог](https://wedding-anniversary-seven-tau.vercel.app/) · [вход](https://wedding-anniversary-seven-tau.vercel.app/login) · демо [`/sofia`](https://wedding-anniversary-seven-tau.vercel.app/sofia), [`/ivan-maria`](https://wedding-anniversary-seven-tau.vercel.app/ivan-maria), [`/kira`](https://wedding-anniversary-seven-tau.vercel.app/kira), [`/nikita-olga`](https://wedding-anniversary-seven-tau.vercel.app/nikita-olga), [`/max-lera`](https://wedding-anniversary-seven-tau.vercel.app/max-lera), [`/ilya-dasha`](https://wedding-anniversary-seven-tau.vercel.app/ilya-dasha), [`/mark-alisa`](https://wedding-anniversary-seven-tau.vercel.app/mark-alisa) и [`/lev-vera`](https://wedding-anniversary-seven-tau.vercel.app/lev-vera) (файлы в репо, не кабинет).
+Живой сайт: [каталог](https://wedding-anniversary-seven-tau.vercel.app/) · [вход](https://wedding-anniversary-seven-tau.vercel.app/login) · демо [`/sofia`](https://wedding-anniversary-seven-tau.vercel.app/sofia), [`/ivan-maria`](https://wedding-anniversary-seven-tau.vercel.app/ivan-maria), [`/kira`](https://wedding-anniversary-seven-tau.vercel.app/kira), [`/nikita-olga`](https://wedding-anniversary-seven-tau.vercel.app/nikita-olga), [`/max-lera`](https://wedding-anniversary-seven-tau.vercel.app/max-lera), [`/ilya-dasha`](https://wedding-anniversary-seven-tau.vercel.app/ilya-dasha), [`/mark-alisa`](https://wedding-anniversary-seven-tau.vercel.app/mark-alisa), [`/lev-vera`](https://wedding-anniversary-seven-tau.vercel.app/lev-vera) и [`/arseniy-maya`](https://wedding-anniversary-seven-tau.vercel.app/arseniy-maya) (файлы в репо, не кабинет).
 
 ---
 
@@ -29,8 +29,8 @@
 
 В кабинете → **Создать приглашение**.
 
-- **Адрес ссылки** (`slug`) — латиница и дефис, например `anna-dr`. Гости откроют `сайт/этот-адрес`. После создания его **нельзя** сменить. Адреса `sofia`, `ivan-maria`, `kira`, `nikita-olga`, `max-lera`, `ilya-dasha`, `mark-alisa` и `lev-vera` заняты демо.
-- Шаблон: Quiet luxury (день рождения), Paper envelope (свадьба), Dark editorial (вечерний гала), Garden daylight (свадьба в саду или за городом), Polaroid story (молодая пара, город), Winter frost (зимняя свадьба, Новый год), Minimal Swiss (городская свадьба, ЗАГС) или Gold deco (формальный банкет).
+- **Адрес ссылки** (`slug`) — латиница и дефис, например `anna-dr`. Гости откроют `сайт/этот-адрес`. После создания его **нельзя** сменить. Адреса `sofia`, `ivan-maria`, `kira`, `nikita-olga`, `max-lera`, `ilya-dasha`, `mark-alisa`, `lev-vera` и `arseniy-maya` заняты демо.
+- Шаблон: Quiet luxury (день рождения), Paper envelope (свадьба), Dark editorial (вечерний гала), Garden daylight (свадьба в саду или за городом), Polaroid story (молодая пара, город), Winter frost (зимняя свадьба, Новый год), Minimal Swiss (городская свадьба, ЗАГС), Gold deco (формальный банкет) или Seaside (свадьба на побережье, destination).
 - Имена, дата (московское время), площадка, ссылка из Яндекс.Карт или координаты.
 - Фото необязательно. Шаблон сразу подставляет свои атмосферные кадры и подписи — их можно оставить, заменить по одному своим файлом (JPEG / PNG / WebP до 4 МБ) или убрать. Без снимков блок на странице не появится. Надпись и заголовок блока тоже можно править.
 

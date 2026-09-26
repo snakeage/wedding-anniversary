@@ -1,0 +1,648 @@
+.seaside {
+  --cream: #f4f8fa;
+  --cream-dark: #eef5f9;
+  --ink: #0c2132;
+  --burgundy: #225171;
+  --gold: #3b6582;
+
+  --seaside-navy: #0c2132;
+  --seaside-deep: #14354d;
+  --seaside-horizon: #225171;
+  --seaside-salt: #3b6582;
+  --seaside-sand: #d8cebe;
+  --seaside-mist: #eef5f9;
+  --seaside-canvas: #f4f8fa;
+  --seaside-white: #ffffff;
+  --seaside-border: rgb(45 95 130 / 0.22);
+
+  min-height: 100vh;
+  background-color: var(--seaside-canvas);
+  background-image:
+    radial-gradient(ellipse 100% 50% at 50% 0%, #e2eef5 0%, transparent 70%),
+    linear-gradient(180deg, #f7fafc 0%, #edf3f7 50%, #f4f8fa 100%);
+  color: var(--seaside-navy);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.seaside-hero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.seaside-horizon-wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 30%, rgb(255 255 255 / 0.6) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 40%, rgb(215 231 241 / 0.45) 85%, transparent 100%);
+}
+
+.seaside-hero-lockup {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 46rem);
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.seaside-compass {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.25rem;
+  color: var(--seaside-salt);
+  opacity: 0.85;
+}
+
+.seaside-compass-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.seaside-kicker {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--seaside-horizon);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.seaside-names {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.25rem, 7vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--seaside-navy);
+  margin-block: 0.5rem 1rem;
+}
+
+.seaside-name-part {
+  display: inline-block;
+  padding-inline: 0.25rem;
+}
+
+.seaside-amp {
+  display: inline-block;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.75em;
+  color: var(--seaside-salt);
+  margin-inline: 0.5rem;
+}
+
+.seaside-horizon-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: min(80%, 20rem);
+  margin-block: 0.75rem 1rem;
+}
+
+.seaside-horizon-line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--seaside-border) 40%,
+    var(--seaside-border) 60%,
+    transparent
+  );
+}
+
+.seaside-horizon-marker {
+  font-size: 0.625rem;
+  color: var(--seaside-salt);
+  opacity: 0.75;
+}
+
+.seaside-tagline {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1.0625rem);
+  letter-spacing: 0.12em;
+  color: var(--seaside-deep);
+  opacity: 0.85;
+  max-width: 32rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.seaside-coords {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--seaside-salt);
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.seaside-hero-figure {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 54rem);
+  margin-block: 0.5rem 1.75rem;
+}
+
+.seaside-hero-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--seaside-border);
+  box-shadow: 0 16px 40px rgb(12 33 50 / 0.1);
+  background: #dce7ee;
+}
+
+@media (max-width: 639px) {
+  .seaside-hero {
+    padding: 2rem 1rem 2.25rem;
+  }
+
+  .seaside-hero-lockup {
+    padding-bottom: 1.25rem;
+  }
+
+  .seaside-names {
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+  }
+
+  .seaside-name-part {
+    display: block;
+    padding-inline: 0;
+  }
+
+  .seaside-amp {
+    display: block;
+    margin-inline: 0;
+    margin-block: 0.15rem 0.25rem;
+    font-size: 0.55em;
+  }
+
+  .seaside-hero-figure {
+    margin-block: 0.25rem 1.25rem;
+  }
+
+  .seaside-hero-meta {
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-block: 0.5rem 1.5rem;
+  }
+
+  .seaside-meta-venue::before {
+    display: none;
+  }
+
+  .seaside-hero-frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.seaside-hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(20 53 77 / 0.05) 0%,
+    transparent 40%,
+    rgb(12 33 50 / 0.2) 100%
+  );
+}
+
+.seaside-hero-caption {
+  margin-top: 0.75rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--seaside-salt);
+}
+
+.seaside-hero-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  margin-block: 0.5rem 2rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--seaside-deep);
+}
+
+.seaside-meta-date {
+  font-weight: 600;
+}
+
+.seaside-meta-venue {
+  opacity: 0.8;
+}
+
+.seaside-meta-venue::before {
+  content: "·";
+  margin-right: 1.25rem;
+  opacity: 0.5;
+}
+
+.seaside-cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  min-height: 48px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.25rem;
+  border-radius: 9999px;
+  background-color: var(--seaside-deep);
+  color: var(--seaside-white);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--seaside-deep);
+  box-shadow: 0 4px 18px rgb(20 53 77 / 0.22);
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.seaside-cta:hover {
+  background-color: var(--seaside-navy);
+  box-shadow: 0 6px 22px rgb(12 33 50 / 0.28);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.seaside-gallery {
+  position: relative;
+  padding: 4.5rem 1.25rem;
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+.seaside-section-head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.seaside-section-kicker {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--seaside-horizon);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.seaside-section-title {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--seaside-navy);
+  margin-bottom: 0.75rem;
+}
+
+.seaside-section-lead {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgb(12 33 50 / 0.75);
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.seaside-lead-figure {
+  margin-bottom: 2rem;
+}
+
+.seaside-lead-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--seaside-border);
+  box-shadow: 0 12px 32px rgb(12 33 50 / 0.08);
+  background: #dce7ee;
+}
+
+@media (max-width: 639px) {
+  .seaside-lead-frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.seaside-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .seaside-gallery-grid {
+    gap: 2rem 1.75rem;
+  }
+}
+
+.seaside-gallery-grid > .seaside-frame:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 24rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.seaside-frame-box {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--seaside-border);
+  box-shadow: 0 8px 24px rgb(12 33 50 / 0.07);
+  background: #dce7ee;
+}
+
+.seaside-frame-caption {
+  margin-top: 0.625rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--seaside-salt);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Shared Blocks Customization: Countdown, Details, Map, RSVP, Footer
+   ========================================================================== */
+
+.seaside #countdown,
+.seaside #details,
+.seaside #map,
+.seaside #rsvp,
+.seaside footer {
+  color: var(--seaside-navy);
+}
+
+.seaside #countdown .text-burgundy\/75,
+.seaside #details .text-burgundy\/75,
+.seaside #map .text-burgundy\/75,
+.seaside #rsvp .text-burgundy\/75,
+.seaside .text-gold {
+  color: var(--seaside-horizon);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.seaside .text-ink,
+.seaside .font-serif {
+  color: var(--seaside-navy);
+  letter-spacing: 0.08em;
+}
+
+.seaside .text-ink\/65,
+.seaside .text-ink\/55,
+.seaside .text-ink\/50,
+.seaside .text-ink\/70,
+.seaside .text-ink\/40 {
+  color: rgb(12 33 50 / 0.72);
+}
+
+.seaside .panel {
+  background: rgb(255 255 255 / 0.88);
+  border: 1px solid var(--seaside-border);
+  box-shadow: 0 10px 30px rgb(12 33 50 / 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Countdown: Salt-washed cells with horizon blue digits */
+.seaside #countdown .panel {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.95) 0%, rgb(240 246 250 / 0.95) 100%);
+  border: 1px solid rgb(45 95 130 / 0.28);
+  box-shadow: 0 6px 20px rgb(20 53 77 / 0.08);
+  border-radius: 8px;
+}
+
+.seaside #countdown .panel .font-serif {
+  color: var(--seaside-deep);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.seaside [aria-hidden] > span.size-1\.5 {
+  border-color: var(--seaside-salt);
+}
+
+.seaside #countdown .panel div:last-child {
+  color: var(--seaside-salt);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Details: Coastal program cards */
+.seaside #details .grid {
+  gap: 1.5rem;
+}
+
+.seaside #details .panel {
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.92);
+  border: 1px solid rgb(45 95 130 / 0.2);
+  box-shadow: 0 8px 24px rgb(12 33 50 / 0.06);
+}
+
+.seaside #details .panel .font-serif,
+.seaside #details .panel h3 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  color: var(--seaside-deep);
+  letter-spacing: 0.08em;
+}
+
+/* Map as the visual center: Destination coastal focal point */
+.seaside #map {
+  position: relative;
+  background: linear-gradient(180deg, transparent 0%, rgb(228 239 246 / 0.4) 50%, transparent 100%);
+  padding-block: 5rem;
+}
+
+.seaside #map .panel {
+  border-radius: 12px;
+  border: 1px solid rgb(45 95 130 / 0.35);
+  box-shadow: 0 16px 44px rgb(12 33 50 / 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.seaside #map iframe {
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.seaside #map .btn-gold {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--seaside-deep);
+  color: var(--seaside-white);
+  border: 1px solid var(--seaside-deep);
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgb(20 53 77 / 0.22);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.seaside #map .btn-gold:hover {
+  background: var(--seaside-navy);
+  box-shadow: 0 6px 22px rgb(12 33 50 / 0.28);
+  transform: translateY(-1px);
+}
+
+/* RSVP Form */
+.seaside #rsvp .panel {
+  border-radius: 10px;
+  border: 1px solid rgb(45 95 130 / 0.25);
+  background: rgb(255 255 255 / 0.94);
+  box-shadow: 0 12px 36px rgb(12 33 50 / 0.08);
+}
+
+.seaside .field {
+  min-height: 44px;
+  border: 1px solid rgb(45 95 130 / 0.3);
+  background: #ffffff;
+  color: var(--seaside-navy);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seaside .field:focus {
+  border-color: var(--seaside-horizon);
+  box-shadow: 0 0 0 3px rgb(45 95 130 / 0.15);
+  outline: none;
+}
+
+.seaside .choice {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(45 95 130 / 0.3);
+  background: #ffffff;
+  color: var(--seaside-navy);
+  border-radius: 6px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  transition: all 0.2s ease;
+}
+
+.seaside .choice:hover {
+  border-color: var(--seaside-horizon);
+}
+
+.seaside .choice-active {
+  background: var(--seaside-deep);
+  border-color: var(--seaside-deep);
+  color: var(--seaside-white);
+}
+
+.seaside .btn-gold {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--seaside-deep);
+  color: var(--seaside-white);
+  border: 1px solid var(--seaside-deep);
+  border-radius: 9999px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgb(20 53 77 / 0.2);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.seaside #rsvp .text-burgundy {
+  color: #a8282b;
+}
+
+.seaside .btn-gold:hover {
+  background: var(--seaside-navy);
+  box-shadow: 0 6px 22px rgb(12 33 50 / 0.28);
+  transform: translateY(-1px);
+}
+
+.seaside .btn-gold:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+  background: var(--seaside-deep);
+  box-shadow: 0 4px 18px rgb(20 53 77 / 0.2);
+}
+
+/* Footer */
+.seaside footer {
+  border-top: 1px solid var(--seaside-border);
+  padding-block: 3.5rem 3rem;
+  background: rgb(238 245 249 / 0.6);
+}
+
+.seaside footer .font-serif {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: 0.14em;
+  color: var(--seaside-navy);
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .seaside-cta,
+  .seaside #map .btn-gold,
+  .seaside .btn-gold,
+  .seaside .choice,
+  .seaside .field,
+  .seaside-frame-box img,
+  .seaside-lead-frame img,
+  .seaside-hero-frame img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

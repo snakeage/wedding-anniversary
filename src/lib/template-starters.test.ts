@@ -37,6 +37,7 @@ test("live skins do not share the old restaurant gallery files", () => {
   assert.equal(templateStarters("winter-frost").gallery[1]?.src, "/gallery/winter-frost/wf-01-glass.jpg?v=3");
   assert.equal(templateStarters("minimal-swiss").gallery[0]?.src, "/gallery/minimal-swiss/swiss-hero-couple.jpg");
   assert.equal(templateStarters("gold-deco").gallery[0]?.src, "/gallery/gold-deco/gd-hero-hall.jpg");
+  assert.equal(templateStarters("seaside").gallery[0]?.src, "/gallery/seaside/sea-hero-horizon.jpg");
   assert.equal(new Set(srcs).size, srcs.length);
   for (const src of srcs) {
     assert.equal(src.includes("/gallery/gallery-0"), false);
@@ -51,6 +52,36 @@ test("gold-deco starter keeps dedicated formal banquet photos and captions", asy
   assert.equal(starter.galleryKicker, "Зал");
   assert.equal(starter.galleryHeading, "Симметрия вечера");
   assert.equal(starter.gallery.length, 6);
+  for (const item of starter.gallery) {
+    const cleanSrc = item.src.replace(/\?.*$/, "");
+    const filePath = path.join(process.cwd(), "public", cleanSrc);
+    assert.ok(fs.existsSync(filePath), `file ${filePath} must exist`);
+  }
+});
+
+test("seaside starter keeps dedicated coastal photos and captions", async () => {
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const starter = templateStarters("seaside");
+  assert.equal(starter.kicker, "Свадьба на побережье");
+  assert.equal(starter.galleryKicker, "Побережье");
+  assert.equal(starter.galleryHeading, "Горизонт и прибой");
+  assert.equal(starter.gallery.length, 6);
+
+  const expectedSrcs = [
+    "/gallery/seaside/sea-hero-horizon.jpg",
+    "/gallery/seaside/sea-01-couple.jpg",
+    "/gallery/seaside/sea-02-rings.jpg",
+    "/gallery/seaside/sea-03-table.jpg",
+    "/gallery/seaside/sea-04-lighthouse.jpg",
+    "/gallery/seaside/sea-05-waves.jpg",
+  ];
+  assert.deepEqual(
+    starter.gallery.map((i) => i.src),
+    expectedSrcs,
+  );
+  assert.equal(new Set(starter.gallery.map((i) => i.src)).size, 6);
+
   for (const item of starter.gallery) {
     const cleanSrc = item.src.replace(/\?.*$/, "");
     const filePath = path.join(process.cwd(), "public", cleanSrc);

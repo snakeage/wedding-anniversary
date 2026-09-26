@@ -88,10 +88,16 @@ export const liveSkins: LiveSkin[] = [
     difference: "Чёрный лак, гильош и латунная фольга; симметричный плакат и веер за именами",
     demoSlug: "lev-vera",
   }),
+  liveSkin({
+    id: "seaside",
+    name: "Seaside",
+    audience: "Destination, побережье",
+    difference: "Горизонт, размытые морские оттенки, широкая типографика и карта как визуальный центр",
+    demoSlug: "arseniy-maya",
+  }),
 ];
 
 export const soonSkins: SoonSkin[] = [
-  { id: "seaside", name: "Seaside", audience: "Destination, море" },
   { id: "kids-birthday", name: "Kids birthday", audience: "Детский праздник" },
   { id: "corporate-evening", name: "Corporate evening", audience: "Корпоративный ужин" },
   { id: "folk-linen", name: "Folk linen", audience: "Деревня, традиция" },

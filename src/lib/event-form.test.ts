@@ -80,6 +80,14 @@ test("eventFromForm accepts gold-deco", () => {
   assert.equal(content.templateId, "gold-deco");
 });
 
+test("eventFromForm accepts seaside", () => {
+  const form = baseForm();
+  form.set("templateId", "seaside");
+  const content = eventFromForm(form);
+  assert.ok(content);
+  assert.equal(content.templateId, "seaside");
+});
+
 test("eventFromForm keeps two gallery items", () => {
   const form = baseForm();
   form.append("gallerySrc", blobA);

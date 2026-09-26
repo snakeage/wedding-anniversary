@@ -37,6 +37,7 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   const winter = getEventBySlug("ilya-dasha");
   const swiss = getEventBySlug("mark-alisa");
   const goldDeco = getEventBySlug("lev-vera");
+  const seaside = getEventBySlug("arseniy-maya");
   assert.ok(birthday);
   assert.ok(wedding);
   assert.ok(gala);
@@ -45,6 +46,7 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   assert.ok(winter);
   assert.ok(swiss);
   assert.ok(goldDeco);
+  assert.ok(seaside);
   assert.equal(birthday.couple.two, undefined);
   assert.equal(gala.couple.two, undefined);
   assert.ok(wedding.couple.two && wedding.couple.two.trim().length > 0);
@@ -53,6 +55,7 @@ test("couple.two is optional: birthday and gala have one name, weddings have two
   assert.ok(winter.couple.two && winter.couple.two.trim().length > 0);
   assert.ok(swiss.couple.two && swiss.couple.two.trim().length > 0);
   assert.ok(goldDeco.couple.two && goldDeco.couple.two.trim().length > 0);
+  assert.ok(seaside.couple.two && seaside.couple.two.trim().length > 0);
 });
 
 test("live catalog demoSlug resolves to the matching template", () => {
@@ -62,4 +65,11 @@ test("live catalog demoSlug resolves to the matching template", () => {
     assert.ok(event, `missing demo ${skin.demoSlug}`);
     assert.equal(event.templateId, skin.id);
   }
+});
+
+test("seaside demo event has valid coastal coordinates", () => {
+  const seaside = getEventBySlug("arseniy-maya");
+  assert.ok(seaside);
+  assert.ok(seaside.venue.lat > 0 && seaside.venue.lat <= 90);
+  assert.ok(seaside.venue.lng > 0 && seaside.venue.lng <= 180);
 });

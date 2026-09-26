@@ -15,6 +15,7 @@ const templateLabels: Record<TemplateId, string> = {
   "winter-frost": "Winter frost",
   "minimal-swiss": "Minimal Swiss",
   "gold-deco": "Gold deco",
+  "seaside": "Seaside",
 };
 
 export const EVENT_FORM_ERRORS: Record<string, string> = {

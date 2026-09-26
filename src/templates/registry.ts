@@ -7,6 +7,7 @@ import { MinimalSwiss } from "@/templates/minimal-swiss/MinimalSwiss";
 import { PaperEnvelope } from "@/templates/paper-envelope/PaperEnvelope";
 import { PolaroidStory } from "@/templates/polaroid-story/PolaroidStory";
 import { QuietLuxury } from "@/templates/quiet-luxury/QuietLuxury";
+import { Seaside } from "@/templates/seaside/Seaside";
 import { WinterFrost } from "@/templates/winter-frost/WinterFrost";
 
 type TemplateComponent = ComponentType<{ event: EventContent; preview?: boolean }>;
@@ -20,6 +21,7 @@ export const templates: Record<TemplateId, TemplateComponent> = {
   "winter-frost": WinterFrost,
   "minimal-swiss": MinimalSwiss,
   "gold-deco": GoldDeco,
+  "seaside": Seaside,
 };
 
 export function resolveTemplate(templateId: TemplateId): TemplateComponent {

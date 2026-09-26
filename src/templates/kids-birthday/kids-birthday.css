@@ -10,7 +10,7 @@
   --kids-ink-muted: #475569;
   --kids-pink: #ff3366;
   --kids-coral: #f43f5e;
-  --kids-amber: #d97706;
+  --kids-amber: #b45309;
   --kids-yellow: #fbbf24;
   --kids-blue: #0284c7;
   --kids-green: #10b981;
@@ -277,7 +277,7 @@
   min-height: 52px;
   min-width: 220px;
   padding: 0.875rem 2.25rem;
-  background: linear-gradient(135deg, #ff4b72 0%, #ff7849 100%);
+  background: linear-gradient(135deg, #e11d48 0%, #ea580c 100%);
   color: #ffffff;
   font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 1.125rem;
@@ -285,7 +285,7 @@
   letter-spacing: 0.02em;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 0 10px 24px -4px rgb(255 75 114 / 0.45);
+  box-shadow: 0 10px 24px -4px rgb(225 29 72 / 0.4);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   touch-action: manipulation;
   user-select: none;
@@ -293,7 +293,7 @@
 
 .kids-cta:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 28px -4px rgb(255 75 114 / 0.55);
+  box-shadow: 0 14px 28px -4px rgb(225 29 72 / 0.5);
 }
 
 .kids-cta:active {
@@ -384,7 +384,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--kids-coral);
+  color: #be123c;
   background: #ffe4e6;
   border-radius: 9999px;
   padding: 0.25rem 0.875rem;
@@ -491,7 +491,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--kids-coral);
+  color: #be123c;
   background: #ffe4e6;
   border-radius: 9999px;
   padding: 0.25rem 0.875rem;
@@ -566,7 +566,7 @@
   background: linear-gradient(180deg, #ffffff 0%, #fefce8 100%);
 }
 .kids-birthday #countdown .grid > div:nth-child(3) .font-serif {
-  color: #ca8a04;
+  color: #a16207;
 }
 
 .kids-birthday #countdown .grid > div:nth-child(4) {
@@ -574,7 +574,7 @@
   background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
 }
 .kids-birthday #countdown .grid > div:nth-child(4) .font-serif {
-  color: #16a34a;
+  color: #15803d;
 }
 
 .kids-birthday #countdown .panel .font-serif {
@@ -628,21 +628,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #0284c7;
+  background: #0277b6;
   color: #ffffff;
-  border: 2px solid #0284c7;
+  border: 2px solid #0277b6;
   border-radius: 9999px;
   padding: 0.75rem 2rem;
   font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgb(2 132 199 / 0.28);
+  box-shadow: 0 6px 18px rgb(2 119 182 / 0.28);
   transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .kids-birthday #map .btn-gold:hover {
-  background: #0369a1;
-  border-color: #0369a1;
+  background: #035e91;
+  border-color: #035e91;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -703,10 +703,10 @@
 }
 
 .kids-birthday .choice-active {
-  background: #10b981;
-  border-color: #10b981;
+  background: #047857;
+  border-color: #047857;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgb(16 185 129 / 0.28);
+  box-shadow: 0 6px 16px rgb(4 120 87 / 0.28);
 }
 
 .kids-birthday .btn-gold {
@@ -714,7 +714,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ff4b72 0%, #ff7849 100%);
+  background: linear-gradient(135deg, #e11d48 0%, #ea580c 100%);
   color: #ffffff;
   border: none;
   border-radius: 9999px;
@@ -722,7 +722,7 @@
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  box-shadow: 0 10px 24px -4px rgb(255 75 114 / 0.4);
+  box-shadow: 0 10px 24px -4px rgb(225 29 72 / 0.4);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   touch-action: manipulation;
   user-select: none;
@@ -730,7 +730,7 @@
 
 .kids-birthday .btn-gold:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 28px -4px rgb(255 75 114 / 0.5);
+  box-shadow: 0 14px 28px -4px rgb(225 29 72 / 0.5);
 }
 
 .kids-birthday .btn-gold:active {
@@ -744,7 +744,7 @@
 }
 
 .kids-birthday #rsvp .text-burgundy {
-  color: #e11d48;
+  color: #be123c;
 }
 
 /* Footer */
@@ -767,15 +767,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   .kids-cta,
+  .kids-cta:hover,
+  .kids-cta:active,
   .kids-birthday #map .btn-gold,
+  .kids-birthday #map .btn-gold:hover,
+  .kids-birthday #map .btn-gold:active,
   .kids-birthday .btn-gold,
+  .kids-birthday .btn-gold:hover,
+  .kids-birthday .btn-gold:active,
   .kids-birthday .choice,
+  .kids-birthday .choice:hover,
   .kids-birthday .field,
   .kids-birthday #countdown .panel,
+  .kids-birthday #countdown .panel:hover,
   .kids-frame-box img,
   .kids-lead-frame img,
   .kids-hero-frame img {
     transition: none !important;
     transform: none !important;
+    animation: none !important;
   }
 }
